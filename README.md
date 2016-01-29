@@ -1,10 +1,10 @@
 hi guys,
 the section on interviews follows the notes Boulos took during our first meeting.
-See you tonight in OS!
+I have moved everything that was in the google document I shared earlier today in this file here.
 
 Laurent
-P.S. I’ll get on git hub now…
 
+FIRST MEETING
 -        By Friday January 29, 2016
  
 -        List of Questions
@@ -40,9 +40,9 @@ Means of communication/Sharing Work
 User Cases:
 Primary Actor: Someone that interacts directly with the uses of the software/hardware. They will benefit from the system. It is the potential user of the system.
 Secondary Actor: Someone/Something that provides assistance to the system so that it can help the primary actor to achieve its goal. 
+****END FIRST MEETING NOTES******
 
-
-INTERVIEWS
+****INTERVIEWS****
 
 POTENTIAL QUESTIONS:
 
@@ -89,3 +89,110 @@ Uses calculators on a variety of platforms, including PC, laptop, phone, and “
 Contact : Laurent, friend of mine
 Availability : February 1, 3, 5 (Mo, We, Fri) after work (I assume...)
 Notes : already approached and interested in participating; lives near me (Laurent), I can easily drop by and do the interview if we decide to cut corners.
+
+-----------------------Following section added by Federico, Jan 29th---------------------------------------
+ Candidate interviewees - note, I know (mostly closely
+	Robert-Eric Gaskell	Electronics engineer - audio
+	Nicolas	Cool		Secondary student 		- Note, he lives far in the suburbs...
+	Charles-Eric Jean	Civil Engineer
+	-whatshisname-		Acoustician
+	Juan Regueiro		Engineer, Student		- Note, these would be skype interviews
+	Eugenia O'Reilly	Mathematician			- Note, these would be skype interviews
+	
+	Post on ENCS boards@Hall, boards@Trottier or McDonald - compensation? lunch?
+
+Possible questions
+	Info to draw uppon:
+	---persona-related---
+		Activity
+		Region
+		Age group
+		Lifestyle
+			Workload
+			Work environment
+			Busy personal lifestyle?
+		Possible scenarios for using product ... starts getting into:
+	---domain-related----
+	Does interviewee use any particular type of calc (sci/graph/tirg/stat)?
+	If so, is there any reason this type satisfies the user's needs best?
+	If graphs, what particular features are attractive/unatractive to the user?
+	Does the user prefer to use a physical device or a software-only implementation?
+	Why?
+	Most satisfying memory of a calculator usage up-to-date
+	Most frustrating memory of a "		"	"
+	Anything that interviewee would like to have in an ideal calculator?
+	Anything that an interviewee would like to abolish from the typical calculator?
+	Does the interviewee use the calculator's memory?
+	If so, how many memory slots are useful to the interviewee?
+	Any gripes with typical calculator memory implementations?
+	--readability--
+	number of decimals? *
+	Does the interviewee use different bases - bin,octal,hex...
+	If graphs, what's more important, graph size or button size?
+	-fractions-
+		(do we actually have a way to implement this for transcendental funs?)
+	-results in terms of transcendental numbers ** probably not... but that's already biased
+	--architecture-related--
+	Does the user generally count with an internet connection during a typical usage scenario?
+	Would a typical scenario happen while user has access, to a laptop or desktop?
+	If so, would a typical scenario entail the user already working on said device?
+	If not, would the user have access to a mobile device? Would said device be part of the usage?
+	If so, would the user prefer switching tasks on a single device or actually having a dedicated device?
+	Would the user consider installing a calculator app on a mobile device?
+	Would the user consider opening a calculator webpage on said device?
+	Would the user have any constraints for input or output during typical usage?
+	--layout and design--
+	-this next bit is important particularly if a small mobile device is chosen-
+	Does the user consider the available screen size on the mobile device to be sufficient for typical app usage?
+	Are there any particular apps or pages that the user finds challenging to use given screen-size?
+	Same as prior but pleasing?
+	Does the interviewee consider button real-estate or display real estate more important?
+	Is the interviewee comfortable with multi-view apps? (find a suitable example)
+	Does the user have a particular calculator (physical or app) that (s)he already finds particularly appealing?
+	--implementation concerns--these are addressed in prior questions
+	native app/hybrid app/html-css-js app/webpage (but needing connectivity and having a toolbar suck IMHO)
+	precission - user controlled or set, how precise *
+	use of transcendental numbers in display? does this even make sense?**
+	
+Here’s some links regarding tech choices:
+https://www.upwork.com/blog/2014/02/choosing-best-mobile-app-development-technology/
+http://www.comentum.com/phonegap-vs-native-app-development.html
+http://www.androidauthority.com/want-develop-android-apps-languages-learn-391008/
+
+not so relevant...
+http://svsg.co/how-to-choose-your-tech-stack/
+I didn’t check chrome apps, did you find anything Devang?
+A note on tech choices (reflected on some of my questions) is that a web version requires network connection and this might be fairly clunky, depending on the context. Personnaly - but I’m not being interviewed :) - I prefer self-contained apps that don’t depend on the network (which in some cases can be spotty or non-existent) . Ha ha - we should include a question asking if they would use the calculator on a plane - self derission is good…
+------------------------------------------------------------------------end text submitted by Fede Jan 29------
+1. How would a calculator including these 5 transcendental functions help you with your everyday 
+
+work? Can you give examples of where you would typically use these functions? How do you 
+
+currently go about computing these functions?
+
+2. Will such a calculator reduce the time that it takes to arrive to the solutions of a larger problem 
+
+that you would have to solve?
+
+3. Are there existing calculators that are capable of fulfilling your needs? If not, how difficult is it to 
+
+fulfill these tasks?
+
+4. What would you expect from such a calculator?
+
+5. What kind of problems would this calculator help you solve?
+
+6. What do you like about existing calculators that you think we should incorporate into our 
+
+calculator?
+
+7. What is lacking with existing calculators that you would want to see in our calculator? How 
+
+would these features help with your work?
+
+8. What would be the easiest/most accessible platform/device for you for using such a calculator? 
+
+Do you think that your colleagues and others in your field would also benefit from a calculator 
+
+on similar platform?
+
