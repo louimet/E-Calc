@@ -239,3 +239,34 @@ Working in the field of finance, she's dealing with numbers and calculations and
 13)	When you're off work do you still need to use the complex functions that you use in your work?
 
 14)	Would you prefer a calculator that is capable of switching between simple and complex mode? If yes, do you prefer to conduct 		the switch through clicking an existing icon on the calculator or through other gestures (eg. place the cell phone 			horizontally)
+
+Potential Interviewee :
+-	Name: Youngeun Kim.
+-	Profession: Chemical engineer that works for a manufacturer of application software for real-time data infrastructure solutions. 
+-	She works downtown 2 minutes away from McGill Metro
+-	Available: Mostly in the evening after 7 PM. 
+
+
+Questions:
+
+1)	Around how many times have you used a calculator in this past week? 
+
+2)	Was the usage mainly as an app or on a physical calculator? 
+
+3)	What is the most important function in a calculator in relation to your usage/work?
+
+4)	When you go to purchase a calculator, what do you base your purchase on? Looks or functionality? If the answer is looks then 	what do they look for in it? and if it is functionality then what type of functions are mostly important for them
+
+5)	Do you prefer having bigger numbers and smaller operators or the other way around? Or would making everything equally big be 	your preferred calculator style?
+
+6)	How many significant digits would you say are required from your calculator?
+
+7)	Do you think the equal sign should be bigger that the rest of the buttons?
+
+8)	Do you think any of the buttons should be colored? If yes which ones? and how would that help you in general ? 
+
+9)	What platform would you like your calculator to run on? 
+
+10)	Would saving the values for multiple usages be a benefit in the line of work that you do? 
+
+11)	If you had to remove 1 button that is present on most calculators today what would it be? 
