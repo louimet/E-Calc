@@ -196,3 +196,46 @@ Do you think that your colleagues and others in your field would also benefit fr
 
 on similar platform?
 
+-----------------------Following section added by Yuanwen, Jan 29th---------------------------------------
+
+***Potential Interviewee***
+
+Name: Yongai Xu
+
+Occupation: financial analyst
+
+Available time: after work, around 6pm.
+
+Working location: down town, near Mcgill campus
+
+Working in the field of finance, she's dealing with numbers and calculations and uses calculator frequently every day. So she has a lot of experience with using calculator and has some own opinion on it.
+
+***Potential Interview questions***
+
+1)	Does your career need you to use calculator frequently? If yes, how often do you use it?
+
+2)	What functions on a calculator do you use most?
+
+3)	What kind of calculation do you use your calculator for? Simple operation or complex equation?
+
+4)	Would you prefer to use a calculator that display an answer every time you enter a calculation step or a calculator that takes 	the whole equation and delivers the final answer directly?
+
+5)	How many digits to the right of the decimal point do you need normally in your work?
+
+6)	What's the range of order of magnitude that you regularly deal with in your work?
+
+7)	What features on a calculator that you are not happy with during your daily usage?
+
+8)	Do you tend to use a physical calculator or a calculator app on a cell phone or computer?
+
+9)	When you're working on your computer, if you need to use calculator, which option will you chose? a) calculator software 		installed on your computer b) online calculator c) calculator app on your cell phone
+
+10)	Do you need a remember function on a calculator in your work? If yes, normally how many numbers do you need a calculator to 		remember when you do your calculation?
+
+11)	When you chose a calculator, does the style of the interface (color, font, shape of the icon etc.) influence you?
+
+12)	Is a calculator with self-customizable user-interface appealing to you? / To what extend would you like to customize your 		calculator
+
+13)	When you're off work do you still need to use the complex functions that you use in your work?
+
+14)	Would you prefer a calculator that is capable of switching between simple and complex mode? If yes, do you prefer to conduct 		the switch through clicking an existing icon on the calculator or through other gestures (eg. place the cell phone 			horizontally)
