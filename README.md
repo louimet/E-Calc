@@ -240,6 +240,10 @@ Working in the field of finance, she's dealing with numbers and calculations and
 
 14)	Would you prefer a calculator that is capable of switching between simple and complex mode? If yes, do you prefer to conduct 		the switch through clicking an existing icon on the calculator or through other gestures (eg. place the cell phone 			horizontally)
 
+
+----------------------------------------------------------------------------------------------
+Boulos Salame's Submission
+
 Potential Interviewee :
 -	Name: Youngeun Kim.
 -	Profession: Chemical engineer that works for a manufacturer of application software for real-time data infrastructure solutions. 
