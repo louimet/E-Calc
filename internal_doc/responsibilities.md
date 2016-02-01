@@ -13,7 +13,7 @@ We can update this document as our tasks change, github will keep a version hist
 
 - [x] Make a list of possible questions for the interview
 - [x] Create a working structure in the repository
-- [ ] Vote questions and produce a pilot questionnaire
+- [x] Vote questions and produce a pilot questionnaire
 - [ ] Apply a pilot questionnaire
 - [ ] Revise questionnaire
 - [ ] Go out and interview potential users
