@@ -5,6 +5,7 @@ just watch some 30 or 40 and you're good to go...
 
 
 * regarding tech choices:
+ 
 https://www.upwork.com/blog/2014/02/choosing-best-mobile-app-development-technology/
 
 http://www.comentum.com/phonegap-vs-native-app-development.html
