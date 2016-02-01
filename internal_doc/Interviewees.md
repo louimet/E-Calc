@@ -10,6 +10,7 @@ Notes : already approached and interested in participating; lives near me (Laure
 ***CONTACTS OF FEDERICO****
 ~~Robert-Eric Gaskell Electronics engineer - audio~~can't do it
 * Requests have been sent, waiting for answers
+
 Nicolas Cool Secondary student - Note, he lives far in the suburbs...
 Charles-Eric Jean Civil Engineer
 -whatshisname- Acoustician
