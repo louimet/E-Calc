@@ -1,6 +1,6 @@
-#:---:Meeting Minutes
+##Meeting Minutes
 
-##FIRST MEETING
+###FIRST MEETING
 
    By Friday January 29, 2016
    List of Questions
@@ -30,7 +30,7 @@ Communication: Slack
 Note from tutorial:
 User Cases: Primary Actor: Someone that interacts directly with the uses of the software/hardware. They will benefit from the system. It is the potential user of the system. Secondary Actor: Someone/Something that provides assistance to the system so that it can help the primary actor to achieve its goal.
 
-##MEETING - Friday, January 29th, 2016
+###MEETING - Friday, January 29th, 2016
 Just a quick note to keep track of things...
 
 Laurent will compile the question list
@@ -40,5 +40,7 @@ Federico will establish a structure for the repository
 Meet on Monday, Feb 1st, to discuss the questionnaire
 
 ----End Jan 29th meeting----
+
+
 
 
