@@ -1,5 +1,8 @@
 #####Here are a few useful links
 
+[GitHub tutorials](https://help.github.com/articles/good-resources-for-learning-git-and-github/) A GitHub-curated list
+of some of the thousands of tutorials that are out there for GitHub.
+
 [UML tutorials](https://www.youtube.com/watch?v=RRXe1omEGWQ&list=PLD4EF3E3AD055F3C7), 
 just watch some 30 or 40 and you're good to go...
 
