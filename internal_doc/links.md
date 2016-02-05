@@ -1,6 +1,8 @@
 #####Here are a few useful links
 
-[soundcloud for the interviews] (http://www.markdownpad.com/)
+[soundcloud for the interviews] (https://soundcloud.com/teamecalcintrvw)
+
+[markdownpad](http://www.markdownpad.com/) write markdown seeing how it will be displayed...
 
 [GitHub tutorials](https://help.github.com/articles/good-resources-for-learning-git-and-github/) A GitHub-curated list
 of some of the thousands of tutorials that are out there for GitHub.
