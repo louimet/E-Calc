@@ -19,7 +19,7 @@ Tristan Matthews:
 
 Ocupation: programmer
 
-Uses a calculator like most of us do, not terribly specialized
+Uses a calculator like most of us do, not terribly specialized but he's an insightful programmer who could have interesting observations.
 
 Available for a skype interview
 
