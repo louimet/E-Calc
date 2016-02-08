@@ -13,7 +13,8 @@ Availability : February 1, 3, 5 (Mo, We, Fri) after work (I assume...)
 
 Notes : already approached and interested in participating; lives near me (Laurent), I can easily drop by and do the interview if we decide to cut corners.
 
-***CONTACTS OF FEDERICO****
+***CONTACTS OF FEDERICO***
+
 Tristan Matthews:
 
 Ocupation: programmer
