@@ -14,19 +14,17 @@ Availability : February 1, 3, 5 (Mo, We, Fri) after work (I assume...)
 Notes : already approached and interested in participating; lives near me (Laurent), I can easily drop by and do the interview if we decide to cut corners.
 
 ***CONTACTS OF FEDERICO****
+Tristan Matthews:
 
-~~Robert-Eric Gaskell Electronics engineer - audio~~can't do it
-* Requests have been sent, waiting for answers
+Ocupation: programmer
 
-Nicolas Cool Secondary student - Note, he lives far in the suburbs...
+Uses a calculator like most of us do, not terribly specialized
 
-Charles-Eric Jean Civil Engineer
+Available for a skype interview
 
--whatshisname- Acoustician
+Email him to set it up: le.businessman@gmail.com
 
-Juan Regueiro Engineer, Student Note, these would be skype interviews
-
-Eugenia O'Reilly Mathematician - Note, these would be skype interviews
+[Some tips for capturing audio, 2.-Audacity / WASAPI works well](http://www.howtogeek.com/217348/how-to-record-the-sound-coming-from-your-pc-even-without-stereo-mix/)
 
 ***CONTACT OF YUANWEN***
 
