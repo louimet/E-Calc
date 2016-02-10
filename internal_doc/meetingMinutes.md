@@ -41,6 +41,46 @@ Meet on Monday, Feb 1st, to discuss the questionnaire
 
 ----End Jan 29th meeting----
 
+###Spontaneous meeting - after-class Devang, Yuanwen and Federico - Tuesday, February 9th, 2016
+
+* yuanwen feels uneasy that we haven't coded anything--Federico suggests we establish a very rough architecture like such:
+
+      * -  GUI - gets input - calls
+
+      *  - Parser - some error checking - calls:
+
+      *  - functions - return value to GUI
+
+   * We can then implement a simple window with one button and one input/output box in android studio (everything seems to point towards an app) with the following elements:
+
+   * - have the button call a parser that reads the string that is input
+
+   *  - have the parser call a silly function that prepends "Hello," and appends a "!"
+
+   *  - Do this for Friday so we can exchange know-how if someone can't get it to work
+
+   * Then, when that is working, we can hook up to our functions, make a nice little GUI, add haptic feedback, rotate screen, etc
+
+* regarding implementing the function, Federico had a couple of suggestions
+
+      * the function can be tested for performance in Java, timewise and error-wise (what sort of error? cumulative?)
+
+      * Matlab, Octave or whatever you want can be used for graphing out different approximations which look good for the docummentation
+
+* We all agree that interviews should happen ASAP to get everything else moving
+
+* Federico proposes/asks that when someone writes something rather large or questions on slack we answer or just aknowledge in the following 24 hrs
+
+* A couple of points were made regarding the implementation, do we initialize many values (certainly pi and e if appliccable but maybe even lookup tables) or just the basics?
+
+   * there are trade-offs regarding user-experiene that can be inluded in the questionnaire:
+
+   * initializing tables on start can lead to longer start-up and higher memory footprint but faster results once initialized and less cpu-usage (better for battery)
+
+   * the converse is also true.
+
+   * This raises another few possible questions: does the user care about battery-drain, bootup-time, memory footprint time for calculating every single operation? Probably nothing too big in terms of difference but might as well ask
+
 
 
 
