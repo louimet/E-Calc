@@ -8,47 +8,58 @@ Also note that the themes are not ordered.  If I had to suggest an order, I woul
 Let me know what you think.
 
 1. Persona-related
+* Do you mind if we reord this interview?
+* Name 
 * What's your profession?
+* Where do you work?
 * When was the last time you used a calculator
-* How much experience with calculators do you have
+* How much experience do you have with calculators?
+* How much experience do you have with computers?
+* How much experience do you have with mobile devices?
 * How often on average do you use a calculator in a typical work day? Off day?
 * Around how many times have you used a calculator in this past week?
+* What goals do you have in your profession or business?
+* would you be willing to devote some time to learning how to use a new app?
 
 
 2. Setting
 * Describe a typical scenario in which you use your calculator.
 * For work or home use? When working on a computer, on the go on my phone, while working on a tablet, etc. 
 * EXPAND : Ask the user to provide more details : 
+* e.g. time of day, 
 * platform used, 
 * connected to the internet or not, 
 * multitasking or not, 
 CONTINGENT EXPANSION - Would using a mobile paired with a computer make sense (eg spreadsheet on comp, calc on device)
-* time of day, 
-* When working on a computer, on the go on my phone, while working on a tablet, etc.
 * would a typical scenario entail the user already working on said device?
 * etc…
 
 3. Current use
 * Do you use any particular type of calculator ?
-* Which calculator do you use more often (physical/app)?
-* If physical, what is the unattractive part of an app? (if any)
-* Else, what is the unattractive part of a physical? (if any)
-* If app, what device?
-* same (sci/graph/tirg/stat)
-* same (brand or name of app)
+* Which calculator do you use more often? (leave open to see if user emphasizes physical/app category or sci/financial)
+* CONTINGENT ORDERING 
+*     If you use a physical, what is the unattractive part of an app? (if any)
+*     Else, what is the unattractive part of a physical? (if any)
+*     If app, what device?
+* OR
+*     same (sci/graph/tirg/stat)
+*     same (brand or name of app)
 * Are there existing calculators that are capable of fulfilling your needs? If not, how difficult is it to fulfill these tasks?
 * Describe the steps of calculator use Ex. : Scroll page, find icon, tap icon, calculate, switch app, plug in number, come back to calculator, do another calculation, switch app again… etc.
 
 4. Most frequently used function
 * What functions on a calculator do you use most?
 * What is the most important function in a calculator in relation to your usage/work?
+* Which of these functions do/would you use most?
+*    sin(x), cos(x), 10^x, π^x, log_e(x) = ln(x), log_10(x),
+*    e^x, sinh(x), cosh(x), tanh(x), √x, σ (Standard Deviation), x^y
 
 5. Type of calculation
 * SUGGESTED QUESTION : Describe the operations you typically use your calculator for.
 * Lots of quick operations?
 *  - bear in mind for memory section further down...
 * Long, complex calculations?
-* if how do you qualify the tracking on your calculator?
+* if it has tracking, how do you qualify the tracking on your calculator?
 
 6. Memory
 * Do you use the memory function of your calculator?
@@ -80,6 +91,8 @@ o i.e. instead of multiplying 2 x 2 and knowing it’s centimeters, which yields
 * What kind of problems would this calculator help you solve?
 * Would you prefer to use a calculator that displays an answer every time you enter a calculation step or a calculator that takes the whole equation and delivers the final answer directly?
 * \[If you use graphs, what's more important, graph size or button size?\]
+* Are you familiar with different input notations (Polish (prefix), Reverse-Polish (postfix) and infix)
+* IF SO, do you have any marked preferences regarding input notation?
 
 9. Customization
 * Would you like your calculator to be configurable to a certain extent?
@@ -87,6 +100,8 @@ o i.e. instead of multiplying 2 x 2 and knowing it’s centimeters, which yields
 * Rearrange buttons to your liking?
 * Would you prefer a calculator that is capable of switching between simple and complex mode? 
 * \[If yes, do you prefer to conduct the switch through clicking an existing icon on the calculator or through other gestures (eg. place the cell phone horizontally)\]
+* would the you like to have a trace-back function that allows you to review all answers broken down in steps?
+* would you find it usefult to be able to copy and paste specific parts of the tracking?
 
 10. Style
 * When you choose a calculator, how much does its functionality influence your choice and how much do its looks influence your choice? (e.g. 30 % looks, 70 % functions)
@@ -116,5 +131,12 @@ EXPAND : What would web connectivity allow you to do?
 * EXPAND : What’s your most satisfying/frustrating memory of a calculator use?
 * What is lacking with existing calculators that you would want to see in our calculator? How would these features help with your work?
 * What do you like about existing calculators that you think we should incorporate into our calculator?
-
-
+* Would tactile feedback make using an app on a mobile device more pleasant?
+* If you were faced with two apps that delivered the same, which would you choose from the following? should you have to:
+*    slower initialization - faster delivery of calulations afterwards
+*        vs
+*    faster initialization - slower delivery of calulations afterwards
+*
+*    larger memory footprint - less cpu consumption
+*        vs
+*    smaller memory footprint - more cpu consumption
