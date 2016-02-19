@@ -20,8 +20,6 @@
  * It is then decreased by 0.01 until 10^exponent < number.
  * On the next pass, the increment is 0.01 and the decrement 0.001, and so on.
  */
- 
- /* NOTE : Can't handle numbers between 0 and 1 right now. To be fixed.
 
 public class Log10 {
 	static public double calculate(double number) {
@@ -36,7 +34,7 @@ public class Log10 {
 			double approx = 0;
 			double exponent = 0;
 			double newIncrement = 0.1;
-			double oldIncrement = 1;
+			double oldIncrement = 0;
 			double precision = 0.000001;	// Eventually, should be determined by the order of magnitude of the number entered
 			
 			for(; (number - approx) > 0; exponent = exponent + 1) {
