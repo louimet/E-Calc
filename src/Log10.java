@@ -35,7 +35,7 @@ public class Log10 {
 			double exponent = 0;
 			double newIncrement = 0.1;
 			double oldIncrement = 0;
-			double precision = 0.000001;	// Eventually, should be determined by the order of magnitude of the number entered
+			double precision = 0.001;	// Eventually, should be determined by the length of the number entered.
 			
 			for(; (number - approx) > 0; exponent = exponent + 1) {
 				approx = Math.pow(10, exponent);	// Replace by a call of Boulos's 10^x method
