@@ -1,24 +1,11 @@
-###Task allocation
-
-We can update this document as our tasks change, github will keep a version history.
-
-|team member|Task|Comments|
-|---------|--------|--------|
-|Boulos|---|---|
-|Devang|---|---|
-|Federico|create a gitHub structure|---|
-|Laurent|compile interview questions|---|
-|Yuanwen|---|---|
+###Individual/Group responsibilities for Iteration 1 (Team E)
 
 
-- [x] Make a list of possible questions for the interview
-- [x] Create a working structure in the repository
-- [x] Vote questions and produce a pilot questionnaire
-- [ ] Apply a pilot questionnaire
-- [ ] Revise questionnaire
-- [ ] Go out and interview potential users
-- [ ] Analyze collected data
-- [ ] Watch 150 minutes of UML videos
-- [ ] create a use-case diagram in UML
-- [ ] Design the greatest calculator ever imagined
-- [ ] ...
+|Team member:|Interviews|Personas|Use case|Implementation|Testing|Documentation/Glossary|
+|------------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+|**Boulos**|**1.** Provide feedback on pilot interview. **2.** Re-interview Joey with new questions. **3.** Transcribe Joey’s interview.|**1.** Create persona based on Joey’s interviews (pilot and second interview). **2.** Review other personas.|**1.** Work on affinity diagram to build use cases. |**1.** Implement 10^x XOR π^x.|**1.** Review implementation of functions done by others. **2.** Review UI implementation for android app.|**1.** Send documentation for implementation of function to Laurent. **2.** Work on glossary.|
+|**Devang**|**1.** Conduct pilot interview with Joey.| **1.** Create persona based on Tristan’s interview with Federico. **2.** Review other personas.|**1.** Work on affinity diagram to build use cases.| **1.** Implement sqrt(x) XOR σ.| **1.** Review implementation of functions done by others. **2.** Review UI implementation for android app.| **1.** Send documentation for implementation of function to Laurent. **2.** Work on glossary.|
+|**Federico** (team leader)| **1.**	Provide feedback on pilot interview. **2.** Conduct interview with Tristan.| **1.** Review personas.| **1.**	Work on affinity diagram to build use cases.| **1.**	Implement UI for android app. **2.** Implement sin(x) XOR cos(x).| **1.** Review implementation of functions done by  others.| **1.**	Send documentation for implementation of function to Laurent. **2.** Work on glossary. **3.** Organize Github repository into  folders.|
+|**Laurent**| **1.**	Provide feedback on pilot interview. **2.**	Organize interview questions. **3.** Conduct interview with Stéphane. **4.** Transcribe Tristan’s interview with Federico.| **1.** Review personas.| **1.**	Work on affinity diagram to build use cases.| **1.**	Implement loge(x) = ln(x) XOR log10(x).| **1.** Review implementation of functions done by others. **2.**	Review UI implementation for android app.| **1.**	Put together documentation. **2.** Work on glossary.|
+|**Yuanwen**| **1.** Provide feedback on pilot interview. **2.** Transcribe Stéphane’s interview with Laurent.| **1.** Create persona based on Stéphane’s interview with Laurent. **2.** Review other personas.| **1.** Work on affinity diagram to build use cases.| **1.** Implement e^x XOR sinh(x) XOR cosh(x) XOR tanh(x).| **1.** Review implementation of functions done by others. **2.** Review UI implementation for android app.| **1.** Create user manual. **2.** Send documentation of implementation of function to Laurent. **3.** Work on glossary.|
+
