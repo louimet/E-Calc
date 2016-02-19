@@ -1,4 +1,6 @@
-/* The log10 method approximates the logarithm in base 10 of a given number.
+/* Written by Laurent Ouimet
+ *
+ * The log10 method approximates the logarithm in base 10 of a given number.
  * 
  * At the first step, the difference between [10 to the approximated exponent] and [the original number]
  * is calculated.
@@ -18,6 +20,8 @@
  * It is then decreased by 0.01 until 10^exponent < number.
  * On the next pass, the increment is 0.01 and the decrement 0.001, and so on.
  */
+ 
+ /* NOTE : Can't handle numbers between 0 and 1 right now. To be fixed.
 
 public class Log10 {
 	static public double calculate(double number) {
