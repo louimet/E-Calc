@@ -1,3 +1,24 @@
+/* The log10 method approximates the logarithm in base 10 of a given number.
+ * 
+ * At the first step, the difference between [10 to the approximated exponent] and [the original number]
+ * is calculated.
+ * 
+ * If that difference is greater than 0, the approximated exponent is increased by 1.
+ * 
+ * If the difference is less than 0, the exponent is decreased by 0.1.
+ * 
+ * These steps are repeated until the difference is less than the stated precision.
+ * 
+ * At each successive step, the threshold that determines
+ * whether the exponent should be incremented or decremented
+ * is decreased by a factor of 10. The value by which the exponent
+ * is incremented or decremented also decreases by a factor of 10 each time.
+ * 
+ * In other words, the exponent is incremented by 0.1 until 10^exponent > number.
+ * It is then decreased by 0.01 until 10^exponent < number.
+ * On the next pass, the increment is 0.01 and the decrement 0.001, and so on.
+ */
+
 public class Log10 {
 	// public double Log10(double number)
 	public static void main(String[] args) {
@@ -5,13 +26,13 @@ public class Log10 {
 		double approx = 0;
 		double exponent = 0;
 		double newIncrement = 0.1;
-		double oldIncrement = 0;
-		double precision = 0.000001;	// Eventually, should be determined by the order of the number entered
+		double oldIncrement = 1;
+		double precision = 0.000001;	// Eventually, should be determined by the order of magnitude of the number entered
 		
-			for(; (number - approx) > 0; exponent = exponent + 1) {
-				approx = Math.pow(10, exponent);	// Replace by a call of Boulos's 10^x method
-				//System.out.println(exponent);
-			}
+		for(; (number - approx) > 0; exponent = exponent + 1) {
+			approx = Math.pow(10, exponent);	// Replace by a call of Boulos's 10^x method
+			//System.out.println(exponent);
+		}
 			
 			//
 		while(Math.abs(number - approx) > precision) {	
