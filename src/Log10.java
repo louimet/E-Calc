@@ -20,7 +20,7 @@
  */
 
 public class Log10 {
-	public double getLog10(double number) {
+	static public double calculate(double number) {
 	// public static void main(String[] args) {
 		// double number = 0.0;	// Remove in final version (number will be fed directly to method)
 		if(number <= 0) {
