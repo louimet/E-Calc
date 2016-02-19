@@ -26,6 +26,8 @@ public class Log10 {
 		if(number <= 0) {
 			double badDouble = Double.NaN;
 			return badDouble;
+		} else if(number == 1) {
+			return 0;
 		} else {
 			double approx = 0;
 			double exponent = 0;
