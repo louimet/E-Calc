@@ -8,7 +8,6 @@
  * root of n.
  * 
  */
-import java.util.Scanner;
 
 public class squareRoot3 {
 
@@ -54,14 +53,6 @@ public class squareRoot3 {
 			return approximation;
 
 		}
-	}
-
-	public static void main(String[] args) {
-		System.out.println("Enter a number.");
-		Scanner input = new Scanner(System.in);
-		double keypadInput = input.nextDouble();
-		System.out.println(calculateSqrt3(keypadInput));
-
 	}
 
 }
