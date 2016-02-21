@@ -4,7 +4,7 @@
 
 public class Tester {
 	public static void main(String[] args) {
-		double[] numbers = {0.0, 1.0, -1.0, 0.5, -0.5, 1234567890, Math.PI};
+		double[] numbers = {0.0, 1.0, -1.0, 0.5, -0.5, Math.PI, -Math.PI, 100, -100, 123456, -123456};
 		double[] difference = new double[numbers.length];
 		long[] durationOurs = new long[numbers.length];
 		long[] durationJavas = new long[numbers.length];
@@ -43,6 +43,7 @@ public class Tester {
 		CalculateError(difference);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
+		
 	}
 	
 	static public void CalculateError(double[] difference) {
