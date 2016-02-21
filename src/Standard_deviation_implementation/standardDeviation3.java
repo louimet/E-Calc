@@ -8,7 +8,6 @@
  *                                            i=1              i=1
  * where x_i are each of the entries and n is the number of entries.                                   
  */
-import java.util.Scanner;
 
 public class standardDeviation3 {
 
@@ -42,18 +41,4 @@ public class standardDeviation3 {
 
 		return stdev;
 	}
-
-	public static void main(String[] args) {
-		System.out.println("Enter the total number of entries.");
-		Scanner keyboard = new Scanner(System.in);
-		int numberOfEntries = keyboard.nextInt();
-		double[] stdevEntries = new double[numberOfEntries];
-		System.out.println("Input the entries.");
-		for (int k = 0; k < stdevEntries.length; k++) {
-			stdevEntries[k] = keyboard.nextDouble();
-		}
-		System.out.println(calculateStandardDeviation3(stdevEntries));
-
-	}
-
 }
