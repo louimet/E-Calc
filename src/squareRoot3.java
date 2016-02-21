@@ -9,7 +9,6 @@
  * 
  */
 
-
 public static double calculateSqrt3(double userInput) {
 	
 	/**
