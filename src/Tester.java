@@ -1,12 +1,13 @@
 /* This programs tests each of our functions
- * by feeding them a succession of numbers. */
+ * by feeding them a succession of numbers.
+ It then compares the result to the one obtained by calling Java's corresponding function. */
 
 
 public class Tester {
 	public static void main(String[] args) {
 		Double[] numbers = {0.0, 1.0, -1.0, 0.5, -0.5, Math.PI, -Math.PI, 100.0, -100.0, 123456.0, -123456.0};
 		Double[] difference = new Double[numbers.length];
-		Double[] relativeDifference = new Double[numbers.length];
+		Double[] relative = new Double[numbers.length];
 		long[] durationOurs = new long[numbers.length];
 		long[] durationJavas = new long[numbers.length];
 		long start, end;
@@ -23,10 +24,9 @@ public class Tester {
 			durationJavas[i] = end - start;
 			System.out.println("e^" + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
 			difference[i] = Math.abs(ours - javas);
-			relativeDifference[i] = difference[i]/Math.abs(javas);
+			relative[i] = Math.abs((ours - javas) / javas);
 		}
-		CalculateError(difference);
-		CalculateRelativeError(relativeDifference);
+		CalculateError(relative);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
 		
@@ -42,14 +42,14 @@ public class Tester {
 			durationJavas[i] = end - start;
 			System.out.println("Log(" + numbers[i] + ") = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
 			difference[i] = Math.abs(ours - javas);
-			relativeDifference[i] = difference[i]/Math.abs(javas);
+			relative[i] = Math.abs((ours - javas) / javas);
 		}
-		CalculateError(difference);
-		CalculateRelativeError(relativeDifference);
+		CalculateError(relative);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
+
 		
-		System.out.println("Testing Sine function :");
+		System.out.println("Testing Sine Chebyshev function :");
 		for(int i = 0; i < numbers.length; i++) {
 			start = System.nanoTime();
 			double ours = Sine.calculate(numbers[i]);
@@ -61,13 +61,102 @@ public class Tester {
 			durationJavas[i] = end - start;
 			System.out.println("Sine(" + numbers[i] + ") = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
 			difference[i] = Math.abs(ours - javas);
-			relativeDifference[i] = difference[i]/Math.abs(javas);
+			relative[i] = Math.abs((ours - javas) / javas);
 		}
-		CalculateError(difference);
-		CalculateRelativeError(relativeDifference);
+		CalculateError(relative);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
 		
+		System.out.println("Testing Sine Taylor function :");
+		for(int i = 0; i < numbers.length; i++) {
+			start = System.nanoTime();
+			double ours = SinAlt1.calculate(numbers[i]);
+			end = System.nanoTime();
+			durationOurs[i] = end - start;
+			start = System.nanoTime();
+			double javas = Math.sin(numbers[i]);
+			end = System.nanoTime();
+			durationJavas[i] = end - start;
+			System.out.println("Sine(" + numbers[i] + ") = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
+			difference[i] = Math.abs(ours - javas);
+			relative[i] = Math.abs((ours - javas) / javas);
+		}
+		CalculateError(relative);
+		CalculateDuration(durationOurs, durationJavas);
+		System.out.println();
+		
+		System.out.println("Testing Allen Chou Sine function :");
+		for(int i = 0; i < numbers.length; i++) {
+			start = System.nanoTime();
+			double ours = SinAlt2.calculate(numbers[i]);
+			end = System.nanoTime();
+			durationOurs[i] = end - start;
+			start = System.nanoTime();
+			double javas = Math.sin(numbers[i]);
+			end = System.nanoTime();
+			durationJavas[i] = end - start;
+			System.out.println("Sine(" + numbers[i] + ") = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
+			difference[i] = Math.abs(ours - javas);
+			relative[i] = Math.abs((ours - javas) / javas);
+		}
+		CalculateError(relative);
+		CalculateDuration(durationOurs, durationJavas);
+		System.out.println();
+		
+		
+		System.out.println("Testing square root (1) function :");
+		for(int i = 0; i < numbers.length; i++) {
+			start = System.nanoTime();
+			double ours = squareRoot1.calculate(numbers[i]);
+			end = System.nanoTime();
+			durationOurs[i] = end - start;
+			start = System.nanoTime();
+			double javas = Math.sqrt(numbers[i]);
+			end = System.nanoTime();
+			durationJavas[i] = end - start;
+			System.out.println("Square root of " + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
+			difference[i] = Math.abs(ours - javas);
+			relative[i] = Math.abs((ours - javas) / javas);
+		}
+		CalculateError(relative);
+		CalculateDuration(durationOurs, durationJavas);
+		System.out.println();
+		
+		System.out.println("Testing square root (2) function :");
+		for(int i = 0; i < numbers.length; i++) {
+			start = System.nanoTime();
+			double ours = squareRoot2.calculate(numbers[i]);
+			end = System.nanoTime();
+			durationOurs[i] = end - start;
+			start = System.nanoTime();
+			double javas = Math.sqrt(numbers[i]);
+			end = System.nanoTime();
+			durationJavas[i] = end - start;
+			System.out.println("Square root of " + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
+			difference[i] = Math.abs(ours - javas);
+			relative[i] = Math.abs((ours - javas) / javas);
+		}
+		CalculateError(relative);
+		CalculateDuration(durationOurs, durationJavas);
+		System.out.println();
+		
+		System.out.println("Testing square root (3) function :");
+		for(int i = 0; i < numbers.length; i++) {
+			start = System.nanoTime();
+			double ours = squareRoot3.calculate(numbers[i]);
+			end = System.nanoTime();
+			durationOurs[i] = end - start;
+			start = System.nanoTime();
+			double javas = Math.sqrt(numbers[i]);
+			end = System.nanoTime();
+			durationJavas[i] = end - start;
+			System.out.println("Square root of " + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
+			difference[i] = Math.abs(ours - javas);
+			relative[i] = Math.abs((ours - javas) / javas);
+		}
+		CalculateError(relative);
+		CalculateDuration(durationOurs, durationJavas);
+		System.out.println();
 	}
 	
 	static public void CalculateError(Double[] difference) {
@@ -77,21 +166,6 @@ public class Tester {
 		for(int i = 0; i < difference.length; i++) {
 			if (!difference[i].isNaN() && !(difference[i]).isInfinite()){ 
 				sum = sum + difference[i];
-				validInputCount++;
-			}
-		}
-		averageError = sum / validInputCount;
-		System.out.println("Average error from Java's calculated value : " + averageError + ".");
-		sum = 0;
-	}
-	
-	static public void CalculateRelativeError(Double[] relativeDifference) {
-		double sum = 0;
-		double averageError = 0;
-		int validInputCount = 0;
-		for(int i = 0; i < relativeDifference.length; i++) {
-			if (!relativeDifference[i].isNaN() && !(relativeDifference[i]).isInfinite()){ 
-				sum = sum + relativeDifference[i];
 				validInputCount++;
 			}
 		}
