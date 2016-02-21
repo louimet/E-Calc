@@ -10,8 +10,6 @@
  * 
  */
 
-import java.util.Scanner;
-
 public class standardDeviation2 {
 
 	public static double calculateStandardDeviation2(double[] inputArray) {
@@ -38,18 +36,4 @@ public class standardDeviation2 {
 		stdev = squareRoot2.calculateSqrt2(s / (arrayLength - 1));
 		return stdev;
 	}
-
-	public static void main(String[] args) {
-		System.out.println("Enter the total number of entries.");
-		Scanner keyboard = new Scanner(System.in);
-		int numberOfEntries = keyboard.nextInt();
-		double[] stdevEntries = new double[numberOfEntries];
-		System.out.println("Input the entries.");
-		for (int k = 0; k < stdevEntries.length; k++) {
-			stdevEntries[k] = keyboard.nextDouble();
-		}
-		System.out.println(calculateStandardDeviation2(stdevEntries));
-
-	}
-
 }
