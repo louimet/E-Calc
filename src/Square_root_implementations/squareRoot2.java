@@ -6,7 +6,6 @@
  * converge to the square root of n with each iteration. The algorithm used is x_k+1 = 0.5*(x_k + (n/x_k)).
  * 
  */
-import java.util.Scanner;
 
 public class squareRoot2 {
 
@@ -46,13 +45,4 @@ public class squareRoot2 {
 			return approximation;
 		}
 	}
-
-	public static void main(String[] args) {
-		System.out.println("Enter a number.");
-		Scanner input = new Scanner(System.in);
-		double keypadInput = input.nextDouble();
-		System.out.println(calculateSqrt2(keypadInput));
-
-	}
-
 }
