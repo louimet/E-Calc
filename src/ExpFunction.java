@@ -1,7 +1,7 @@
 /**
  * Written by: Yuanwen Qin,  40011473
  * General Description: This class achieves an approximation to the exponential function exp(x)
- * The algorithm for the approximation is:
+ * The algorithm for the approximation follows the Taylor series:
  * 			 n	
  * exp(x) = Sum ((x^k)/k!)
  * 			k=0
@@ -22,13 +22,21 @@ public class ExpFunction {
 	/**
 	 * This method takes a double type input x and outputs exp(x)
 	 */
-	static public double calculate(double val){
+	static public double calculate(double x){
 		double result = 1;
+		double xAbs; //absolute value of x;
 		double temp = 1; // (x^k)/k!
 		double tempAbs = temp;//the absolute value of temp; for the comparison with precision
+		final int MAX_NUM_ITERATION = 1995; //the maximum number of iterations
 		int k = 1;
-		while (tempAbs > precision){
-			temp = temp * val / k;
+		
+		if (x >= 0)
+			xAbs = x;
+		else
+			xAbs = -x;
+		
+		while (tempAbs > precision && k < MAX_NUM_ITERATION){
+			temp = temp * xAbs / k;
 			result += temp;
 			if (temp >= 0){
 				tempAbs = temp;
@@ -38,6 +46,10 @@ public class ExpFunction {
 			}
 			k++;
 		}
+				
+		if (x < 0)
+			result = 1/result;
+		
 		return result;
 	}
 
