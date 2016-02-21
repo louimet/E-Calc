@@ -8,57 +8,46 @@
  * A higher precision can be achieved by incrementing the value of n with a value less than 0.000000000001.
  * 
  */
-import java.util.Scanner;
 
-public class squareRoot1 {
+public static double calculateSqrt(double userInput) {
 
-	public static double calculateSqrt(double userInput) {
-
-		/**
-		 * If the user enters a value less than 0, cannot compute square root. Display error.
-		 */
-		if (userInput < 0) {
-			double badDouble = Double.NaN;
-			return badDouble;
-		}
-
-		/**
-		 * Find the largest integer value n that is less than the square root of the value entered by the user.
-		 */
-		else {
-			double approximation = 0;
-			for (double i = 0; i >= 0; i++) {
-				if ((i * i) > userInput) {
-					break;
-				}
-				approximation = i;
-			}
-			
-			/**
-			 * Add 0.000000000001 iteratively to the largest integer value n calculated in the previous for loop 
-			 * until n is approximately equal to the square root of the value entered by the user (i.e. 
-			 * approximation^2 <= value entered by user).
-			 */
-
-			for (double j = 0.000000000001; j >= 0.000000000001;) {
-				approximation = approximation + j;
-				if ((approximation * approximation) > userInput) {
-					approximation = approximation - j;
-					break;
-				}
-				j = j + 0.000000000001;
-			}
-
-			return approximation;
-		}
+	/**
+	 * If the user enters a value less than 0, cannot compute square root. Display error.
+	 */
+	if (userInput < 0) {
+		double badDouble = Double.NaN;
+		return badDouble;
 	}
 
-	public static void main(String[] args) {
-		System.out.println("Enter a number.");
-		Scanner input = new Scanner(System.in);
-		double keypadInput = input.nextDouble();
-		System.out.println(calculateSqrt(keypadInput));
+	/**
+	 * Find the largest integer value n that is less than the square root of the value entered by the user.
+	 */
+	else {
+		double approximation = 0;
+		for (double i = 0; i >= 0; i++) {
+			if ((i * i) > userInput) {
+				break;
+			}
+			approximation = i;
+		}
+		
+	/**
+	 * Add 0.000000000001 iteratively to the largest integer value n calculated in the previous for loop 
+	 * until n is approximately equal to the square root of the value entered by the user (i.e. 
+	 * approximation^2 <= value entered by user).
+	 */
 
+		for (double j = 0.000000000001; j >= 0.000000000001;) {
+			approximation = approximation + j;
+			if ((approximation * approximation) > userInput) {
+				approximation = approximation - j;
+				break;
+			}
+			j = j + 0.000000000001;
+		}
+
+		return approximation;
 	}
-
 }
+
+
