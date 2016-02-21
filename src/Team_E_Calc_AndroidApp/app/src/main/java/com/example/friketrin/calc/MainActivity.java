@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.os.Vibrator;
 import android.content.Context;
 
-
 public class MainActivity extends AppCompatActivity {
 
     // TODO Rad/deg toggle button
@@ -16,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     // TODO Memory, access history et al
     // TODO implement a landscape layout and possibly bigger screen layouts
 
+    // Declare constants for a mask that tells us what keys can be input depending on previous input
     private static final short ALLOWDIGIT = 1; // How annoying, Java has no unsigned byte
     private static final short ALLOWDOT = 1<<1;
     private static final short ALLOWPI = 1<<2;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         expression = text.getText().toString(); // get whatever is on the screen
 
-        // EVAL
+        // button EVAL
         if (view.getId() == R.id.buttonEval) {
             if (isZS) return(""); // can't evaluate a zero state expression
             String result = ExpressionEvaluator.Evaluate(expression);
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
         return ""; // we found no match, return an empty string
     }
 
-    // Returns a number for the number buttons
+    // Returns a number for the number buttons as well as dot and pi
     private int parseButton(int id){
         switch (id) {
             case R.id.button0:

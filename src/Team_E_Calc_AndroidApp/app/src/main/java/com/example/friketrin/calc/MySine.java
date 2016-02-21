@@ -37,6 +37,40 @@ public class MySine {
         return 1 - (x3/6) + (x5/24) - (x7/5040) + (x9/362880);
     }
 
+
+    private static final double cheby1 = + 9.99999999999999312880e-01;
+    private static final double cheby2 = - 1.66666666666652434127e-01;
+    private static final double cheby3 =  + 8.33333333324810981519e-03;
+    private static final double cheby4 = - 1.98412698184898843225e-04;
+    private static final double cheby5 = + 2.75573160083833319909e-06;
+    private static final double cheby6 = - 2.50518516666250910087e-08;
+    private static final double cheby7 = 1.60473922487682573331e-10;
+    private static final double cheby8 = - 7.36644541924532787403e-13;
+
+    // Pointwise Error Estimate: 3.62522610307114174520e-16
+
+    private static double chebyHill(double x){
+        double result = 0;
+        double x2 = x*x;
+        result += cheby1*x;
+        x *= x2;
+        result += cheby2*x;
+        x *= x2;
+        result += cheby3*x;
+        x *= x2;
+        result += cheby7*x;
+        x *= x2;
+        result += cheby8*x;
+        x *= x2;
+        result += cheby4*x;
+        x *= x2;
+        result += cheby5*x;
+        x *= x2;
+        result += cheby6*x;
+
+        return result;
+    }
+
     public static double calculate (double angle){return calculate(angle, true);}
 
     public static double calculate(double angle, boolean isRadians)
@@ -54,13 +88,13 @@ public class MySine {
 
         // 4 pieces of hills
         if (angle < MyPi.HALF_PI)
-            return taylorHill(MyPi.HALF_PI - angle);
+            return chebyHill(MyPi.HALF_PI - angle);
         else if (angle < MyPi.PI)
-            return taylorHill(angle - MyPi.HALF_PI);
+            return chebyHill(angle - MyPi.HALF_PI);
         else if (angle < 3.0f * MyPi.HALF_PI)
-            return -taylorHill(3.0f * MyPi.HALF_PI - angle);
+            return -chebyHill(3.0f * MyPi.HALF_PI - angle);
         else
-            return -taylorHill(angle - 3.0f * MyPi.HALF_PI);
+            return -chebyHill(angle - 3.0f * MyPi.HALF_PI);
     }
 
 }

@@ -3,6 +3,7 @@ import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.lang.Math;
+import com.example.friketrin.calc.MySine;
 
 // TODO comments -  Class to parse and compute calculator expressions from team E's calculator for
 // dot dot dot
@@ -202,7 +203,7 @@ public class ExpressionEvaluator {
                 return;
             }
             else if (temp.equals("Sin")) { // TODO replace with team funs
-                valueStack.push(Math.sin(valueStack.pop()));
+                valueStack.push(MySine.calculate(valueStack.pop()));
                 return;
             }
             else if (temp.equals("e^")) { // TODO replace with team funs

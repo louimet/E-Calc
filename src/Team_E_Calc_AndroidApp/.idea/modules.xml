@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/OneButton.iml" filepath="$PROJECT_DIR$/OneButton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Team_E_Calc_AndroidApp.iml" filepath="$PROJECT_DIR$/Team_E_Calc_AndroidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
