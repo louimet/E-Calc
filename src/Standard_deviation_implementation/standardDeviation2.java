@@ -10,11 +10,14 @@
  * 
  */
 
-public class standardDeviation2 {
+public class StandardDeviation2 {
 
-	public static double calculateStandardDeviation2(double[] inputArray) {
-		double arrayLength = inputArray.length;
-		double m = inputArray[0];
+	/**
+	 * User inputs values into array x.
+	 */
+	public static double calculate(double[] x) {
+		double arrayLength = x.length;
+		double m = x[0];
 		double previous_m = 0;
 		double s = 0;
 		double previous_s = 0;
@@ -26,14 +29,14 @@ public class standardDeviation2 {
 		for (int i = 0; i < arrayLength; i++) {
 			previous_m = m;
 			previous_s = s;
-			m = previous_m + ((inputArray[i] - previous_m) / arrayLength);
-			s = previous_s + ((inputArray[i] - previous_m) * (inputArray[i] - m));
+			m = previous_m + ((x[i] - previous_m) / arrayLength);
+			s = previous_s + ((x[i] - previous_m) * (x[i] - m));
 		}
 
 		/**
 		 * Use calculateSqrt2 static method to calculate standard deviation.
 		 */
-		stdev = squareRoot2.calculateSqrt2(s / (arrayLength - 1));
+		stdev = squareRoot2.calculate(s / (arrayLength - 1));
 		return stdev;
 	}
 }

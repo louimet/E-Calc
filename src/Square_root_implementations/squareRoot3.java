@@ -9,14 +9,14 @@
  * 
  */
 
-public class squareRoot3 {
+public class SquareRoot3 {
 
-	public static double calculateSqrt3(double userInput) {
+public static double calculate(double x) {
 		
 		/**
 		 * If the user enters a value less than 0, cannot compute square root. Display error.
 		 */
-		if (userInput < 0) {
+		if (x < 0) {
 			double badDouble = Double.NaN;
 			return badDouble;
 		}
@@ -27,7 +27,7 @@ public class squareRoot3 {
 		 * before the value is close to 0 because the algorithm used in this class ensures high 
 		 * precision. Hence, it is best to handle the sqrt(0) separately. 
 		 */
-		else if (userInput == 0) {
+		else if (x == 0) {
 			return 0;
 		}
 
@@ -36,7 +36,7 @@ public class squareRoot3 {
 		 * The algorithm used is sqrt(n) = (x+y*n)/(x+y).
 		 */
 		else {
-			double x = 1;
+			double z = 1;
 			double y = 1;
 			double temp = 0;
 			double approximation = 1;
@@ -44,10 +44,10 @@ public class squareRoot3 {
 
 			while (approximation != previousApproximation) {
 				previousApproximation = approximation;
-				temp = x;
-				x = x + (y * userInput);
+				temp = z;
+				z = z + (y * x);
 				y = temp + y;
-				approximation = x / y;
+				approximation = z / y;
 			}
 
 			return approximation;
