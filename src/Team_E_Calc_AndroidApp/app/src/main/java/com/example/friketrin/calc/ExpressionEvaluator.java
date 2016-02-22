@@ -36,6 +36,76 @@ public class ExpressionEvaluator {
         String s = infixExpression; // work on a copy and keep the original
         final int exprLength = s.length();
         while (!s.isEmpty()){
+            // fun (include lpar) - if preceded by Rpar, digit
+            // IMPORTANT this part must be before checking for digits so we keep 10^ here
+            if (s.matches("Log10\\(.*\\)")){
+                int lengthDifference = exprLength - s.length();
+                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
+                if (lengthDifference > 0){
+                    char precedingChar = infixExpression.charAt(lengthDifference-1);
+                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
+                            precedingChar == 'π' || precedingChar == ')' )
+                        infixTokenQueue.add("×");
+                }
+                infixTokenQueue.add("Log10");
+                infixTokenQueue.add("(");
+                s = s.substring(6); // include parenthesis in token
+                continue;
+            }
+            if (s.matches("Sin\\(.*\\)")){
+                int lengthDifference = exprLength - s.length();
+                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
+                if (lengthDifference > 0){
+                    char precedingChar = infixExpression.charAt(lengthDifference-1);
+                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
+                            precedingChar == 'π' || precedingChar == ')' )
+                        infixTokenQueue.add("×");
+                }
+                infixTokenQueue.add("Sin");
+                infixTokenQueue.add("(");
+                s = s.substring(4); // include parenthesis in token
+                continue;
+            }
+            if (s.matches("e\\^\\(.*\\)")){
+                int lengthDifference = exprLength - s.length();
+                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
+                if (lengthDifference > 0){
+                    char precedingChar = infixExpression.charAt(lengthDifference-1);
+                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
+                            precedingChar == 'π' || precedingChar == ')' )
+                        infixTokenQueue.add("×");
+                }
+                infixTokenQueue.add("e^");
+                infixTokenQueue.add("(");
+                s = s.substring(3); // include parenthesis in token
+            }
+            if (s.matches("√\\(.*\\)")){
+                int lengthDifference = exprLength - s.length();
+                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
+                if (lengthDifference > 0){
+                    char precedingChar = infixExpression.charAt(lengthDifference-1);
+                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
+                            precedingChar == 'π' || precedingChar == ')' )
+                        infixTokenQueue.add("×");
+                }
+                infixTokenQueue.add("√");
+                infixTokenQueue.add("(");
+                s = s.substring(2); // include parenthesis in token
+            }
+            if (s.matches("10\\^\\(.*\\)")){
+                int lengthDifference = exprLength - s.length();
+                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
+                if (lengthDifference > 0){
+                    char precedingChar = infixExpression.charAt(lengthDifference-1);
+                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
+                            precedingChar == 'π' || precedingChar == ')' )
+                        infixTokenQueue.add("×");
+                }
+                infixTokenQueue.add("10^");
+                infixTokenQueue.add("(");
+                s = s.substring(4); // include parenthesis in token
+            }
+
             // Lpar - if preceded by digit, pi or Rpar, insert *
             if (s.charAt(0) == '('){
                 int lengthDifference = exprLength - s.length();
@@ -109,48 +179,6 @@ public class ExpressionEvaluator {
                 s = s.substring(1);
                 continue;
             }
-            // fun (include lpar) - if preceded by Rpar, digit
-            if (s.matches("Log10\\(.*\\)")){
-                int lengthDifference = exprLength - s.length();
-                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
-                if (lengthDifference > 0){
-                    char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
-                            precedingChar == 'π' || precedingChar == ')' )
-                        infixTokenQueue.add("×");
-                }
-                infixTokenQueue.add("Log10");
-                infixTokenQueue.add("(");
-                s = s.substring(6); // include parenthesis in token
-                continue;
-            }
-            if (s.matches("Sin\\(.*\\)")){
-                int lengthDifference = exprLength - s.length();
-                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
-                if (lengthDifference > 0){
-                    char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
-                            precedingChar == 'π' || precedingChar == ')' )
-                        infixTokenQueue.add("×");
-                }
-                infixTokenQueue.add("Sin");
-                infixTokenQueue.add("(");
-                s = s.substring(4); // include parenthesis in token
-                continue;
-            }
-            if (s.matches("e\\^\\(.*\\)")){
-                int lengthDifference = exprLength - s.length();
-                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
-                if (lengthDifference > 0){
-                    char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
-                            precedingChar == 'π' || precedingChar == ')' )
-                        infixTokenQueue.add("×");
-                }
-                infixTokenQueue.add("e^");
-                infixTokenQueue.add("(");
-                s = s.substring(3); // include parenthesis in token
-            }
         }
 
         return infixTokenQueue;
@@ -190,7 +218,7 @@ public class ExpressionEvaluator {
             else if (temp.equals("×") || temp.equals("÷") ||
                     temp.equals("+") || temp.equals("-") ||
                     temp.equals("Log10") || temp.equals("Sin") ||
-                    temp.equals("e^") )
+                    temp.equals("e^") || temp.equals("√") || temp.equals("10^") )
             {
                 int incomingOp = precedence(temp);
                 while (!opStack.isEmpty() && (precedence(opStack.peek()) >= incomingOp) )
@@ -208,18 +236,26 @@ public class ExpressionEvaluator {
     // Apply whatever operation is waiting in the stacks
     private static void applyOperation(Stack<Double> valueStack, Stack<String> opStack)
     {
-        if (opStack.peek().length() > 1){ // we have a function
+        if (opStack.peek().length() > 1 || opStack.peek().equals("√")){ // we have a function
             String temp = opStack.pop();
-            if (temp.equals("Log10")) { // TODO replace with team funs
+            if (temp.equals("Log10")) {
                 valueStack.push(Log10.calculate(valueStack.pop()));
                 return;
             }
-            else if (temp.equals("Sin")) { // TODO replace with team funs
+            else if (temp.equals("Sin")) {
                 valueStack.push(Sine.calculate(valueStack.pop()));
                 return;
             }
-            else if (temp.equals("e^")) { // TODO replace with team funs
+            else if (temp.equals("e^")) {
                 valueStack.push(ExpFunction.calculate(valueStack.pop()));
+                return;
+            }
+            else if (temp.equals("√")) {
+                valueStack.push(SquareRoot2.calculate(valueStack.pop()));
+                return;
+            }
+            else if (temp.equals("10^")) {
+                valueStack.push(PowerOfTen.calculate(valueStack.pop()));
                 return;
             }
 
@@ -249,7 +285,8 @@ public class ExpressionEvaluator {
     // or we should apply the next operation
     private static int precedence(String op)
     {
-        if (op.equals("Log10") || op.equals("Sin") || op.equals("e^"))
+        if (op.equals("Log10") || op.equals("Sin") || op.equals("e^") ||
+                op.equals("√") || op.equals("10^"))
             return 3;
         else if (op.equals("×") || op.equals("÷"))
             return 2;

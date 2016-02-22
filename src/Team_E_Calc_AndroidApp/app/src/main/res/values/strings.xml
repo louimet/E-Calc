@@ -27,6 +27,8 @@
     <string name="buttonSin">Sin(x)</string>
     <string name="buttonLog10">Log<sub><small>10</small></sub>(x)</string>
     <string name="buttonExp">e<sup><small>x</small></sup></string>
+    <string name="buttonSqrt">√(</string>
+    <string name="button10to">10<sup><small>x</small></sup></string>
 </resources>
 
 <!--⌫-->

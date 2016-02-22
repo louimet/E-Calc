@@ -440,6 +440,42 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonSqrt"
+        android:id="@+id/buttonSqrt"
+        android:clickable="true"
+        android:enabled="true"
+        android:textColor="#ff0000"
+        android:minWidth="@dimen/activity_num_button_width"
+        android:onClick="sendMessage"
+        android:textStyle="italic"
+        android:textAllCaps="false"
+        android:layout_above="@+id/buttonExp"
+        android:layout_toRightOf="@+id/buttonDivide"
+        android:layout_alignRight="@+id/buttonExp"
+        android:layout_alignEnd="@+id/buttonExp" />
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button10to"
+        android:id="@+id/button10to"
+        android:clickable="true"
+        android:enabled="true"
+        android:textColor="#ff0000"
+        android:minWidth="@dimen/activity_num_button_width"
+        android:onClick="sendMessage"
+        android:textStyle="italic"
+        android:textAllCaps="false"
+        android:layout_above="@+id/buttonDivide"
+        android:layout_toRightOf="@+id/buttonDivide"
+        android:layout_alignRight="@+id/buttonSqrt"
+        android:layout_alignEnd="@+id/buttonSqrt" />
+
     <!--goodie to try: <sup><small>your-string</small></sup>-->
 
 </RelativeLayout>

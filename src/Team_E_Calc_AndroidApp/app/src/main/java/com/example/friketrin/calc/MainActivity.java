@@ -172,6 +172,22 @@ public class MainActivity extends AppCompatActivity {
             isZS = false;
             return expression + "e^(";
         }
+        if (view.getId() == R.id.buttonSqrt) {
+            if ((INPUTFLOWMASK & ALLOWFUN) == 0) return "";
+            INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
+            parenthesisOpen++;
+            expression = (isZS)? "" : expression;// If we're here from a ZS, remove 0.0
+            isZS = false;
+            return expression + "√(";
+        }
+        if (view.getId() == R.id.button10to) {
+            if ((INPUTFLOWMASK & ALLOWFUN) == 0) return "";
+            INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
+            parenthesisOpen++;
+            expression = (isZS)? "" : expression;// If we're here from a ZS, remove 0.0
+            isZS = false;
+            return expression + "10^(";
+        }
         // --------END FUNCTION-------
 
         // ----------BACKSPACE------- This is pretty involved...
@@ -189,6 +205,10 @@ public class MainActivity extends AppCompatActivity {
                 expression = expression.substring(0, length-5);
             else if (expression.matches("(.*)e\\^\\($") )
                 expression = expression.substring(0, length-2);
+            else if (expression.matches("(.*)√\\($") )
+                expression = expression.substring(0, length-1);
+            else if (expression.matches("(.*)10\\^\\($") )
+                expression = expression.substring(0, length-3);
 
             // maybe the length changed, get it again
             length = expression.length();

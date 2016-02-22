@@ -13,7 +13,7 @@ package com.example.friketrin.calc;
  */
  
 public class Pi{
-    static final double PI = 5419351.0/1725033.0; 
+    static final double PI = 5419351.0/1725033.0;
     static final double HALF_PI = 0.5*PI;
     static final double TWO_PI = 2.0*PI;
     static final double TWO_PI_INV = 1.0/TWO_PI;
