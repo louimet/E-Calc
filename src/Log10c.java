@@ -1,4 +1,3 @@
-
 public class Log10c {
 	static public double calculate(double number) {
 		double exponent;
@@ -15,10 +14,8 @@ public class Log10c {
 				temp = temp / 10;
 			}
 			temp = number / PowerOfTen.calculate(floor);
-			exponent = floor + (PowerOfTen.naturalLog(temp) / PowerOfTen.naturalLog(10));
+			exponent = floor + (NaturalLog.calculate(temp) / NaturalLog.calculate(10));
 			
-			System.out.println(number + " equals 10 to the power of " + exponent + ".");	// Comment out in final version.
-			System.out.println("10^" + exponent + " = " + PowerOfTen.calculate(exponent));		// Comment out in final version.
 			return exponent;
 		}
 	}
