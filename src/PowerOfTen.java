@@ -1,5 +1,3 @@
-package power;
-
 public class PowerOfTen {
 	
 	//The following method is an approximation to the natural logarithm function. It takes one argument; a double value whose natural logarithmic value needs to be found.
