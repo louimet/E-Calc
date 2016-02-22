@@ -12,6 +12,7 @@ public class NaturalLog{
 	double intermediate2 = 1.0;
 	double intermediate3 = 0.0;
 	double result = 1.0;
+	// added this since git wouldn't add the file, need a change
 	/* A for loop that does the approximation. The following equation is what is being summed up by the for loop:
 	 * 
 	 * Ln(x) = 2[(x-1)/(x+1) + (1/3)*((x-1)/(x+1))^3 + (1/5)*((x-1)/(x+1))^5 + (1/7)*((x-1)/(x+1))^7...]
