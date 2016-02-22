@@ -1,3 +1,11 @@
+/**
+ * Written by Federico O'Reilly Regueiro for COPM 5541, calculator project
+ * Winter 2016
+ *
+ * This class handles the main view of the calculator, it handles input and calls the evaluator
+ *
+ * Pushing buttons calls sendMessage, which has been linked to the buttons via the activity_main.xml
+ */
 package com.example.friketrin.calc;
 
 import android.support.v7.app.AppCompatActivity;
@@ -79,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         // button EVAL
         if (view.getId() == R.id.buttonEval) {
             if (isZS) return(""); // can't evaluate a zero state expression
-            String result = ExpressionEvaluator.Evaluate(expression);
+            String result = ExpressionEvaluator.evaluate(expression);
 
             if(result.matches("-?\\d+\\.?\\d*$")) { // We're OK, we got a number from the evaluation
                 INPUTFLOWMASK =  ALLOWPI | ALLOWMODIF | ALLOWLPAR | ALLOWRPAR | ALLOWOPERATOR | ALLOWFUN;

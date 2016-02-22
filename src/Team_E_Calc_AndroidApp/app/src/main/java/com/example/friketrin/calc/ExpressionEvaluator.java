@@ -1,24 +1,36 @@
+/**
+ * Written by Federico O'Reilly Regueiro for COPM 5541, calculator project
+ * Winter 2016
+ *
+ * This class evaluates the expression contained in the calculator's buffer.
+ * It evaluates for correct parenthesis and then tokenizes the expression separating operands,
+ * operators, and functions for placement onto stacks. It finally evaluates by popping the value
+ * stack and the operator stack accordingly.
+ *
+ * It has a single public method for interfacing: evaluate(string) : string
+ */
 package com.example.friketrin.calc;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
-import java.lang.Math;
-import com.example.friketrin.calc.MySine;
 
 // TODO comments -  Class to parse and compute calculator expressions from team E's calculator for
 // dot dot dot
 
 public class ExpressionEvaluator {
 
-    public static String Evaluate(String expression){
+    // The classe's only public function, all the rest are helpers
+    // takes a string and returns the evaluation in a string format
+    public static String evaluate(String expression){
         boolean isWellParenthesized = validateParenthesis(expression);
         if (!isWellParenthesized) return ("Err parenthesis.");
-        Queue<String> infixTokenQueue = Tokenize(expression);
+        Queue<String> infixTokenQueue = tokenize(expression);
         Double result = evaluateInfix(infixTokenQueue);
         return (result.toString());
     }
 
-    private static Queue<String> Tokenize(String infixExpression)
+    // Separate the expression in tokens to be placed on stacks
+    private static Queue<String> tokenize(String infixExpression)
     {
         Queue<String> infixTokenQueue = new LinkedList<>();
         String s = infixExpression; // work on a copy and keep the original
@@ -160,7 +172,7 @@ public class ExpressionEvaluator {
                 valueStack.push(Double.parseDouble(temp));
             }
             else if(temp.equals("π")) {
-                valueStack.push(MyPi.PI);
+                valueStack.push(Pi.PI);
             }
             else if (temp.endsWith("("))
             {
@@ -199,15 +211,15 @@ public class ExpressionEvaluator {
         if (opStack.peek().length() > 1){ // we have a function
             String temp = opStack.pop();
             if (temp.equals("Log10")) { // TODO replace with team funs
-                valueStack.push(Math.log10(valueStack.pop()));
+                valueStack.push(Log10.calculate(valueStack.pop()));
                 return;
             }
             else if (temp.equals("Sin")) { // TODO replace with team funs
-                valueStack.push(MySine.calculate(valueStack.pop()));
+                valueStack.push(Sine.calculate(valueStack.pop()));
                 return;
             }
             else if (temp.equals("e^")) { // TODO replace with team funs
-                valueStack.push(Math.exp(valueStack.pop()));
+                valueStack.push(ExpFunction.calculate(valueStack.pop()));
                 return;
             }
 
@@ -247,8 +259,6 @@ public class ExpressionEvaluator {
             return 0;
     }
 
-
-
     // validate that our expression is properly formatted, we could use IllegalFormatExpression but
     // the String is an argument to create the class and we can give more meaningful information
     // with IllegalArgumentException
@@ -275,7 +285,4 @@ public class ExpressionEvaluator {
         }
         return isWellParenthesized;
     }
-
-
-
 }
