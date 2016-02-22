@@ -1,7 +1,7 @@
 public class PowerOfTen {
 		
 	// This is the value of ln(10.0). This is defined as a final value since it does not change. 
-	static final double naturalLog10  = NaturalLog.calculate(10.0); 
+	static double naturalLog10  = NaturalLog.calculate(10.0); 
 		
 	// This is the method that approximates the function 10^x. It takes one double value (y) and then return the approximation of 10^y. 
 	static double calculate(double y){
