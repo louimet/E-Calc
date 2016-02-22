@@ -23,12 +23,12 @@ public class ExpFunction {
 	
 	/**
 	 * This method takes a double type input x and outputs exp(x)
+	 * Sources: https://en.wikipedia.org/wiki/Exponential_function
 	 */
 	static public double calculate(double x){
 		double result = 1;
 		double xAbs; //absolute value of x;
 		double temp = 1; // (x^k)/k!
-		double tempAbs = temp;//the absolute value of temp; for the comparison with precision
 		final int MAX_NUM_ITERATION = 1995; //the maximum number of iterations
 		int k = 1;
 		
@@ -37,15 +37,9 @@ public class ExpFunction {
 		else
 			xAbs = -x;
 		
-		while (tempAbs > precision && k < MAX_NUM_ITERATION){
+		while (temp > precision && k < MAX_NUM_ITERATION){
 			temp = temp * xAbs / k;
 			result += temp;
-			if (temp >= 0){
-				tempAbs = temp;
-			}
-			else{
-				tempAbs = -temp;
-			}
 			k++;
 		}
 				
