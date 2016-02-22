@@ -1,10 +1,10 @@
 ##Glossary for Team E calculator
 
-**\[definition\] evaluation** Within the context of team E's calculator project, the evaluation of an expression will refer to the separation of a string into it's individual operands, operators and functions followed by the application of those functions and operands on the aforementioned operators. The evaluation of an expression yields one final numerical result.
+**\[definition\] evaluation** The separation of a string into it's individual operands, operators and functions followed by the application of those functions and operands on the aforementioned operators. The evaluation of an expression yields one final numerical result.
 
-**\[definition\] expression** Throughout the docummentation of this project, expression shall be taken to refer to the string of operands, operators and functions to be evaluated by the calculator.
+**\[definition\] expression** A string of operands, operators and functions to be evaluated by the calculator.
 
-**\[definition\] function** Within the confines of this project, a function will be taken to be an operation relating a set of real numbers (domain) with another set of real numbers (range). A function can assign at most one value from the range to each element of the domain.
+**\[definition\] function** Operation relating a set of numbers (domain) with another set of numbers (range). A function can assign at most one value from the range to each element of the domain. In this project, the sets are limited to real numbers
 
 **\[definition\] operand** A numerical value to which an operation is applied.
 
