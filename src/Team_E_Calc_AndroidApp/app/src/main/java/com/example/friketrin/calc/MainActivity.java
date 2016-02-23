@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private static final short ALLOWPAR = ALLOWLPAR | ALLOWRPAR;
     private static final short ALLOWOPERATOR = 1<<6;
     private static final short ALLOWFUN = 1<<7;
-    private static final short SZALLOW = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
+    private static final short ALLOWMINUS = 1<<8;
+    private static final short SZALLOW = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN | ALLOWMINUS;
     private short INPUTFLOWMASK;
     private short parenthesisOpen;
     private boolean isZS;
@@ -118,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
         // ---------- OPERATOR -------------
         if (view.getId() == R.id.buttonPlus || view.getId() == R.id.buttonMinus
                 || view.getId() == R.id.buttonTimes || view.getId() == R.id.buttonDivide) {
-            if ((INPUTFLOWMASK & ALLOWOPERATOR) == 0) return "";
+            if ((INPUTFLOWMASK & (ALLOWOPERATOR | ALLOWMINUS) ) == 0) return "";
+            if ( (((INPUTFLOWMASK & ALLOWMINUS) == ALLOWMINUS ) && view.getId() != R.id.buttonMinus) )
+                return "";
             INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
             Button b = (Button) view;
             expression = (isZS)? "" : expression;// If we're here from a ZS, remove 0.0
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         // ------- PARENTHESIS -------
         if (view.getId() == R.id.buttonLpar ) {
             if ((INPUTFLOWMASK & ALLOWLPAR) == 0) return "";
-            INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
+            INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN | ALLOWMINUS;
             parenthesisOpen++;
             expression = (isZS)? "" : expression;// If we're here from a ZS, remove 0.0
             isZS = false;
@@ -255,11 +258,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            if (newLast == '×' || newLast == '÷' || newLast == '+' || newLast == '-')
+            if (newLast == '×' || newLast == '÷' || newLast == '+' )
                 INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
 
-            if (newLast == '(')
+            if (newLast == '-'){
                 INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
+                if(length > 2) {
+                    char newNext2Last = expression.charAt(length - 3);
+                    if (newNext2Last == '(')
+                        INPUTFLOWMASK |= ~ALLOWLPAR;
+                }
+            }
+
+            if (newLast == '(')
+                INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN | ALLOWMINUS;
 
             if (newLast == ')') {
                 INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWOPERATOR | ALLOWFUN;
