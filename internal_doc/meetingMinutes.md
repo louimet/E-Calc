@@ -142,10 +142,23 @@ Looking through missing requirements for deliverable 2:
   
 * Presentation slides: generally follow the order of requirements followed, elaborate once all materials have been gathered by Monday
    
-* Things to do:
-  1. run through app structure
-  2. review and split octave code
-  3. generate updated tasks
+* Run through app structure:
+  * Things to review, should we be able to input digits after result?
+  * bug inputing operators after a digit without a dot
+  * check if we can get rid ot isOperand with conditions from result
+  * when more than 23 digits are input, display will not show latest input (scroll or use scientific notation? set a maximum?)
+  * implement plus/minus
+  * refactor with functions in a library
+  * Icon?
+  * discuss layouts for different devices/orientations - android studio has resources for this.
+  
+* review and split octave code:
+  1. Federico will upload sample code (sine) for octave plotting - part of the work is in choosing data to display (relative error? over exponentially increasing steps? etc.)
+  2. YuanWen will have a stab at 10^x, e^x
+  3. Devang will try Log10
+  4. Federico will have a stab at sqrt
+  5. Laurent?
+ 
   
  
   
