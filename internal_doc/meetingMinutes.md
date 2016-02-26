@@ -83,4 +83,33 @@ Meet on Monday, Feb 1st, to discuss the questionnaire
 
 
 
+###Meeting - Nuns' bldg Devang, Yuanwen and Federico - Friday, February 26th, 2016
 
+* Looking through missing requirements for deliverable 2
+
+  * Collaboration patterns used (collaboration patterns, Köppe, et al, 2015, ieee): 
+
+  1. (pattern ii - share expectations) Shared expectations regarding the deliverable.
+  2. (pattern iv - fill knowledge gaps) - shared knowledge regarding the usage of github, markdown, Android Studio and some of the algorithms.
+  3. (pattern v - centralize work product management) Slack for communication and Github as a repository for code and docummentation.
+  4. (pattern vi - manage the project) Discussed project requirements, derived tasks, agreed on the allocation of tasks and elaborated table of responsibilities.
+  5. (viii - keep motivated) Worked together and constantly towards the goal of the project.
+  6. (ix - start immediately) Met as soon as we were all available and tried to establish as many elements as possible from the onset.
+  7. (xi - spread tasks appropriately) Spread tasks fairly and according to individual skills and desires. 
+  
+  * Outline of strategy
+  1. Limit the sampling frame for potential users (people who use a calculator on a daily basis and might require portability - eg. engineering or finance).
+  2. Interviewing respondents, and generating appropriate personae.
+  3. Creating an affinity diagram
+  4. Finding requirements through interviewing potential users - platform, potential use scenarios, desired features, etc.
+  5. Elaborating a use-case.
+  6. Choosing functions.
+  7. Elicitng the necessary tasks for meeting requirements and implementing a use-case.
+  8. Allocating tasks according to individual skills and desires.
+  9. Evaluating feasibility of the feature-set for the present iteration
+  10. Meeting a first milestone (deliverable 1).
+  11. Sharing knowledge pertaining to each individual's tasks so everyone can participate in any given area of development and present the achievements attained thus far (second milestone).
+  12. Repeat from number 2 with pertinent adaptations for iteration II and any unanticipated changes.
+ 
+
+  
