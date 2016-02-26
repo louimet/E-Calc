@@ -85,9 +85,9 @@ Meet on Monday, Feb 1st, to discuss the questionnaire
 
 ###Meeting - Nuns' bldg Devang, Yuanwen and Federico - Friday, February 26th, 2016
 
-* Looking through missing requirements for deliverable 2
+Looking through missing requirements for deliverable 2:
 
-  * Collaboration patterns used (collaboration patterns, Köppe, et al, 2015, ieee): 
+* Collaboration patterns used (collaboration patterns, Köppe, et al, 2015, ieee): 
 
   1. (pattern ii - share expectations) Shared expectations regarding the deliverable.
   2. (pattern iv - fill knowledge gaps) - shared knowledge regarding the usage of github, markdown, Android Studio and some of the algorithms.
@@ -96,8 +96,8 @@ Meet on Monday, Feb 1st, to discuss the questionnaire
   5. (viii - keep motivated) Worked together and constantly towards the goal of the project.
   6. (ix - start immediately) Met as soon as we were all available and tried to establish as many elements as possible from the onset.
   7. (xi - spread tasks appropriately) Spread tasks fairly and according to individual skills and desires. 
-  
-  * Outline of strategy
+
+* Outline of strategy:
   1. Limit the sampling frame for potential users (people who use a calculator on a daily basis and might require portability - eg. engineering or finance).
   2. Interviewing respondents, and generating appropriate personae.
   3. Creating an affinity diagram
@@ -110,6 +110,46 @@ Meet on Monday, Feb 1st, to discuss the questionnaire
   10. Meeting a first milestone (deliverable 1).
   11. Sharing knowledge pertaining to each individual's tasks so everyone can participate in any given area of development and present the achievements attained thus far (second milestone).
   12. Repeat from number 2 with pertinent adaptations for iteration II and any unanticipated changes.
+
+* Algorithms and pseudocode - TODO - include in the slides remotely.
+  
+* Data Structures - Expresion evaluation uses a linked list for tokenization, and two stacks: one for operator and one for operands.
+
+* Inclusions:
+  1. basic arithmetic calculation
+  2. chosen transcendental functions - e^x, x^0.5, Log10(x), 10^x, Sine(x)
+  3. parenthesis
+  4. input enforcement as a function of previous input
+  5. expression evaluation for input
+  6. basic user interface
+  7. tactile feedback
+
+* Exclusions:
+  1. Memory
+  2. Access to input history as an alternate view (including copy-paste functionality)
+  2. Unit tracking
+  3. plus/minus button
+
+* Technical reasons for the above, not enough time to implement
+
+* Code review results:
+  1. original 10^x, was using ln(10), implementation separated into ln and 10^x so ln could be used by Log10
+  2. Log10 function re-implemented with usage of ln
+  
+* Test results, add a **fresh** printout of the testing suite's output and octave plot goodies
+  
+* Data file - none
+  
+* Presentation slides: generally follow the order of requirements followed, elaborate once all materials have been gathered by Monday
+   
+* Things to do:
+  1. run through app structure
+  2. review and split octave code
+  3. generate updated tasks
+  
+ 
+  
+  
  
 
   
