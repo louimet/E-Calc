@@ -1,4 +1,4 @@
-package com.example.friketrin.calc;
+package com.teamE;
 
 public class NaturalLog{
 	/** The following method is an approximation to the natural logarithm function. It takes one 

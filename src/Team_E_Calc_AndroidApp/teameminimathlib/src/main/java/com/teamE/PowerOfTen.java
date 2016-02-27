@@ -1,4 +1,4 @@
-package com.example.friketrin.calc;
+package com.teamE;
 
 public class PowerOfTen {
 		
@@ -6,7 +6,7 @@ public class PowerOfTen {
 	static double naturalLog10  = NaturalLog.calculate(10.0);
 		
 	// This is the method that approximates the function 10^x. It takes one double value (y) and then return the approximation of 10^y. 
-	static double calculate(double y){
+	static public double calculate(double y){
 	/* Using the rules of natural logarithms we can see that:
 	 * 
 	 * 10^x = e^(x*ln(10)).

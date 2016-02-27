@@ -1,4 +1,4 @@
-package com.example.friketrin.calc;
+package com.teamE;
 
 public class Log10 {
 	static public double calculate(double number) {

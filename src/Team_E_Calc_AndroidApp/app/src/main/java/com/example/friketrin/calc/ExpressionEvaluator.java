@@ -200,7 +200,7 @@ public class ExpressionEvaluator {
                 valueStack.push(Double.parseDouble(temp));
             }
             else if(temp.equals("π")) {
-                valueStack.push(Pi.PI);
+                valueStack.push(com.teamE.Pi.PI);
             }
             else if (temp.endsWith("("))
             {
@@ -239,23 +239,23 @@ public class ExpressionEvaluator {
         if (opStack.peek().length() > 1 || opStack.peek().equals("√")){ // we have a function
             String temp = opStack.pop();
             if (temp.equals("Log10")) {
-                valueStack.push(Log10.calculate(valueStack.pop()));
+                valueStack.push(com.teamE.Log10.calculate(valueStack.pop()));
                 return;
             }
             else if (temp.equals("Sin")) {
-                valueStack.push(Sine.calculate(valueStack.pop()));
+                valueStack.push(com.teamE.Sine.calculate(valueStack.pop()));
                 return;
             }
             else if (temp.equals("e^")) {
-                valueStack.push(ExpFunction.calculate(valueStack.pop()));
+                valueStack.push(com.teamE.ExpFunction.calculate(valueStack.pop()));
                 return;
             }
             else if (temp.equals("√")) {
-                valueStack.push(SquareRoot2.calculate(valueStack.pop()));
+                valueStack.push(com.teamE.SquareRoot2.calculate(valueStack.pop()));
                 return;
             }
             else if (temp.equals("10^")) {
-                valueStack.push(PowerOfTen.calculate(valueStack.pop()));
+                valueStack.push(com.teamE.PowerOfTen.calculate(valueStack.pop()));
                 return;
             }
 

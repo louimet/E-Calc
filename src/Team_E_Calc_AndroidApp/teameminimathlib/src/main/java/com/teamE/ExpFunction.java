@@ -1,4 +1,4 @@
-package com.example.friketrin.calc;
+package com.teamE;
 /**
  * Written by: Yuanwen Qin,  40011473
  * General Description: This class achieves an approximation to the exponential function exp(x)

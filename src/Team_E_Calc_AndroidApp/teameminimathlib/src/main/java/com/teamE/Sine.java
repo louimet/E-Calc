@@ -1,4 +1,4 @@
-package com.example.friketrin.calc;
+package com.teamE;
 
 /**
  * Written by Federico O'Reilly Regueiro for COPM 5541, calculator project

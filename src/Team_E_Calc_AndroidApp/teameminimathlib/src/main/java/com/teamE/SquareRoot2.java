@@ -1,4 +1,4 @@
-package com.example.friketrin.calc;
+package com.teamE;
 
 /**
  * Written by Devang Patel
