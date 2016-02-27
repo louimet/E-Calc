@@ -127,7 +127,7 @@ public class ExpressionEvaluator {
                 continue;
             }
             //digit - if preceded by Rpar ins * loop until not digit or dot
-            if ( s.charAt(0)-'0' < 10 && s.charAt(0)-'0' >= 0){
+            if ( (s.charAt(0)-'0' < 10 && s.charAt(0)-'0' >= 0) || s.charAt(0) == '.'){
                 int i = 1;
                 while ( s.length() > i && ((s.charAt(i)-'0' < 10 && s.charAt(i)-'0' >= 0) || s.charAt(i) == '.') )
                     i++;
@@ -195,7 +195,7 @@ public class ExpressionEvaluator {
         while (!infixTokenQueue.isEmpty())
         {
             String temp = infixTokenQueue.remove();
-            if(temp.matches("^-?\\d+\\.?\\d*$"))
+            if(temp.matches("^-?\\d*[\\d\\.]\\d*$"))
             {
                 valueStack.push(Double.parseDouble(temp));
             }
