@@ -10,9 +10,11 @@
  * It has a single public method for interfacing: evaluate(string) : string
  */
 package com.example.friketrin.calc;
+import java.text.ParseException;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.zip.DataFormatException;
 
 // TODO comments -  Class to parse and compute calculator expressions from team E's calculator for
 // dot dot dot
@@ -25,7 +27,12 @@ public class ExpressionEvaluator {
         boolean isWellParenthesized = validateParenthesis(expression);
         if (!isWellParenthesized) return ("Err parenthesis.");
         Queue<String> infixTokenQueue = tokenize(expression);
-        Double result = evaluateInfix(infixTokenQueue);
+        Double result;
+        try {
+            result = evaluateInfix(infixTokenQueue);
+        }catch(ParseException e){
+            return e.getMessage();
+        }
         return (result.toString());
     }
 
@@ -186,7 +193,7 @@ public class ExpressionEvaluator {
 
     // evaluate the tokenized infix expression a token at a time, calling precedence
     // and applyOperation accordingly depending on precedence and parenthesis
-    private static Double evaluateInfix(Queue<String> infixTokenQueue)
+    private static Double evaluateInfix(Queue<String> infixTokenQueue) throws ParseException
     {
         Stack<Double> valueStack = new Stack<>();
         Stack<String> opStack = new Stack<>();
@@ -228,13 +235,13 @@ public class ExpressionEvaluator {
         }
         while (!opStack.isEmpty())
             applyOperation(valueStack, opStack);
-        /*if (valueStack.size() > 1) // NOTE for debugging add condition checking on stacks at end
-            return Double.NaN;*/
+        if (valueStack.size() > 1) // NOTE for debugging add condition checking on stacks at end
+            throw new ParseException("Err, Missing operators", opStack.size()+valueStack.size());
         return valueStack.pop();
     }
 
     // Apply whatever operation is waiting in the stacks
-    private static void applyOperation(Stack<Double> valueStack, Stack<String> opStack)
+    private static void applyOperation(Stack<Double> valueStack, Stack<String> opStack) throws ParseException
     {
         if (opStack.peek().length() > 1 || opStack.peek().equals("√")){ // we have a function
             String temp = opStack.pop();
@@ -261,6 +268,9 @@ public class ExpressionEvaluator {
 
         }
 
+        if (valueStack.size()<2){
+            throw new ParseException("Error, missing operands", opStack.size()+valueStack.size());
+        }
         double y = valueStack.pop();
         double x = valueStack.pop();
         char temp = opStack.pop().charAt(0);
