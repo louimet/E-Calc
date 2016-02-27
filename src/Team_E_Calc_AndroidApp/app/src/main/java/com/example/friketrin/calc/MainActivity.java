@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             if (isZS) return(""); // can't evaluate a zero state expression
             String result = ExpressionEvaluator.evaluate(expression);
 
-            if(result.matches("-?\\d+\\.?\\d*$")) { // We're OK, we got a number from the evaluation
+            if(result.matches("-?\\d+\\.?\\d*$") && Double.parseDouble(result) != 0) { // We're OK, we got a number from the evaluation
                 INPUTFLOWMASK =  ALLOWPI | ALLOWMODIF | ALLOWLPAR | ALLOWRPAR | ALLOWOPERATOR | ALLOWFUN;
                 parenthesisOpen = 0;
             }
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         if (view.getId() == R.id.buttonPlus || view.getId() == R.id.buttonMinus
                 || view.getId() == R.id.buttonTimes || view.getId() == R.id.buttonDivide) {
             if ((INPUTFLOWMASK & (ALLOWOPERATOR | ALLOWMINUS) ) == 0) return "";
-            if ( (((INPUTFLOWMASK & ALLOWMINUS) == ALLOWMINUS ) && view.getId() != R.id.buttonMinus) )
+            if ( (((INPUTFLOWMASK & ALLOWMINUS) != 0 ) && view.getId() != R.id.buttonMinus) )
                 return "";
             INPUTFLOWMASK = ALLOWOPERAND | ALLOWLPAR | ALLOWFUN;
             Button b = (Button) view;
@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
                 if(length > 2) {
                     char newNext2Last = expression.charAt(length - 3);
                     if (newNext2Last == '(')
-                        INPUTFLOWMASK |= ~ALLOWLPAR;
+                        INPUTFLOWMASK &= ~ALLOWLPAR; // TODO make sure &= is what we need
                 }
             }
 
@@ -288,7 +288,8 @@ public class MainActivity extends AppCompatActivity {
         boolean isOperand = false;
         if ( buttonNum >=0 && buttonNum < 0xa ) {
             if ((INPUTFLOWMASK & ALLOWDIGIT)== 0) return "";
-            INPUTFLOWMASK |= ALLOWDIGIT | ALLOWPI | ALLOWMODIF | ALLOWLPAR | ALLOWRPAR | ALLOWOPERATOR | ALLOWFUN;
+            INPUTFLOWMASK |= ALLOWDIGIT | ALLOWPI | ALLOWMODIF | ALLOWLPAR | ALLOWRPAR | ALLOWOPERATOR | ALLOWFUN; // using |= to preserve the state of ALLOWDOT
+            INPUTFLOWMASK &= ~ALLOWMINUS; // remove allowing minus as a special case for negative numbers
             s = Integer.toString(buttonNum);
             isOperand = true;
         } // DECIMAL POINT
@@ -300,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
         } // PI
         else if (buttonNum == 0xb){
             if ((INPUTFLOWMASK & ALLOWPI)== 0) return "";
-            INPUTFLOWMASK = ALLOWMODIF | ALLOWLPAR | ALLOWRPAR | ALLOWOPERATOR | ALLOWFUN;
+            INPUTFLOWMASK = ALLOWMODIF | ALLOWPAR | ALLOWOPERATOR | ALLOWFUN;
             s = "π";
             isOperand = true;
         }
