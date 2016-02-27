@@ -83,4 +83,86 @@ Meet on Monday, Feb 1st, to discuss the questionnaire
 
 
 
+###Meeting - Nuns' bldg Devang, Yuanwen and Federico - Friday, February 26th, 2016
 
+Looking through missing requirements for deliverable 2:
+
+* Collaboration patterns used (collaboration patterns, Köppe, et al, 2015, ieee): 
+
+  1. (pattern ii - share expectations) Shared expectations regarding the deliverable.
+  2. (pattern iv - fill knowledge gaps) - shared knowledge regarding the usage of github, markdown, Android Studio and some of the algorithms.
+  3. (pattern v - centralize work product management) Slack for communication and Github as a repository for code and docummentation.
+  4. (pattern vi - manage the project) Discussed project requirements, derived tasks, agreed on the allocation of tasks and elaborated table of responsibilities.
+  5. (viii - keep motivated) Worked together and constantly towards the goal of the project.
+  6. (ix - start immediately) Met as soon as we were all available and tried to establish as many elements as possible from the onset.
+  7. (xi - spread tasks appropriately) Spread tasks fairly and according to individual skills and desires. 
+
+* Outline of strategy:
+  1. Limit the sampling frame for potential users (people who use a calculator on a daily basis and might require portability - eg. engineering or finance).
+  2. Interviewing respondents, and generating appropriate personae.
+  3. Creating an affinity diagram
+  4. Finding requirements through interviewing potential users - platform, potential use scenarios, desired features, etc.
+  5. Elaborating a use-case.
+  6. Choosing functions.
+  7. Elicitng the necessary tasks for meeting requirements and implementing a use-case.
+  8. Allocating tasks according to individual skills and desires.
+  9. Evaluating feasibility of the feature-set for the present iteration
+  10. Meeting a first milestone (deliverable 1).
+  11. Sharing knowledge pertaining to each individual's tasks so everyone can participate in any given area of development and present the achievements attained thus far (second milestone).
+  12. Repeat from number 2 with pertinent adaptations for iteration II and any unanticipated changes.
+
+* Algorithms and pseudocode - TODO - include in the slides remotely.
+  
+* Data Structures - Expresion evaluation uses a linked list for tokenization, and two stacks: one for operator and one for operands.
+
+* Inclusions:
+  1. basic arithmetic calculation
+  2. chosen transcendental functions - e^x, x^0.5, Log10(x), 10^x, Sine(x)
+  3. parenthesis
+  4. input enforcement as a function of previous input
+  5. expression evaluation for input
+  6. basic user interface
+  7. tactile feedback
+
+* Exclusions:
+  1. Memory
+  2. Access to input history as an alternate view (including copy-paste functionality)
+  2. Unit tracking
+  3. plus/minus button
+
+* Technical reasons for the above, not enough time to implement
+
+* Code review results:
+  1. original 10^x, was using ln(10), implementation separated into ln and 10^x so ln could be used by Log10
+  2. Log10 function re-implemented with usage of ln
+  
+* Test results, add a **fresh** printout of the testing suite's output and octave plot goodies
+  
+* Data file - none
+  
+* Presentation slides: generally follow the order of requirements followed, elaborate once all materials have been gathered by Monday
+   
+* Run through app structure:
+  * Things to review, should we be able to input digits after result?
+  * bug inputing operators after a digit without a dot
+  * check if we can get rid ot isOperand with conditions from result
+  * when more than 23 digits are input, display will not show latest input (scroll or use scientific notation? set a maximum?)
+  * implement plus/minus
+  * refactor with functions in a library
+  * Icon?
+  * discuss layouts for different devices/orientations - android studio has resources for this.
+  
+* review and split octave code:
+  1. Federico will upload sample code (sine) for octave plotting - part of the work is in choosing data to display (relative error? over exponentially increasing steps? etc.)
+  2. YuanWen will have a stab at 10^x, e^x
+  3. Devang will try Log10
+  4. Federico will have a stab at sqrt
+  5. Laurent?
+ 
+  
+ 
+  
+  
+ 
+
+  
