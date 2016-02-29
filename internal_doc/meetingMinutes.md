@@ -160,8 +160,35 @@ Looking through missing requirements for deliverable 2:
   5. Laurent?
  
   
- 
+ ###Meeting - H961 Devang, Laurent and Federico - Monday, February 29th, 2016
+
+Upload slide template to Google Drive
+
+Things to include in the presentation:
+
+* Strategy outline
+  * outline itself with the following interleaved
+  * method of elaborating questionnaire - each pitches in, find some form of categorization, pilot, review
+  * Personas - primary and secondary division justification
+  * include picture of 10,000 post-its
+
+* Choices and justification - regarding UX, not function implementation
+  * Use case - elaborate...
+  * UI - familiar layout justification from interviews
+  * Flow diagram for input
+  * Data structures
+
+* App Structure
+  * Class relation - code structure
+  * screen - cap
+
+* Includes/Excludes
+  * Section of includes
+  * Section of excludes to be 
   
+* Functions - Display plots for errors, time from testing and/or time complexity analysis
+
+
   
  
 
