@@ -198,7 +198,7 @@ do:
 
 2. Understand each other's function implemenattion and options
 
-3. put together zip file - <<Includes>> sheet for strategy, sheet for pseudocode, sheet for collab pattrs, doc for test results, sheet for incl/excl
+3. put together zip file - <Includes> sheet for strategy, sheet for pseudocode, sheet for collab pattrs, doc for test results, sheet for incl/excl
 
 
 
