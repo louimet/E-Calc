@@ -143,13 +143,13 @@ Looking through missing requirements for deliverable 2:
 * Presentation slides: generally follow the order of requirements followed, elaborate once all materials have been gathered by Monday
    
 * Run through app structure:
-  * Things to review, should we be able to input digits after result?
+  * ~~Things to review, should we be able to input digits after result?~~
   * bug inputing operators after a digit without a dot
   * check if we can get rid ot isOperand with conditions from result
   * when more than 23 digits are input, display will not show latest input (scroll or use scientific notation? set a maximum?)
   * implement plus/minus
-  * refactor with functions in a library
-  * Icon?
+  * ~~refactor with functions in a library~~
+  * ~~Icon?~~
   * discuss layouts for different devices/orientations - android studio has resources for this.
   
 * review and split octave code:
@@ -160,7 +160,7 @@ Looking through missing requirements for deliverable 2:
   5. Laurent?
  
   
- ###Meeting - H961 Devang, Laurent and Federico - Monday, February 29th, 2016
+ ###Meeting - H961 Devang, Yuanwen, Laurent and Federico - Monday, February 29th, 2016
 
 Upload slide template to Google Drive
 
@@ -187,6 +187,20 @@ Things to include in the presentation:
   * Section of excludes to be 
   
 * Functions - Display plots for errors, time from testing and/or time complexity analysis
+
+To sum up
+
+Allot around 1.5 minutes per section above, except the last (functions) which gets 4 minutes.
+
+do:
+
+1. Presentation slides
+
+2. Understand each other's function implemenattion and options
+
+3. put together zip file - <<Includes>> sheet for strategy, sheet for pseudocode, sheet for collab pattrs, doc for test results, sheet for incl/excl
+
+
 
 
   
