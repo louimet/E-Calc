@@ -22,10 +22,33 @@ public class Tester {
 			end = System.nanoTime();
 			durationJavas[i] = end - start;
 			System.out.println("e^" + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
-			difference[i] = Math.abs(ours - javas);
-			relative[i] = Math.abs((ours - javas) / javas);
+			
+			if(Double.isFinite(ours) && Double.isFinite(javas)) {
+				difference[i] = Math.abs(ours - javas);
+				relative[i] = Math.abs((ours - javas) / javas);
+			}
 		}
-		CalculateError(relative);
+		CalculateError(difference, relative);
+		CalculateDuration(durationOurs, durationJavas);
+		System.out.println();
+		
+		System.out.println("Testing ln(x) function :");
+		for(int i = 0; i < numbers.length; i++) {
+			start = System.nanoTime();
+			double ours = NaturalLog.calculate(numbers[i]);
+			end = System.nanoTime();
+			durationOurs[i] = end - start;
+			start = System.nanoTime();
+			double javas = Math.log10(numbers[i]);
+			end = System.nanoTime();
+			durationJavas[i] = end - start;
+			System.out.println("Log(" + numbers[i] + ") = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
+			if(Double.isFinite(ours) && Double.isFinite(javas)) {
+				difference[i] = Math.abs(ours - javas);
+				relative[i] = Math.abs((ours - javas) / javas);
+			}
+		}
+		CalculateError(difference, relative);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
 		
@@ -40,16 +63,19 @@ public class Tester {
 			end = System.nanoTime();
 			durationJavas[i] = end - start;
 			System.out.println("Log(" + numbers[i] + ") = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
-			difference[i] = Math.abs(ours - javas);
+			if(Double.isFinite(ours) && Double.isFinite(javas)) {
+				difference[i] = Math.abs(ours - javas);
+				relative[i] = Math.abs((ours - javas) / javas);
+			}
 		}
-		CalculateError(difference);
+		CalculateError(difference, relative);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
 		
-		System.out.println("Testing square root (1) function :");
+		System.out.println("Testing square root function :");
 		for(int i = 0; i < numbers.length; i++) {
 			start = System.nanoTime();
-			double ours = squareRoot1.calculate(numbers[i]);
+			double ours = SquareRoot2.calculate(numbers[i]);
 			end = System.nanoTime();
 			durationOurs[i] = end - start;
 			start = System.nanoTime();
@@ -57,49 +83,14 @@ public class Tester {
 			end = System.nanoTime();
 			durationJavas[i] = end - start;
 			System.out.println("Square root of " + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
-			difference[i] = Math.abs(ours - javas);
-			relative[i] = Math.abs((ours - javas) / javas);
+			if(Double.isFinite(ours) && Double.isFinite(javas)) {
+				difference[i] = Math.abs(ours - javas);
+				relative[i] = Math.abs((ours - javas) / javas);
+			}
 		}
-		CalculateError(relative);
+		CalculateError(difference, relative);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
-		
-		System.out.println("Testing square root (2) function :");
-		for(int i = 0; i < numbers.length; i++) {
-			start = System.nanoTime();
-			double ours = squareRoot2.calculate(numbers[i]);
-			end = System.nanoTime();
-			durationOurs[i] = end - start;
-			start = System.nanoTime();
-			double javas = Math.sqrt(numbers[i]);
-			end = System.nanoTime();
-			durationJavas[i] = end - start;
-			System.out.println("Square root of " + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
-			difference[i] = Math.abs(ours - javas);
-			relative[i] = Math.abs((ours - javas) / javas);
-		}
-		CalculateError(relative);
-		CalculateDuration(durationOurs, durationJavas);
-		System.out.println();
-		
-/*		System.out.println("Testing square root (3) function :");
-		for(int i = 0; i < numbers.length; i++) {
-			start = System.nanoTime();
-			double ours = squareRoot3.calculate(numbers[i]);
-			end = System.nanoTime();
-			durationOurs[i] = end - start;
-			start = System.nanoTime();
-			double javas = Math.sqrt(numbers[i]);
-			end = System.nanoTime();
-			durationJavas[i] = end - start;
-			System.out.println("Square root of " + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
-			difference[i] = Math.abs(ours - javas);
-			relative[i] = Math.abs((ours - javas) / javas);
-		}
-		CalculateError(relative);
-		CalculateDuration(durationOurs, durationJavas);
-		System.out.println();
-*/
 		
 		System.out.println("Testing 10^x function :");
 		for(int i = 0; i < numbers.length; i++) {
@@ -112,24 +103,52 @@ public class Tester {
 			end = System.nanoTime();
 			durationJavas[i] = end - start;
 			System.out.println("10^" + numbers[i] + " = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
-			difference[i] = Math.abs(ours - javas);
-			relative[i] = Math.abs((ours - javas) / javas);
+			if(Double.isFinite(ours) && Double.isFinite(javas)) {
+				difference[i] = Math.abs(ours - javas);
+				relative[i] = Math.abs((ours - javas) / javas);
+			}
 		}
-		CalculateError(relative);
+		CalculateError(difference, relative);
+		CalculateDuration(durationOurs, durationJavas);
+		System.out.println();
+		
+		System.out.println("Testing sine function :");
+		for(int i = 0; i < numbers.length; i++) {
+			start = System.nanoTime();
+			double ours = Sine.calculate(numbers[i]);
+			end = System.nanoTime();
+			durationOurs[i] = end - start;
+			start = System.nanoTime();
+			double javas = Math.log10(numbers[i]);
+			end = System.nanoTime();
+			durationJavas[i] = end - start;
+			System.out.println("Log(" + numbers[i] + ") = " + ours + " (Java: " + javas +", difference of " + (ours - javas) + ")");
+			if(Double.isFinite(ours) && Double.isFinite(javas)) {
+				difference[i] = Math.abs(ours - javas);
+				relative[i] = Math.abs((ours - javas) / javas);
+			}
+		}
+		CalculateError(difference, relative);
 		CalculateDuration(durationOurs, durationJavas);
 		System.out.println();
 		
 	}
 	
-	static public void CalculateError(double[] difference) {
+	static public void CalculateError(double[] difference, double[] relative) {
 		double sum = 0;
-		double averageError = 0;
+		double averageAbsoluteError = 0;
 		for(int i = 0; i < difference.length; i++) {
 			sum = sum + difference[i];
 		}
-		averageError = sum / difference.length;
-		System.out.println("Average absolute error from Java's calculated value : " + averageError + ".");
+		averageAbsoluteError = sum / difference.length;
+		System.out.println("Average absolute error : " + averageAbsoluteError + ".");
 		sum = 0;
+		double averageRelativeError = 0;
+		for(int i = 0; i < relative.length; i++) {
+			sum = sum + relative[i];
+		}
+		averageRelativeError = sum / relative.length;
+		System.out.println("Average relative error : " + averageRelativeError + ".");
 	}
 	
 	static public void CalculateDuration(long[] ours, long[] javas) {
