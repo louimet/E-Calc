@@ -160,7 +160,7 @@ Looking through missing requirements for deliverable 2:
   5. Laurent?
  
   
- ###Meeting - H961 Devang, Yuanwen, Laurent and Federico - Monday, February 29th, 2016
+ ###Meeting - H961 Devang, Yuanwen, Laurent and Federico (Laurent is sick with a fever) - Monday, February 29th, 2016
 
 Upload slide template to Google Drive
 
