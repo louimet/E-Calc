@@ -200,7 +200,20 @@ do:
 
 3. put together zip file - <Includes> sheet for strategy, sheet for pseudocode, sheet for collab pattrs, doc for test results, sheet for incl/excl
 
+###Meeting - H961 Devang, Yuanwen, and Federico - Wednesday, March 16th, 2016
 
+Come up with tasks...
+
+* contact TA's for ASQ
+
+* Take ASQ to
+	1. Stephane
+	2. Tristan
+	3. Joey? substitute?
+
+* Create design spec (CRC) for what we have with a modification: change button functions to inputDigit(int i), inputLpar, inputRpar, inputExp, inputPlus, etc and put it in a different class where that class + expressionevaluator are the controller, mainView (and the history-view) is the view and the boolean isZs, the expression, the expression history and the library are the model
+
+* Implemet the revised CRC
 
 
   
