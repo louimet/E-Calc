@@ -236,7 +236,12 @@ Come up with tasks...
 
 * Revise the DOC
 
+* define additions to the DOC and how they fit into the revised format
+
 * Encapsulated prototype of unit tracking? If time permits 
+
+Meet Friday after class? have ideas to discuss regarding the UI, CRC, Memory usage and consolidate what we bring to the meeting in a final usage of memory, a final UI design and do the CRC cards (perhas write crc for current, although we have the UML class diagram in the presentation slides)
+
 
 
 
