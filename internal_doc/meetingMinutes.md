@@ -214,6 +214,16 @@ Come up with tasks...
 * Create design spec (CRC) for what we have with a modification: change button functions to inputDigit(int i), inputLpar, inputRpar, inputExp, inputPlus, etc and put it in a different class where that class + expressionevaluator are the controller, mainView (and the history-view) is the view and the boolean isZs, the expression, the expression history and the library are the model
 
 * Implemet the revised CRC
+ 
+* All - Read the [oracle code conventions](http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html) and, unless the convention raises someone's objections, fit our existing code into the convention. 
+
+* All - do a real cyclical asymmetric code review
+
+* Revammp the UI after reading a bit of his resources... some ideas, borders of elements, color of buttons according to role, two lines for display, top(left-justified) expression, bottom(right-justified) result, change eval to =, etc
+
+* 
+
+
 
 
   
