@@ -204,9 +204,9 @@ do:
 
 Come up with tasks...
 
-* contact TA's for ASQ
+* contact TA's for ASQ - contact as early as possible, schedule meetig as late as possible
 
-* Take ASQ to
+* All - Take ASQ to
 	1. Stephane
 	2. Tristan
 	3. Joey? substitute?
@@ -221,7 +221,24 @@ Come up with tasks...
 
 * Revammp the UI after reading a bit of his resources... some ideas, borders of elements, color of buttons according to role, two lines for display, top(left-justified) expression, bottom(right-justified) result, change eval to =, etc
 
-* 
+* function-member-specific, revamp functions if they're not satisfying
+
+* History pop-up window
+  1. open a dummy window
+  2. caching expression data (String[]? or a <String> linked-list? queue?)
+  3. putting the two together (some decissions to be made, display all expressions with one empty line between them, Use case: choose oe expression, open up in editing window, call standard android keybd, allow edits and verify correctness at end (as much as enforced by the input management) and then press button to inject into a cleared display window (where editing is rather clunky
+  
+* Memory, implement? 1-slot? include the reference to memory in the expression or the actual contents of memory? limit display precission? - think about this. How should this work? 1-button, only last output? one button for store, one for invoking? more things to think about...
+
+* scrollable display (estimated task: .5 hrs?)
+ 
+* chuck +/- key (5 minutes)
+
+* Revise the DOC
+
+* Encapsulated prototype of unit tracking? If time permits 
+
+
 
 
 
