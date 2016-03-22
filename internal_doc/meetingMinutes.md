@@ -232,7 +232,7 @@ Come up with tasks...
 
 * scrollable display (estimated task: .5 hrs?)
  
-* chuck +/- key (5 minutes)
+* ~~chuck +/- key (5 minutes)~~
 
 * Revise the DOC
 
@@ -242,6 +242,18 @@ Come up with tasks...
 
 Meet Friday after class? have ideas to discuss regarding the UI, CRC, Memory usage and consolidate what we bring to the meeting in a final usage of memory, a final UI design and do the CRC cards (perhas write crc for current, although we have the UML class diagram in the presentation slides)
 
+###Meeting - H960.6 Devang, Yuanwen, Laurent, Federico and Laurent is sick with a fever) - Tuesday, March 22nd, 2016
+
+* CRC View (History view and and Main view are views, Handle Input and expression evaluator are controller, Expression Buffer and Expression History and Library are model
+
+* New and updated tasks: 
+    1. put tasks in github
+    2. display implemented as two contiguous windows, top with input allowed and scrollable (no keyboard or scrollbar) but add arrow keys; bottom for displaying results (view only)
+    3. implement plus minus key on operand under cursor (only if operand under cursor) and toggle preceding hyphen - see hyphen [here](www.cs.tut.fi/~jkorpela/dashes.html) 
+    4. make blocks for gui
+    5. find nice gui pallette (almost coincides with blocks)
+    6. Editorial pass on function section in the doc
+    
 
 
 
