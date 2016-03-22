@@ -256,6 +256,7 @@ Meet Friday after class? have ideas to discuss regarding the UI, CRC, Memory usa
     7. Redistribution of functions code - __Federico__
     8. Make changes to user manual __Yuanwen__
     9. Editorial pass on function section in the doc - __Federico__
+    10. Revision of doc - __Laurent__
     
 
 
