@@ -249,13 +249,13 @@ Meet Friday after class? have ideas to discuss regarding the UI, CRC, Memory usa
 * New and updated tasks: 
     1. put tasks in github
     2. display implemented as two contiguous windows, top with input allowed and scrollable (no keyboard or scrollbar) but add arrow keys; bottom for displaying results (view only)
-    3. implement plus minus key on operand under cursor (only if operand under cursor) and toggle preceding hyphen - see hyphen [here](www.cs.tut.fi/~jkorpela/dashes.html) - _Laurent_
-    4. make blocks for gui - _Devang_
-    5. find nice gui pallette (almost coincides with blocks) - _Devang_
-    6. Find a way to implement memory function and history - _Yuanwen_
-    7. Redistribution of functions code - _Federico_
-    8. Make changes to user manual _Yuanwen_
-    9. Editorial pass on function section in the doc - _Federico_
+    3. implement plus minus key on operand under cursor (only if operand under cursor) and toggle preceding hyphen - see hyphen [here](www.cs.tut.fi/~jkorpela/dashes.html) - __Laurent__
+    4. make blocks for gui - __Devang__
+    5. find nice gui pallette (almost coincides with blocks) - __Devang__
+    6. Find a way to implement memory function and history - __Yuanwen__
+    7. Redistribution of functions code - __Federico__
+    8. Make changes to user manual __Yuanwen__
+    9. Editorial pass on function section in the doc - __Federico__
     
 
 
