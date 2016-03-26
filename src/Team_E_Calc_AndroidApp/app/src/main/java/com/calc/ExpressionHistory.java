@@ -8,12 +8,15 @@ import java.util.LinkedList;
  * from the calculator
  */
 public class ExpressionHistory {
-    private static LinkedList<String> history;
-    public LinkedList<String> getHistory(){
+    private static LinkedList<String> history = new LinkedList<>();
+    public LinkedList<String> getHistory(){ // TODO this can be used to populate the history view
         return history;
     }
     public static String getEntry(int i){
         return history.get(i);
+    }
+    public static int getSize(){
+        return history.size();
     }
     public static void appendEntry(String expression){
         history.add(expression);

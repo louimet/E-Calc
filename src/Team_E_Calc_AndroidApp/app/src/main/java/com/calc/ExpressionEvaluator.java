@@ -44,6 +44,7 @@ public class ExpressionEvaluator {
             ExpressionBuffer.clear();
             return e.getMessage();
         }
+        ExpressionHistory.appendEntry(ExpressionBuffer.getExpression());
         ExpressionBuffer.setExpression(result.toString());//TODO works while we have a single line display
         return (result.toString());
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">E-Calc</string>
+    <string name="app_name">Eternity</string>
     <string name="initDisplay">0.0</string>
     <string name="button1">1</string>
     <string name="button2">2</string>
@@ -29,6 +29,10 @@
     <string name="buttonExp">e<sup><small>x</small></sup></string>
     <string name="buttonSqrt">√(x)</string>
     <string name="button10to">10<sup><small>x</small></sup></string>
+    <!--from here on the menu entries-->
+    <string name="history_string">Display History</string>
+    <string name="vibrate_string">Haptic Feedback</string>
+    <string name="about_string">About Eternity</string>
 </resources>
 
 <!--⌫-->

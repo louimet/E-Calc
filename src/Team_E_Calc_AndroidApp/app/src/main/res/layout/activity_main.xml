@@ -218,7 +218,7 @@
         android:enabled="true"
         android:textColor="#ff0000"
         android:minWidth="@dimen/activity_num_button_width"
-        android:onClick="sendMessage"
+        android:onClick="plusMinus"
         android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
