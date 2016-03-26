@@ -9,11 +9,13 @@
  *
  * It has a single public method for interfacing: evaluate(string) : string
  */
-package com.example.friketrin.calc;
+package com.calc;
 import java.text.ParseException;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.DataFormatException;
 
 // TODO comments -  Class to parse and compute calculator expressions from team E's calculator for
@@ -23,16 +25,26 @@ public class ExpressionEvaluator {
 
     // The classe's only public function, all the rest are helpers
     // takes a string and returns the evaluation in a string format
-    public static String evaluate(String expression){
+    public static String evaluate(){
+        String expression = ExpressionBuffer.getExpression();
         boolean isWellParenthesized = validateParenthesis(expression);
-        if (!isWellParenthesized) return ("Err parenthesis.");
+        if (!isWellParenthesized) {
+            ExpressionBuffer.clear();
+            return ("Err prnths");
+        }
+        if (!validateExpression(expression)){
+            ExpressionBuffer.clear();
+            return ("Err syntax");
+        }
         Queue<String> infixTokenQueue = tokenize(expression);
         Double result;
         try {
             result = evaluateInfix(infixTokenQueue);
         }catch(ParseException e){
+            ExpressionBuffer.clear();
             return e.getMessage();
         }
+        ExpressionBuffer.setExpression(result.toString());//TODO works while we have a single line display
         return (result.toString());
     }
 
@@ -138,6 +150,9 @@ public class ExpressionEvaluator {
                 int i = 1;
                 while ( s.length() > i && ((s.charAt(i)-'0' < 10 && s.charAt(i)-'0' >= 0) || s.charAt(i) == '.') )
                     i++;
+                // we might be eating into a 10^ function
+                if ( s.length() > i && s.charAt(i) == '^' && i > 2 && s.substring(i-2,i).equals("10") )
+                    i=i-2;
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by Rpar, insert *
                 if (lengthDifference > 0 ){
@@ -236,7 +251,7 @@ public class ExpressionEvaluator {
         while (!opStack.isEmpty())
             applyOperation(valueStack, opStack);
         if (valueStack.size() > 1) // NOTE for debugging add condition checking on stacks at end
-            throw new ParseException("Err, Missing operators", opStack.size()+valueStack.size());
+            throw new ParseException("Err, Msng oprtrs", opStack.size()+valueStack.size());
         return valueStack.pop();
     }
 
@@ -269,7 +284,7 @@ public class ExpressionEvaluator {
         }
 
         if (valueStack.size()<2){
-            throw new ParseException("Error, missing operands", opStack.size()+valueStack.size());
+            throw new ParseException("Err, msng oprnds", opStack.size()+valueStack.size());
         }
         double y = valueStack.pop();
         double x = valueStack.pop();
@@ -304,6 +319,20 @@ public class ExpressionEvaluator {
             return 1;
         else if (op.equals("(")); // includes functions
             return 0;
+    }
+
+    // expression should match regex ((\(|(fun))*((d\+)|(d\)*)))*d\)*
+    // where fun is anyone of the functions, + is any operator and
+    // d = <hyphen>?\d*(\.\d+)?<pi>?
+    private static boolean validateExpression(String expression){
+        String fun = "((Sin\\()|(Log10\\()|(e\\^\\()|(√\\()|(10\\^\\())";
+        String operand = "((\\d*\\.?\\d+)|\\d*\\.?\\d*π)";
+        String operator = "((\\+)|(-)|(×)|(÷))";
+        String s0 = "(\\(|("+fun+"))";
+        String regex = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")"+s0+"*)*)"+operand+"?";//("+operand+"\\)*)";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(expression);
+        return m.matches();
     }
 
     // validate that our expression is properly formatted, we could use IllegalFormatExpression but

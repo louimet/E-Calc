@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.friketrin.calc.MainActivity"
+    tools:context="com.calc.MainActivity"
     android:background="#0b0505">
 
     <EditText
@@ -21,12 +21,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
         android:enabled="false"
         android:gravity="end"
         android:inputType="number|numberDecimal"
         android:textSize="@dimen/abc_text_size_headline_material"
-        android:textColor="#dc0000" />
+        android:textColor="#000"
+        android:background="#959595"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:minHeight="@dimen/displayScreenSize" />
 
     <Button
         android:text="@string/button7"
@@ -56,10 +60,9 @@
         android:onClick="sendMessage"
         style="?android:attr/borderlessButtonStyle"
         android:textStyle="bold"
-        android:layout_marginTop="93dp"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/button7"
-        android:layout_toEndOf="@+id/button7" />
+        android:layout_alignTop="@+id/button9"
+        android:layout_toLeftOf="@+id/button3"
+        android:layout_toStartOf="@+id/button3" />
 
     <Button
         android:layout_width="wrap_content"
@@ -85,13 +88,13 @@
         android:clickable="true"
         android:enabled="true"
         android:textColor="#ff0000"
-        android:layout_below="@+id/button7"
-        android:layout_alignLeft="@+id/button7"
-        android:layout_alignStart="@+id/button7"
         android:minWidth="@dimen/activity_num_button_width"
         android:onClick="sendMessage"
         style="?android:attr/borderlessButtonStyle"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -133,13 +136,13 @@
         android:clickable="true"
         android:enabled="true"
         android:textColor="#ff0000"
-        android:layout_below="@+id/button4"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4"
         android:minWidth="@dimen/activity_num_button_width"
         android:onClick="sendMessage"
         style="?android:attr/borderlessButtonStyle"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -149,13 +152,13 @@
         android:clickable="true"
         android:enabled="true"
         android:textColor="#ff0000"
-        android:layout_below="@+id/button5"
-        android:layout_alignLeft="@+id/button5"
-        android:layout_alignStart="@+id/button5"
         android:minWidth="@dimen/activity_num_button_width"
         android:onClick="sendMessage"
         style="?android:attr/borderlessButtonStyle"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/button3"
+        android:layout_toLeftOf="@+id/button3"
+        android:layout_toStartOf="@+id/button3" />
 
     <Button
         android:layout_width="wrap_content"
@@ -165,13 +168,13 @@
         android:clickable="true"
         android:enabled="true"
         android:textColor="#ff0000"
-        android:layout_below="@+id/button5"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_toEndOf="@+id/button2"
         android:minWidth="@dimen/activity_num_button_width"
         android:onClick="sendMessage"
         style="?android:attr/borderlessButtonStyle"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_above="@+id/buttonDot"
+        android:layout_alignLeft="@+id/buttonDot"
+        android:layout_alignStart="@+id/buttonDot" />
 
     <Button
         android:layout_width="wrap_content"
@@ -181,13 +184,13 @@
         android:clickable="true"
         android:enabled="true"
         android:textColor="#ff0000"
-        android:layout_below="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
         android:minWidth="@dimen/activity_num_button_width"
         android:onClick="sendMessage"
         style="?android:attr/borderlessButtonStyle"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/buttonPlusMinus"
+        android:layout_toEndOf="@+id/buttonPlusMinus" />
 
     <Button
         android:layout_width="wrap_content"
@@ -217,7 +220,7 @@
         android:minWidth="@dimen/activity_num_button_width"
         android:onClick="sendMessage"
         android:textStyle="bold"
-        android:layout_below="@+id/button1"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -231,7 +234,7 @@
         android:enabled="true"
         android:textColor="#ff0000"
         android:minWidth="@dimen/activity_num_button_width"
-        android:onClick="sendMessage"
+        android:onClick="clearExpression"
         android:textStyle="bold"
         android:layout_above="@+id/buttonPi"
         android:layout_alignParentLeft="true"
@@ -314,9 +317,9 @@
         android:minWidth="@dimen/activity_num_button_width"
         android:onClick="sendMessage"
         android:textStyle="bold"
-        android:layout_below="@+id/buttonMinus"
-        android:layout_alignLeft="@+id/buttonMinus"
-        android:layout_alignStart="@+id/buttonMinus" />
+        android:layout_alignTop="@+id/button3"
+        android:layout_toRightOf="@+id/button3"
+        android:layout_toEndOf="@+id/button3" />
 
     <Button
         style="?android:attr/borderlessButtonStyle"
@@ -328,11 +331,10 @@
         android:enabled="true"
         android:textColor="#ff0000"
         android:minWidth="@dimen/activity_num_button_width"
-        android:onClick="sendMessage"
+        android:onClick="evaluateExpression"
         android:textStyle="bold"
-        android:layout_below="@+id/buttonPlus"
-        android:layout_alignLeft="@+id/buttonPlus"
-        android:layout_alignStart="@+id/buttonPlus"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/button3"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView" />
 
@@ -378,7 +380,7 @@
         android:textColor="#ff0000"
         android:textStyle="bold"
         android:minWidth="@dimen/activity_num_button_width"
-        android:onClick="sendMessage"
+        android:onClick="backspace"
         android:layout_alignBottom="@+id/buttonClear"
         android:layout_toRightOf="@+id/buttonClear"
         android:layout_toLeftOf="@+id/buttonDivide"

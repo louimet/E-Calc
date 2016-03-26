@@ -6,7 +6,7 @@
  *
  * Pushing buttons calls sendMessage, which has been linked to the buttons via the activity_main.xml
  */
-package com.example.friketrin.calc;
+package com.calc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.os.Vibrator;
 import android.content.Context;
+
+import com.example.friketrin.calc.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // TODO what do we need to change here?
         INPUTFLOWMASK = SZALLOW; // Allow what needs to be allowed in Zero State
         parenthesisOpen = 0; // we're keeping track of these
         isZS = true; // keep a flag for Zero State
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /** Called when the user touches the button */
-    public void sendMessage(View view) {
+    /*public void sendMessage(View view) {
 
         String s = parseMessage(view);
 
@@ -66,11 +68,54 @@ public class MainActivity extends AppCompatActivity {
         text.setText(s);
 
         // Do something in response to button click
+    }*/
+    // just the messenger, provides an interface between the view and the model
+    public void sendMessage(View view){
+        Button button = (Button)view;
+        EditText text = (EditText)findViewById(R.id.textView);
+        InputHandler.input(button.getText().toString());
+        Vibrator vibe;
+        vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibe.vibrate(20);
+        text.setText(ExpressionBuffer.getExpression());
+    }
+
+    public void evaluateExpression(View view){//TODO change this once we have two displays
+        String result = ExpressionEvaluator.evaluate();
+        if (result.isEmpty())
+            return;
+        Vibrator vibe;
+        vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibe.vibrate(20);
+        EditText text = (EditText)findViewById(R.id.textView);
+        text.setText(result);
+    }
+
+    public void clearExpression(View view){
+        Vibrator vibe;// TODO avoid vibrating if we're already clear
+        vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibe.vibrate(20);
+        EditText text = (EditText)findViewById(R.id.textView);
+        //TODO this is useful with single-line display
+        text.setText("0.0");
+        InputHandler.clear();
+    }
+
+    public void backspace(View view){
+        Vibrator vibe;
+        vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibe.vibrate(20);
+        EditText text = (EditText)findViewById(R.id.textView);
+        InputHandler.backspace();
+        //TODO this is useful with single-line display
+        String s = !ExpressionBuffer.getExpression().isEmpty()
+                ? ExpressionBuffer.getExpression()
+                : "0.0";
+        text.setText(s);
     }
 
     /**Handles button input and outputs to the display of the input is valid*/
     private String parseMessage(View view){
-
         // buttonClear - back to Zero State
         if (view.getId() == R.id.buttonClear) {
             INPUTFLOWMASK = SZALLOW;
@@ -88,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         // button EVAL
         if (view.getId() == R.id.buttonEval) {
             if (isZS) return(""); // can't evaluate a zero state expression
-            String result = ExpressionEvaluator.evaluate(expression);
+            String result = ExpressionEvaluator.evaluate();
 
             if(result.matches("-?\\d+\\.?\\d*$") && Double.parseDouble(result) != 0) { // We're OK, we got a number from the evaluation
                 INPUTFLOWMASK =  ALLOWPI | ALLOWMODIF | ALLOWLPAR | ALLOWRPAR | ALLOWOPERATOR | ALLOWFUN;

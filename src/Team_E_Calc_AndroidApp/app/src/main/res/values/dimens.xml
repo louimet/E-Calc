@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_num_button_width">60sp</dimen>
+    <dimen name="displayScreenSize">64sp</dimen>
 </resources>
