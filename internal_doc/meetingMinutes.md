@@ -143,13 +143,13 @@ Looking through missing requirements for deliverable 2:
 * Presentation slides: generally follow the order of requirements followed, elaborate once all materials have been gathered by Monday
    
 * Run through app structure:
-  * Things to review, should we be able to input digits after result?
+  * ~~Things to review, should we be able to input digits after result?~~
   * bug inputing operators after a digit without a dot
   * check if we can get rid ot isOperand with conditions from result
   * when more than 23 digits are input, display will not show latest input (scroll or use scientific notation? set a maximum?)
   * implement plus/minus
-  * refactor with functions in a library
-  * Icon?
+  * ~~refactor with functions in a library~~
+  * ~~Icon?~~
   * discuss layouts for different devices/orientations - android studio has resources for this.
   
 * review and split octave code:
@@ -160,8 +160,110 @@ Looking through missing requirements for deliverable 2:
   5. Laurent?
  
   
- 
+ ###Meeting - H961 Devang, Yuanwen, Laurent and Federico (Laurent is sick with a fever) - Monday, February 29th, 2016
+
+Upload slide template to Google Drive
+
+Things to include in the presentation:
+
+* Strategy outline
+  * outline itself with the following interleaved
+  * method of elaborating questionnaire - each pitches in, find some form of categorization, pilot, review
+  * Personas - primary and secondary division justification
+  * include picture of 10,000 post-its
+
+* Choices and justification - regarding UX, not function implementation
+  * Use case - elaborate...
+  * UI - familiar layout justification from interviews
+  * Flow diagram for input
+  * Data structures
+
+* App Structure
+  * Class relation - code structure
+  * screen - cap
+
+* Includes/Excludes
+  * Section of includes
+  * Section of excludes to be 
   
+* Functions - Display plots for errors, time from testing and/or time complexity analysis
+
+To sum up
+
+Allot around 1.5 minutes per section above, except the last (functions) which gets 4 minutes.
+
+do:
+
+1. Presentation slides
+
+2. Understand each other's function implemenattion and options
+
+3. put together zip file - <Includes> sheet for strategy, sheet for pseudocode, sheet for collab pattrs, doc for test results, sheet for incl/excl
+
+###Meeting - H961 Devang, Yuanwen, and Federico - Wednesday, March 16th, 2016
+
+Come up with tasks...
+
+* contact TA's for ASQ - contact as early as possible, schedule meetig as late as possible
+
+* All - Take ASQ to
+	1. Stephane
+	2. Tristan
+	3. Joey? substitute?
+
+* Create design spec (CRC) for what we have with a modification: change button functions to inputDigit(int i), inputLpar, inputRpar, inputExp, inputPlus, etc and put it in a different class where that class + expressionevaluator are the controller, mainView (and the history-view) is the view and the boolean isZs, the expression, the expression history and the library are the model
+
+* Implemet the revised CRC
+ 
+* All - Read the [oracle code conventions](http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html) and, unless the convention raises someone's objections, fit our existing code into the convention. 
+
+* All - do a real cyclical asymmetric code review
+
+* Revammp the UI after reading a bit of his resources... some ideas, borders of elements, color of buttons according to role, two lines for display, top(left-justified) expression, bottom(right-justified) result, change eval to =, etc
+
+* function-member-specific, revamp functions if they're not satisfying
+
+* History pop-up window
+  1. open a dummy window
+  2. caching expression data (String[]? or a <String> linked-list? queue?)
+  3. putting the two together (some decissions to be made, display all expressions with one empty line between them, Use case: choose oe expression, open up in editing window, call standard android keybd, allow edits and verify correctness at end (as much as enforced by the input management) and then press button to inject into a cleared display window (where editing is rather clunky
+  
+* Memory, implement? 1-slot? include the reference to memory in the expression or the actual contents of memory? limit display precission? - think about this. How should this work? 1-button, only last output? one button for store, one for invoking? more things to think about...
+
+* scrollable display (estimated task: .5 hrs?)
+ 
+* ~~chuck +/- key (5 minutes)~~
+
+* Revise the DOC
+
+* define additions to the DOC and how they fit into the revised format
+
+* Encapsulated prototype of unit tracking? If time permits 
+
+Meet Friday after class? have ideas to discuss regarding the UI, CRC, Memory usage and consolidate what we bring to the meeting in a final usage of memory, a final UI design and do the CRC cards (perhas write crc for current, although we have the UML class diagram in the presentation slides)
+
+###Meeting - H960.6 Devang, Yuanwen, Laurent, Federico and Laurent is sick with a fever) - Tuesday, March 22nd, 2016
+
+* CRC View (History view and and Main view are views, Handle Input and expression evaluator are controller, Expression Buffer and Expression History and Library are model
+
+* New and updated tasks: 
+    1. put tasks in github
+    2. display implemented as two contiguous windows, top with input allowed and scrollable (no keyboard or scrollbar) but add arrow keys; bottom for displaying results (view only)
+    3. implement plus minus key on operand under cursor (only if operand under cursor) and toggle preceding hyphen - see hyphen [here](www.cs.tut.fi/~jkorpela/dashes.html) - __Laurent__
+    4. make blocks for gui - __Devang__
+    5. find nice gui pallette (almost coincides with blocks) - __Devang__
+    6. Find a way to implement memory function and history - __Yuanwen__
+    7. Redistribution of functions code - __Federico__
+    8. Make changes to user manual __Yuanwen__
+    9. Editorial pass on function section in the doc - __Federico__
+    10. Revision of doc - __Laurent__
+    
+
+
+
+
+
+
   
  
 
