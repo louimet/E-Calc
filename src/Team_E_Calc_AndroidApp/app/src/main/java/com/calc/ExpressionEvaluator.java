@@ -121,7 +121,7 @@ public class ExpressionEvaluator {
                 infixTokenQueue.add("(");
                 s = s.substring(2); // include parenthesis in token
             }
-            if (s.matches("10\\^\\(.*\\)")){
+            /*if (s.matches("10\\^\\(.*\\)")){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
@@ -133,7 +133,7 @@ public class ExpressionEvaluator {
                 infixTokenQueue.add("10^");
                 infixTokenQueue.add("(");
                 s = s.substring(4); // include parenthesis in token
-            }
+            }*/
 
             // Lpar - if preceded by digit, pi or Rpar, insert *
             if (s.charAt(0) == '('){
@@ -160,9 +160,9 @@ public class ExpressionEvaluator {
                 int i = 1;
                 while ( s.length() > i && ((s.charAt(i)-'0' < 10 && s.charAt(i)-'0' >= 0) || s.charAt(i) == '.') )
                     i++;
-                // we might be eating into a 10^ function
+                /*// we might be eating into a 10^ function
                 if ( s.length() > i && s.charAt(i) == '^' && i > 2 && s.substring(i-2,i).equals("10") )
-                    i=i-2;
+                    i=i-2;*/
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by Rpar, insert *
                 if (lengthDifference > 0 ){
@@ -186,13 +186,13 @@ public class ExpressionEvaluator {
                 s = s.substring(1);
                 continue;
             }
-            //operator - if minus preceded by Lpar, mult by -1
+            //operator - if minus preceded by Lpar or operator, mult by -1
             if (s.charAt(0) == '-'){
                 int lengthDifference = exprLength - s.length();
                 if (lengthDifference > 0 ){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
                     if( precedingChar != '(' && precedingChar != '+' && precedingChar != '-'
-                            && precedingChar != '×' && precedingChar != '÷') {
+                            && precedingChar != '×' && precedingChar != '÷' && precedingChar != '^') {
                         infixTokenQueue.add("-");
                     }
                     else{
@@ -207,7 +207,8 @@ public class ExpressionEvaluator {
                 s = s.substring(1);
                 continue;
             }
-            if (s.charAt(0) == '+' || s.charAt(0) == '×' || s.charAt(0) == '÷'){
+            if (s.charAt(0) == '+' || s.charAt(0) == '×'
+                    || s.charAt(0) == '÷' || s.charAt(0) == '^'){
                 infixTokenQueue.add(s.substring(0,1));
                 s = s.substring(1);
                 continue;
@@ -249,7 +250,7 @@ public class ExpressionEvaluator {
             }
 
             else if (temp.equals("×") || temp.equals("÷") ||
-                    temp.equals("+") || temp.equals("-") ||
+                    temp.equals("+") || temp.equals("-") || temp.equals("^") ||
                     temp.equals("Log10") || temp.equals("Sin") ||
                     temp.equals("e^") || temp.equals("√") || temp.equals("10^") )
             {
@@ -287,10 +288,10 @@ public class ExpressionEvaluator {
                 valueStack.push(com.teamE.SquareRoot2.calculate(valueStack.pop()));
                 return;
             }
-            else if (temp.equals("10^")) {
+            /*else if (temp.equals("10^")) {
                 valueStack.push(com.teamE.PowerOfTen.calculate(valueStack.pop()));
                 return;
-            }
+            }*/
 
         }
 
@@ -314,6 +315,9 @@ public class ExpressionEvaluator {
             case '÷':
                 valueStack.push(x/y);
                 break;
+            case '^':
+                valueStack.push(com.teamE.PowerFunction.calculate(x,y));
+                break;
         }
     }
 
@@ -322,7 +326,7 @@ public class ExpressionEvaluator {
     private static int precedence(String op)
     {
         if (op.equals("Log10") || op.equals("Sin") || op.equals("e^") ||
-                op.equals("√") || op.equals("10^"))
+                op.equals("√") || op.equals("10^") || op.equals("^") )
             return 3;
         else if (op.equals("×") || op.equals("÷"))
             return 2;
@@ -338,7 +342,7 @@ public class ExpressionEvaluator {
     private static boolean validateExpression(String expression){
         String fun = "((Sin\\()|(Log10\\()|(e\\^\\()|(√\\()|(10\\^\\())";
         String operand = "((-?\\d*\\.?\\d+)|\\d*\\.?\\d*π)";//TODO change for hyphen?
-        String operator = "((\\+)|(-)|(×)|(÷))";
+        String operator = "((\\+)|(-)|(×)|(÷)|(\\^))";
         String s0 = "(\\(|("+fun+"))";
         String regex = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")"+s0+"*)*)"+operand+"?";//("+operand+"\\)*)";
         Pattern p = Pattern.compile(regex);

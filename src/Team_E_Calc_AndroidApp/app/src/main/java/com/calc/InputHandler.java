@@ -72,6 +72,10 @@ public class InputHandler {
                 s = "10^(";
                 newIndex += 4;
                 break;
+            case "xy":
+                s = "^";
+                newIndex += 1;
+                break;
             default:
                 newIndex++;
         }
@@ -115,10 +119,10 @@ public class InputHandler {
             leftSubexpression = leftSubexpression.substring(0, length - 2);
             newIndex -= 2;
         }
-        else if (leftSubexpression.matches("(.*)10\\^\\($") ) {
+        /*else if (leftSubexpression.matches("(.*)10\\^\\($") ) {
             leftSubexpression = leftSubexpression.substring(0, length - 4);
             newIndex -= 4;
-        }
+        }*/
         else { // we have a single character
             leftSubexpression = leftSubexpression.substring(0, length - 1);
             newIndex--;

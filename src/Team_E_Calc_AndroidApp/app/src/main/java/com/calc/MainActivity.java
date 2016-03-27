@@ -48,8 +48,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem vibrateToggle = menu.findItem(R.id.menu_vibrate);
         vibrateToggle.setChecked(vibrate);
-        MenuItem radiansRadio = menu.findItem(R.id.menu_rad);
-        radiansRadio.setChecked(ExpressionEvaluator.getRadians());
+        MenuItem radioItem;
+        if(ExpressionEvaluator.getRadians())
+            radioItem = menu.findItem(R.id.menu_rad);
+        else
+            radioItem = menu.findItem(R.id.menu_deg);
+        radioItem.setChecked(true);
         return true;
     }
 
@@ -68,9 +72,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_rad:
                 ExpressionEvaluator.setRadians(true);
                 item.setChecked(true);
+                return true;
             case R.id.menu_deg:
                 ExpressionEvaluator.setRadians(false);
                 item.setChecked(true);
+                return true;
             case R.id.menu_about:
                 // about was selected // TODO handle this with a little pop-up
                 // TODO maybe include a link to the help doc?

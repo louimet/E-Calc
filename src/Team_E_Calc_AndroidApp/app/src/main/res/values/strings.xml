@@ -20,7 +20,7 @@
     <string name="buttonMinus">-</string>
     <string name="buttonTimes">×</string>
     <string name="buttonDivide">÷</string>
-    <string name="buttonEval">Eval</string>
+    <string name="buttonEval"><big>=</big></string>
     <string name="buttonLpar">(</string>
     <string name="buttonRpar">)</string>
     <string name="buttonBackspace">←</string>
@@ -28,7 +28,7 @@
     <string name="buttonLog10">Log<sub><small>10</small></sub>(x)</string>
     <string name="buttonExp">e<sup><small>x</small></sup></string>
     <string name="buttonSqrt">√(x)</string>
-    <string name="button10to">10<sup><small>x</small></sup></string>
+    <string name="button10to">x<sup><small>y</small></sup></string>
     <!--from here on the menu entries-->
     <string name="history_string">Display History</string>
     <string name="vibrate_string">Haptic Feedback</string>
