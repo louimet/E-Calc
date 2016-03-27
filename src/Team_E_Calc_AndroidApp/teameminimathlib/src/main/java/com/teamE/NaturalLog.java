@@ -39,10 +39,10 @@ public class NaturalLog{
 			constant *= constantSqr;
 		}
 		//Finally, the result of all the intermediate steps is multiplied by 2.0 to get the final result.
-		double result = (2 * temp) + exponentWholePart; //
+		double result = (2 * temp) + exponentWholePart;
 		result = (x > 1)
 				? result
-				: 1d / result;
+				: - result;
 		return result;
 	}		
 }
