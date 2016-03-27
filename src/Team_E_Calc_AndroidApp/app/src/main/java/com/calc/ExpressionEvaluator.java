@@ -67,7 +67,7 @@ public class ExpressionEvaluator {
         while (!s.isEmpty()){
             // fun (include lpar) - if preceded by Rpar, digit
             // IMPORTANT this part must be before checking for digits so we keep 10^ here
-            if (s.matches("Log10\\(.*\\)")){
+            if (s.matches("Log10\\(.*")){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
@@ -81,7 +81,7 @@ public class ExpressionEvaluator {
                 s = s.substring(6); // include parenthesis in token
                 continue;
             }
-            if (s.matches("Sin\\(.*\\)")){
+            if (s.matches("Sin\\(.*")){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
@@ -95,7 +95,7 @@ public class ExpressionEvaluator {
                 s = s.substring(4); // include parenthesis in token
                 continue;
             }
-            if (s.matches("e\\^\\(.*\\)")){
+            if (s.matches("e\\^\\(.*")){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
@@ -108,7 +108,7 @@ public class ExpressionEvaluator {
                 infixTokenQueue.add("(");
                 s = s.substring(3); // include parenthesis in token
             }
-            if (s.matches("√\\(.*\\)")){
+            if (s.matches("√\\(.*")){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
