@@ -14,9 +14,21 @@
         app:showAsAction="never"
         android:checkable="true"
         android:title="@string/vibrate_string"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_rad"
+            android:orderInCategory="3"
+            app:showAsAction="never"
+            android:title="@string/rad_string"/>
+        <item
+            android:id="@+id/menu_deg"
+            android:orderInCategory="4"
+            app:showAsAction="never"
+            android:title="@string/deg_string"/>
+    </group>
     <item
         android:id="@+id/menu_about"
-        android:orderInCategory="2"
+        android:orderInCategory="5"
         app:showAsAction="never"
         android:title="@string/about_string"/>
 </menu>

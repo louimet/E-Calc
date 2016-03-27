@@ -6,13 +6,18 @@ package com.calc;
  */
 public class ExpressionBuffer {
     private static String expression = "";
-    public static void setExpression(String newExpression){
-        expression = newExpression;
-    }
+
     public static String getExpression(){
         return expression;
     }
+
+    public static void setExpression(String newExpression){
+        expression = newExpression;
+    }
+
     public static void clear(){
         expression = "";
     }
+
+
 }

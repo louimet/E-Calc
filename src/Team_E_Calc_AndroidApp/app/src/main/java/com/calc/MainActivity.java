@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     // TODO implement a landscape layout and possibly bigger screen layouts
 
     private boolean vibrate = true;
+    private boolean radians = true;
 
     /**Initialization called when the activity is created*/
     @Override
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem vibrateToggle = menu.findItem(R.id.menu_vibrate);
         vibrateToggle.setChecked(vibrate);
+        MenuItem radiansRadio = menu.findItem(R.id.menu_rad);
+        radiansRadio.setChecked(ExpressionEvaluator.getRadians());
         return true;
     }
 
@@ -59,10 +62,15 @@ public class MainActivity extends AppCompatActivity {
                 populateWithHistory(0);
                 return true;
             case R.id.menu_vibrate:
-                // vibrate was selected
                 vibrate = !vibrate;
                 item.setChecked(vibrate);
                 return true;
+            case R.id.menu_rad:
+                ExpressionEvaluator.setRadians(true);
+                item.setChecked(true);
+            case R.id.menu_deg:
+                ExpressionEvaluator.setRadians(false);
+                item.setChecked(true);
             case R.id.menu_about:
                 // about was selected // TODO handle this with a little pop-up
                 // TODO maybe include a link to the help doc?
@@ -100,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
         }
         EditText text = (EditText)findViewById(R.id.textView);
         text.setText(result);
+        // TODO get rid of this hack when we have two-line display
+        InputHandler.resetIndex();
     }
 
     public void plusMinus(View view){

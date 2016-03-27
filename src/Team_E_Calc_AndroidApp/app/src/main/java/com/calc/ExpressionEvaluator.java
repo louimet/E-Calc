@@ -23,7 +23,16 @@ import java.util.zip.DataFormatException;
 
 public class ExpressionEvaluator {
 
-    // The classe's only public function, all the rest are helpers
+    private static boolean radians = true;
+
+    public static boolean getRadians(){
+        return radians;
+    }
+
+    public static void setRadians(boolean isRadians){
+        radians = isRadians;
+    }
+
     // takes a string and returns the evaluation in a string format
     public static String evaluate(){
         String expression = ExpressionBuffer.getExpression();
@@ -182,7 +191,8 @@ public class ExpressionEvaluator {
                 int lengthDifference = exprLength - s.length();
                 if (lengthDifference > 0 ){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( precedingChar != '(' ) {
+                    if( precedingChar != '(' && precedingChar != '+' && precedingChar != '-'
+                            && precedingChar != '×' && precedingChar != '÷') {
                         infixTokenQueue.add("-");
                     }
                     else{
@@ -266,7 +276,7 @@ public class ExpressionEvaluator {
                 return;
             }
             else if (temp.equals("Sin")) {
-                valueStack.push(com.teamE.Sine.calculate(valueStack.pop()));
+                valueStack.push(com.teamE.Sine.calculate(valueStack.pop(),radians));
                 return;
             }
             else if (temp.equals("e^")) {
@@ -327,7 +337,7 @@ public class ExpressionEvaluator {
     // d = <hyphen>?\d*(\.\d+)?<pi>?
     private static boolean validateExpression(String expression){
         String fun = "((Sin\\()|(Log10\\()|(e\\^\\()|(√\\()|(10\\^\\())";
-        String operand = "((\\d*\\.?\\d+)|\\d*\\.?\\d*π)";
+        String operand = "((-?\\d*\\.?\\d+)|\\d*\\.?\\d*π)";//TODO change for hyphen?
         String operator = "((\\+)|(-)|(×)|(÷))";
         String s0 = "(\\(|("+fun+"))";
         String regex = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")"+s0+"*)*)"+operand+"?";//("+operand+"\\)*)";
