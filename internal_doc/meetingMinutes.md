@@ -258,6 +258,28 @@ Meet Friday after class? have ideas to discuss regarding the UI, CRC, Memory usa
     9. Editorial pass on function section in the doc - __Federico__
     10. Revision of doc - __Laurent__
     
+###Meeting - H961.1 Devang, Yuanwen, Laurent and Federico - Tuesday, March 29nd, 2016
+Checked progress
+
+* Devang merged UI changes
+    * will add 'e' key, up down arrows (still need to think of labeling
+
+* YuanWen will merge memory implementation
+    * will look into two-line display
+
+* Fede will then merge (after YuanWen) history up down functionality
+
+* Laurent will have a go at plus/minus
+
+* Laurent is finishing up doc
+    * Devang will write up doc for gui
+    * YuanWen will write doc for mem
+    * Fede doc for Architecture and give an editorial pass to function doc (for homogeneity)
+
+* ALL! - prepare ASQ for Friday if possible so we can share
+
+
+ 
 
 
 
