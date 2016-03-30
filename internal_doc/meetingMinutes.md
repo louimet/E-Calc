@@ -258,7 +258,7 @@ Meet Friday after class? have ideas to discuss regarding the UI, CRC, Memory usa
     9. Editorial pass on function section in the doc - __Federico__
     10. Revision of doc - __Laurent__
     
-###Meeting - H961.1 Devang, Yuanwen, Laurent, Federico and Laurent is sick with a fever) - Tuesday, March 29nd, 2016
+###Meeting - H961.1 Devang, Yuanwen, Laurent and Federico - Tuesday, March 29nd, 2016
 Checked progress
 
 * Devang merged UI changes
