@@ -7,6 +7,10 @@ public class InputHandler {
 
     private static int currIndex = 0;
 
+    public static int getCurrIndex(){
+        return currIndex;
+    }
+
     public static void resetCurrIndex(){
         currIndex = ExpressionHistory.getEntry().length();
     }

@@ -36,6 +36,9 @@ public class ExpressionEvaluator {
     // takes a string and returns the evaluation in a string format
     public static String evaluate(){
         String expression = ExpressionHistory.getEntry(ExpressionHistory.getCurrEntry());
+        if (expression.equals("")){
+            return expression;
+        }
         boolean isWellParenthesized = validateParenthesis(expression);
         if (!isWellParenthesized) {
             //ExpressionBuffer.clear();
@@ -95,9 +98,9 @@ public class ExpressionEvaluator {
                 s = s.substring(4); // include parenthesis in token
                 continue;
             }
-            if (s.matches("e\\^\\(.*")){
+            if (s.matches("e\\^.*")){
                 int lengthDifference = exprLength - s.length();
-                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
+                // if the character to be tokenized is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
                     if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
@@ -105,8 +108,7 @@ public class ExpressionEvaluator {
                         infixTokenQueue.add("×");
                 }
                 infixTokenQueue.add("e^");
-                infixTokenQueue.add("(");
-                s = s.substring(3); // include parenthesis in token
+                s = s.substring(2);
             }
             if (s.matches("√\\(.*")){
                 int lengthDifference = exprLength - s.length();
@@ -186,6 +188,18 @@ public class ExpressionEvaluator {
                 s = s.substring(1);
                 continue;
             }
+            //e - if preceded by digit or Rpar insert mult
+            if (s.charAt(0) == 'e'){
+                int lengthDifference = exprLength - s.length();
+                if (lengthDifference > 0 ){
+                    char precedingChar = infixExpression.charAt(lengthDifference-1);
+                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) || precedingChar == ')' )
+                        infixTokenQueue.add("×");
+                }
+                infixTokenQueue.add("e");
+                s = s.substring(1);
+                continue;
+            }
             //operator - if minus preceded by Lpar or operator, mult by -1
             if (s.charAt(0) == '-'){
                 int lengthDifference = exprLength - s.length();
@@ -214,7 +228,6 @@ public class ExpressionEvaluator {
                 continue;
             }
         }
-
         return infixTokenQueue;
     }
 
@@ -235,6 +248,9 @@ public class ExpressionEvaluator {
             }
             else if(temp.equals("π")) {
                 valueStack.push(com.teamE.Pi.PI);
+            }
+            else if(temp.equals("e")) {
+                valueStack.push(com.teamE.ExpFunction.calculate());
             }
             else if (temp.endsWith("("))
             {
@@ -340,8 +356,10 @@ public class ExpressionEvaluator {
     // where fun is anyone of the functions, + is any operator and
     // d = <hyphen>?\d*(\.\d+)?<pi>?
     private static boolean validateExpression(String expression){
-        String fun = "((Sin\\()|(Log10\\()|(e\\^\\()|(√\\()|(10\\^\\())";
-        String operand = "((-?\\d*\\.?\\d+)|\\d*\\.?\\d*π)";//TODO change for hyphen?
+        String fun = "((Sin\\()|(Log10\\()|(√\\()|(10\\^\\())"; // removed (e\^\()|
+        String operand = "((-?\\d*\\.?\\d+(E\\d+)?)" +
+                "|(-?\\d*(\\.?(\\d+E)?\\d+)?π)" +
+                "|(-?\\d*(\\.?(\\d+E)?\\d+)?e)|M)";//(-?\d*\.?\d*e)
         String operator = "((\\+)|(-)|(×)|(÷)|(\\^))";
         String s0 = "(\\(|("+fun+"))";
         String regex = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")"+s0+"*)*)"+operand+"?";//("+operand+"\\)*)";

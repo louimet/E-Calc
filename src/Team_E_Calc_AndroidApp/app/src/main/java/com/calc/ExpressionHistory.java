@@ -49,7 +49,13 @@ public class ExpressionHistory {
     }
 
     public static void appendEntry(String expression){
-        history.add(expression);
+        if(history.size() >= 1 && history.peek().equals(""))
+        {
+            history.pop(); // avoid having blank entries in history
+        }
+        else {
+            history.add(expression);
+        }
         currIndex = history.size()-1;
         refreshDisplay = true;
     }

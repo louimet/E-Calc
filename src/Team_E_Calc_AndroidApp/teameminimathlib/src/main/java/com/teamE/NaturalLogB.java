@@ -1,4 +1,6 @@
-public class NaturalLog{
+package com.teamE;
+
+public class NaturalLogB{
 	/** 
 	 * This class calculates the natural logarithm of a number between 0 and 1
 	 * using the Maclaurin series log(1-x) = -Sigma(x^n / n)

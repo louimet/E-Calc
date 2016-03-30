@@ -6,6 +6,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
+        <item name="android:itemBackground">@color/overflow_background</item>
 
+        <item name="android:itemTextAppearance">@style/TextAppearance</item>
+
+
+    </style>
+    <style name="TextAppearance">
+        <item name="android:textColor">@color/overflow_text</item>
+    </style>
 </resources>

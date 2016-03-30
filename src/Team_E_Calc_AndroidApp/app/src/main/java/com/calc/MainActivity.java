@@ -133,10 +133,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void left(View view){
         InputHandler.moveLeft();
+        EditText text = (EditText) findViewById(R.id.textView);
+        text.setSelection(InputHandler.getCurrIndex());
     }
 
     public void right(View view){
         InputHandler.moveRight();
+        EditText text = (EditText) findViewById(R.id.textView);
+        text.setSelection(InputHandler.getCurrIndex());
     }
 
     public void up(View view){
@@ -153,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         if (ExpressionHistory.refreshDisplay) {
             EditText text = (EditText) findViewById(R.id.textView);
             text.setText(ExpressionHistory.getEntry());
+            text.setSelection(InputHandler.getCurrIndex());
             ExpressionHistory.refreshDisplay = false;
         }
     }
