@@ -6,19 +6,18 @@ public class Log10 {
 		
 		if(number <= 0) {
 			double badDouble = Double.NaN;
-			return badDouble;
+			exponent = badDouble;
 		} else if(number == 1) {
-			return 0;
+			exponent = 0;
+		} else if(number > 0 && number < 1) {
+			exponent = NaturalLog.calculate(number) / NaturalLog.calculate(10);
 		} else {
-			double temp = number;
-			double floor = 0;
-			for(;temp > 10; floor++) {
-				temp = temp / 10;
+			exponent = 0;
+			for(;number > 1; exponent++) {
+				number = number / 10;
 			}
-			temp = number / PowerOfTen.calculate(floor);
-			exponent = floor + (NaturalLog.calculate(temp) / NaturalLog.calculate(10));
-			
-			return exponent;
+			exponent = exponent + (NaturalLog.calculate(number) / NaturalLog.calculate(10));
 		}
+		return exponent;
 	}
 }
