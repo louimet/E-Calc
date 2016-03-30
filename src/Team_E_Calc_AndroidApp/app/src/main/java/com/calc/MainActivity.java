@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
     // TODO implement a landscape layout and possibly bigger screen layouts
 
     private boolean vibrate = true;
-    private boolean radians = true;
 
     /**Initialization called when the activity is created*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // TODO what do we need to change here?
+        ExpressionHistory.appendEntry(""); // NOTE try to minimize the view calling the model
     }
 
     @Override
@@ -60,11 +60,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_history:
-                // open history view // TODO handle this
-                // for the time being, try something just for fun
-                populateWithHistory(0);
-                return true;
             case R.id.menu_vibrate:
                 vibrate = !vibrate;
                 item.setChecked(vibrate);
@@ -99,56 +94,66 @@ public class MainActivity extends AppCompatActivity {
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
-        EditText text = (EditText)findViewById(R.id.textView);
-        text.setText(ExpressionBuffer.getExpression());
+        populateDisplay();
     }
 
-    public void evaluateExpression(View view){//TODO change this once we have two displays
+    public void evaluateExpression(View view){//TODO change this once we have two displays (and an ans class)
         String result = ExpressionEvaluator.evaluate();
-        if (result.isEmpty())
-            return;
+        EditText text = (EditText) findViewById(R.id.textView);
+        text.setText(result);
         if(vibrate) {
             Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
-        EditText text = (EditText)findViewById(R.id.textView);
-        text.setText(result);
-        // TODO get rid of this hack when we have two-line display
-        InputHandler.resetIndex();
     }
 
     public void plusMinus(View view){
         InputHandler.plusMinus();
+        populateDisplay();
     }
 
     public void clearExpression(View view){
         if(vibrate) {
-            Vibrator vibe;// TODO avoid vibrating if we're already clear
+            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
-        EditText text = (EditText)findViewById(R.id.textView);
-        //TODO this is useful with single-line display
-        text.setText("0.0");
         InputHandler.clear();
+        populateDisplay();
     }
 
     public void backspace(View view){
         Vibrator vibe;
         vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         vibe.vibrate(20);
-        EditText text = (EditText)findViewById(R.id.textView);
         InputHandler.backspace();
-        //TODO this is useful with single-line display
-        String s = !ExpressionBuffer.getExpression().isEmpty()
-                ? ExpressionBuffer.getExpression()
-                : "0.0";
-        text.setText(s);
+        populateDisplay();
     }
-    private void populateWithHistory(int i){
-        InputHandler.setWithHistoryEntry(i);
-        EditText text = (EditText)findViewById(R.id.textView);
-        text.setText(ExpressionBuffer.getExpression());
+
+    public void left(View view){
+        InputHandler.moveLeft();
+    }
+
+    public void right(View view){
+        InputHandler.moveRight();
+    }
+
+    public void up(View view){
+        InputHandler.moveUp();
+        populateDisplay();
+    }
+
+    public void down(View view){
+        InputHandler.moveDown();
+        populateDisplay();
+    }
+
+    public void populateDisplay(){ // check if we need to populate the display with new content
+        if (ExpressionHistory.refreshDisplay) {
+            EditText text = (EditText) findViewById(R.id.textView);
+            text.setText(ExpressionHistory.getEntry());
+            ExpressionHistory.refreshDisplay = false;
+        }
     }
 }

@@ -35,14 +35,14 @@ public class ExpressionEvaluator {
 
     // takes a string and returns the evaluation in a string format
     public static String evaluate(){
-        String expression = ExpressionBuffer.getExpression();
+        String expression = ExpressionHistory.getEntry(ExpressionHistory.getCurrEntry());
         boolean isWellParenthesized = validateParenthesis(expression);
         if (!isWellParenthesized) {
-            ExpressionBuffer.clear();
+            //ExpressionBuffer.clear();
             return ("Err prnths");
         }
         if (!validateExpression(expression)){
-            ExpressionBuffer.clear();
+            //ExpressionBuffer.clear();
             return ("Err syntax");
         }
         Queue<String> infixTokenQueue = tokenize(expression);
@@ -50,11 +50,11 @@ public class ExpressionEvaluator {
         try {
             result = evaluateInfix(infixTokenQueue);
         }catch(ParseException e){
-            ExpressionBuffer.clear();
+            //ExpressionBuffer.clear();
             return e.getMessage();
         }
-        ExpressionHistory.appendEntry(ExpressionBuffer.getExpression());
-        ExpressionBuffer.setExpression(result.toString());//TODO works while we have a single line display
+        ExpressionHistory.appendEntry("");//TODO works while we have a single line display
+        InputHandler.resetCurrIndex();
         return (result.toString());
     }
 

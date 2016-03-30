@@ -7,15 +7,15 @@ public class InputHandler {
 
     private static int currIndex = 0;
 
-    public static void resetIndex(){
-        currIndex = ExpressionBuffer.getExpression().length();
+    public static void resetCurrIndex(){
+        currIndex = ExpressionHistory.getEntry().length();
     }
 
-    public void moveLeft(){ // TODO connect a button from the interface (add the button too)
+    public static void moveLeft(){ // TODO connect a button from the interface (add the button too)
         if (currIndex == 0)
             return;
         // we only care about what's left of the cursor
-        String expression = ExpressionBuffer.getExpression().substring(0,currIndex);
+        String expression = ExpressionHistory.getEntry().substring(0,currIndex);
         if (expression.matches("(.*)Sin\\($") )
             currIndex -= 4;
         else if (expression.matches("(.*)Log10\\($") )
@@ -30,11 +30,11 @@ public class InputHandler {
             currIndex -= 1;
     }
 
-    public void moveRight(){ // TODO connect a button from the interface (add the button too)
-        if (currIndex == ExpressionBuffer.getExpression().length())
+    public static void moveRight(){ // TODO connect a button from the interface (add the button too)
+        if (currIndex == ExpressionHistory.getEntry().length())
             return;
         // we only care about what's right of the cursor
-        String expression = ExpressionBuffer.getExpression().substring(currIndex);
+        String expression = ExpressionHistory.getEntry().substring(currIndex);
         if (expression.matches("(.*)Sin\\($") )
             currIndex += 4;
         else if (expression.matches("(.*)Log10\\($") )
@@ -47,6 +47,14 @@ public class InputHandler {
             currIndex += 4;
         else // we should have a single character
             currIndex += 1;
+    }
+
+    public static void moveUp(){
+        ExpressionHistory.decrCurrIndex();
+    }
+
+    public static void moveDown(){
+        ExpressionHistory.incrCurrIndex();
     }
 
     public static void input(String s){
@@ -79,21 +87,22 @@ public class InputHandler {
             default:
                 newIndex++;
         }
-        String expression = ExpressionBuffer.getExpression();
+        String expression = ExpressionHistory.getEntry();
         String newExpression = expression.substring(0,currIndex)+s+expression.substring(currIndex);
-        currIndex = newIndex;
-        ExpressionBuffer.setExpression(newExpression);
+        currIndex = newIndex;// the index in the handler refers to the cursor location, in history to the entry TODO change to more meaningful vars such as cursorLoc and entryIdx
+        updateExpressionHistory(newExpression);
     }
 
     public static void plusMinus(){
-        String expression = ExpressionBuffer.getExpression();
+        String expression = ExpressionHistory.getEntry();
         // TODO add appropriate evaluation and modification here, remember to handle currIndex
         // NOTE now we can handle a simple minus sign, no need for a hyphen
+        //updateExpressionHistory(newExpression);
     }
 
     public static void backspace(){
         //if (isZS || expression.isEmpty()) return"";
-        String expression = ExpressionBuffer.getExpression();//TODO this works now with single-display
+        String expression = ExpressionHistory.getEntry();//TODO this works now with single-display
         String leftSubexpression = expression.substring(0, currIndex);
         String rightSubexpression = expression.substring(currIndex);
         if (leftSubexpression.isEmpty())
@@ -127,20 +136,31 @@ public class InputHandler {
             leftSubexpression = leftSubexpression.substring(0, length - 1);
             newIndex--;
         }
-        ExpressionBuffer.setExpression(leftSubexpression+rightSubexpression);
         currIndex = newIndex;
+        updateExpressionHistory(leftSubexpression+rightSubexpression);
     }
 
     public static void clear(){
-        ExpressionBuffer.clear();
+        updateExpressionHistory("");
         currIndex = 0;
     }
 
-    public static void setWithHistoryEntry(int i){
+    static private void updateExpressionHistory(String newExpression){
+        if (ExpressionHistory.getCurrEntry() == ExpressionHistory.getSize()-1){
+            ExpressionHistory.setEntry(newExpression);
+        }
+        else{ // avoid altering the course of history, modified entries are new entries
+            ExpressionHistory.appendEntry(newExpression);
+            currIndex = (ExpressionHistory.getEntry().length());
+        }
+        ExpressionHistory.refreshDisplay = true;
+    }
+
+    /*public static void setWithHistoryEntry(int i){
         if (i < ExpressionHistory.getSize())
             ExpressionBuffer.setExpression(ExpressionHistory.getEntry(i));
             currIndex = ExpressionBuffer.getExpression().length();
-    }
+    }*/
 
     // This could be of use for the plusMinus modifier key, TODO delete when done
     /*// ----------BACKSPACE------- This is pretty involved...

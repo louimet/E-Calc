@@ -8,18 +8,50 @@ import java.util.LinkedList;
  * from the calculator
  */
 public class ExpressionHistory {
+    public static boolean refreshDisplay = false;
+
     private static LinkedList<String> history = new LinkedList<>();
-    public LinkedList<String> getHistory(){ // TODO this can be used to populate the history view
-        return history;
+
+    private static int currIndex;
+
+    public static void decrCurrIndex(){
+        if (currIndex > 0) {
+            currIndex--;
+            refreshDisplay = true;
+        }
     }
+
+    public static void incrCurrIndex(){
+        if (currIndex < history.size()-1) {
+            currIndex++;
+            refreshDisplay = true;
+        }
+    }
+
+    public static int getCurrEntry(){
+        return currIndex;
+    }
+
+    public static String getEntry(){
+        return getEntry(currIndex);
+    }
+
     public static String getEntry(int i){
         return history.get(i);
     }
+
+    public static void setEntry(String newEntry){
+        history.set(currIndex, newEntry);
+    }
+
     public static int getSize(){
         return history.size();
     }
+
     public static void appendEntry(String expression){
         history.add(expression);
+        currIndex = history.size()-1;
+        refreshDisplay = true;
     }
     // TODO what else? just a template for the time being
 }
