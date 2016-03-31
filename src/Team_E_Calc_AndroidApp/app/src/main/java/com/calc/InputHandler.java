@@ -85,6 +85,14 @@ public class InputHandler {
                 s = validateDot();
                 newIndex += s.length();
                 break;
+            case "mr":
+                s = "mr";
+                newIndex += 2;
+                break;
+            case "Ans":
+                s = "Ans";
+                newIndex +=3;
+                break;
             default:
                 newIndex++;
         }
@@ -125,6 +133,12 @@ public class InputHandler {
         } else if (leftSubexpression.matches("(.*)√\\($")) {
             leftSubexpression = leftSubexpression.substring(0, length - 2);
             newIndex -= 2;
+        } else if (leftSubexpression.matches("(.*)mr$")) {
+            leftSubexpression = leftSubexpression.substring(0, length - 2);
+            newIndex -= 2;
+        } else if (leftSubexpression.matches("(.*)Ans$")) {
+            leftSubexpression = leftSubexpression.substring(0, length - 3);
+            newIndex -= 3;
         } else { // we have a single character
             leftSubexpression = leftSubexpression.substring(0, length - 1);
             newIndex--;
@@ -138,6 +152,16 @@ public class InputHandler {
         currIndex = 0;
     }
 
+    //Set the memory
+    public static void setMemory(String text){
+        if ( (text.charAt(0)-'0' < 10 && text.charAt(0)-'0' >= 0) || text.charAt(0) == '.') {
+            int i = 1;
+            while (text.length() > i && ((text.charAt(i) - '0' < 10 && text.charAt(i) - '0' >= 0) || text.charAt(i) == '.'))
+                i++;
+            Memory.setMemoryBuffer(Double.parseDouble(text.substring(0,i)));
+        }
+    }
+
     // return the necessary offset to move left and keep function substrings atomic
     private static int findLeftOffsetAtIndex(int index) {
         // we only care about what's left of the cursor
@@ -148,6 +172,10 @@ public class InputHandler {
             return 6;
         else if (expression.matches("(.*)√\\($"))
             return 2;
+        else if (expression.matches("(.*)mr$"))
+            return 2;
+        else if (expression.matches("(.*)Ans$"))
+            return 3;
         else // we should have a single character
             return 1;
     }
@@ -162,6 +190,10 @@ public class InputHandler {
             return 6;
         else if (expression.matches("^√\\((.*)"))
             return 2;
+        else if (expression.matches("mr.*"))
+            return 2;
+        else if (expression.matches("Ans.*"))
+            return 3;
         else // we should have a single character
             return 1;
     }

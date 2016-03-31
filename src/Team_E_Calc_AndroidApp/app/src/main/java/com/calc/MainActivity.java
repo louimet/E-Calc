@@ -183,4 +183,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Set the memory
+    public void setMemory(View view){
+        EditText text = (EditText)findViewById(R.id.textView);
+        InputHandler.setMemory(text.getText().toString());
+        if(vibrate) {
+            Vibrator vibe;
+            vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            vibe.vibrate(20);
+        }
+    }
+
 }
