@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Eternity</string>
-    <string name="initDisplay">0.0</string>
+    <string name="initDisplay"></string>
+    <string name="resultView">0.0</string>
     <string name="button1">1</string>
     <string name="button2">2</string>
     <string name="button3">3</string>
@@ -42,8 +43,8 @@
     <string name="button_up_arrow">U</string>
     <string name="button_down_arrow">D</string>
 
-    <string name="button_mem_store">m+</string>
-    <string name="button_mem_recall">mr</string>
+    <string name="button_mem_store">MS</string>
+    <string name="button_mem_recall">M</string>
     <string name="button_ans">Ans</string>
 
 </resources>
