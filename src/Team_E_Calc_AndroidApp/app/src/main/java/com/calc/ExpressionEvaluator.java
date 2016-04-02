@@ -59,6 +59,7 @@ public class ExpressionEvaluator {
         ExpressionHistory.appendEntry("");//TODO works while we have a single line display
         InputHandler.resetCurrIndex();
         Memory.setLastAnswer(result);
+        ResultBuffer.setResult(result);
         return (result.toString());
     }
 
@@ -203,7 +204,7 @@ public class ExpressionEvaluator {
             }
 
             //memory
-            if (s.matches("mr.*")){
+            if (s.matches("\\[M\\].*")){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
@@ -212,12 +213,12 @@ public class ExpressionEvaluator {
                             precedingChar == 'π' || precedingChar == ')' )
                         infixTokenQueue.add("×");
                 }
-                infixTokenQueue.add("mr");
-                s = s.substring(2);
+                infixTokenQueue.add("M");
+                s = s.substring(3);
                 continue;
             }
 
-            if (s.matches("Ans.*")){
+            if (s.matches("\\[Ans\\].*")){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
@@ -227,7 +228,7 @@ public class ExpressionEvaluator {
                         infixTokenQueue.add("×");
                 }
                 infixTokenQueue.add("Ans");
-                s = s.substring(3);
+                s = s.substring(5);
                 continue;
             }
 
@@ -283,7 +284,7 @@ public class ExpressionEvaluator {
             else if(temp.equals("e")) {
                 valueStack.push(com.teamE.ExpFunction.calculate());
             }
-            else if (temp.equals("mr")){
+            else if (temp.equals("M")){
                 valueStack.push(Memory.getMemoryBuffer());
             }
             else if (temp.equals("Ans")){
@@ -396,7 +397,9 @@ public class ExpressionEvaluator {
         String fun = "((Sin\\()|(Log10\\()|(√\\()|(10\\^\\())"; // removed (e\^\()|
         String operand = "((-?\\d*\\.?\\d+(E\\d+)?)" +
                 "|(-?\\d*(\\.?(\\d+E)?\\d+)?π)" +
-                "|(-?\\d*(\\.?(\\d+E)?\\d+)?e)|M|(-?\\d*(\\.?(\\d+E)?\\d+)?mr)|(-?\\d*(\\.?(\\d+E)?\\d+)?Ans))";//(-?\d*\.?\d*e)
+                "|(-?\\d*(\\.?(\\d+E)?\\d+)?e)"+
+                "|(-?\\d*(\\.?(\\d+E)?\\d+)?\\[M\\])"+
+                "|(-?\\d*(\\.?(\\d+E)?\\d+)?\\[Ans\\]))";//(-?\d*\.?\d*e)
         String operator = "((\\+)|(-)|(×)|(÷)|(\\^))";
         String s0 = "(\\(|("+fun+"))";
         String regex = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")"+s0+"*)*)"+operand+"?";//("+operand+"\\)*)";

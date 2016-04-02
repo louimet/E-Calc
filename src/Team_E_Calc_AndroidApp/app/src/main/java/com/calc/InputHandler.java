@@ -85,18 +85,22 @@ public class InputHandler {
                 s = validateDot();
                 newIndex += s.length();
                 break;
-            case "mr":
-                s = "mr";
-                newIndex += 2;
+            case "M":
+                s = "[M]";
+                newIndex += 3;
                 break;
             case "Ans":
-                s = "Ans";
-                newIndex +=3;
+                s = "[Ans]";
+                newIndex +=5;
                 break;
             default:
                 newIndex++;
         }
         String expression = ExpressionHistory.getEntry();
+        if (expression.isEmpty() && (s.equals("+")| s.equals("-") | s.equals("×") | s.equals("÷")| s.equals("^"))){
+            s = "[Ans]" + s;
+            newIndex += 5;
+        }
         String newExpression = expression.substring(0, currIndex) + s + expression.substring(currIndex);
         currIndex = newIndex;// the index in the handler refers to the cursor location, in history to the entry TODO change to more meaningful vars such as cursorLoc and entryIdx
         updateExpressionHistory(newExpression);
@@ -133,12 +137,12 @@ public class InputHandler {
         } else if (leftSubexpression.matches("(.*)√\\($")) {
             leftSubexpression = leftSubexpression.substring(0, length - 2);
             newIndex -= 2;
-        } else if (leftSubexpression.matches("(.*)mr$")) {
-            leftSubexpression = leftSubexpression.substring(0, length - 2);
-            newIndex -= 2;
-        } else if (leftSubexpression.matches("(.*)Ans$")) {
+        } else if (leftSubexpression.matches("(.*)\\[M\\]$")) {
             leftSubexpression = leftSubexpression.substring(0, length - 3);
             newIndex -= 3;
+        } else if (leftSubexpression.matches("(.*)\\[Ans\\]$")) {
+            leftSubexpression = leftSubexpression.substring(0, length - 5);
+            newIndex -= 5;
         } else { // we have a single character
             leftSubexpression = leftSubexpression.substring(0, length - 1);
             newIndex--;
@@ -154,12 +158,7 @@ public class InputHandler {
 
     //Set the memory
     public static void setMemory(String text){
-        if ( (text.charAt(0)-'0' < 10 && text.charAt(0)-'0' >= 0) || text.charAt(0) == '.') {
-            int i = 1;
-            while (text.length() > i && ((text.charAt(i) - '0' < 10 && text.charAt(i) - '0' >= 0) || text.charAt(i) == '.'))
-                i++;
-            Memory.setMemoryBuffer(Double.parseDouble(text.substring(0,i)));
-        }
+        Memory.setMemoryBuffer(ResultBuffer.getResult());
     }
 
     // return the necessary offset to move left and keep function substrings atomic
@@ -172,10 +171,10 @@ public class InputHandler {
             return 6;
         else if (expression.matches("(.*)√\\($"))
             return 2;
-        else if (expression.matches("(.*)mr$"))
-            return 2;
-        else if (expression.matches("(.*)Ans$"))
+        else if (expression.matches("(.*)\\[M\\]$"))
             return 3;
+        else if (expression.matches("(.*)\\[Ans\\]$"))
+            return 5;
         else // we should have a single character
             return 1;
     }
@@ -190,10 +189,10 @@ public class InputHandler {
             return 6;
         else if (expression.matches("^√\\((.*)"))
             return 2;
-        else if (expression.matches("mr.*"))
-            return 2;
-        else if (expression.matches("Ans.*"))
+        else if (expression.matches("\\[M\\].*"))
             return 3;
+        else if (expression.matches("\\[Ans\\].*"))
+            return 5;
         else // we should have a single character
             return 1;
     }

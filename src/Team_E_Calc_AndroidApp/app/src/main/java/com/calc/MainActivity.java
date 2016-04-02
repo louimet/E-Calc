@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.os.Vibrator;
 import android.content.Context;
+import android.widget.TextView;
 
 import com.example.friketrin.calc.R;
 
@@ -120,10 +121,13 @@ public class MainActivity extends AppCompatActivity {
         populateDisplay();
     }
 
-    public void evaluateExpression(View view){//TODO change this once we have two displays (and an ans class)
+    public void evaluateExpression(View view){
         String result = ExpressionEvaluator.evaluate();
-        EditText text = (EditText) findViewById(R.id.textView); //TODO  we should change the id, textView is another type of display
-        text.setText(result);
+        TextView resultView = (TextView) findViewById(R.id.resultView);
+        if (!result.isEmpty()) {
+            resultView.setText(result);
+        }
+
         if(vibrate) {
             Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -144,6 +148,9 @@ public class MainActivity extends AppCompatActivity {
         }
         InputHandler.clear();
         populateDisplay();
+        ResultBuffer.clear();
+        TextView resultView = (TextView) findViewById(R.id.resultView);
+        resultView.setText(""+ResultBuffer.getResult());
     }
 
     public void backspace(View view){
