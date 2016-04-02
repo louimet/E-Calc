@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.calc.MainActivity"
-    android:background="#0b0505">
+    android:background="#0b0505"
+    android:weightSum="1">
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/initDisplay"
         android:id="@+id/textView"
@@ -21,7 +22,7 @@
         android:enabled="true"
         android:gravity="end"
         android:inputType="textNoSuggestions"
-        android:textSize="@dimen/abc_text_size_headline_material"
+        android:textSize="@dimen/abc_text_size_large_material"
         android:textColor="#000"
         android:background="#e1e1e1"
         android:textCursorDrawable="@null"
@@ -29,7 +30,35 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:minHeight="@dimen/displayScreenSize" />
+        android:minHeight="@dimen/displayScreenSize"
+        android:layout_weight="0"
+        android:layout_marginBottom="0dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/resultView"
+        android:id="@+id/resultView"
+        android:enabled="true"
+        android:gravity="end"
+        android:inputType="textNoSuggestions"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:textColor="#000"
+        android:background="#e1e1e1"
+        android:textCursorDrawable="@null"
+        android:cursorVisible="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="0dp"
+        android:minHeight="@dimen/displayScreenSize"
+        android:layout_marginBottom="5dp" />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
