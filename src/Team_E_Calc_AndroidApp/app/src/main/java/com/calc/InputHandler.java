@@ -125,8 +125,31 @@ public class InputHandler {
     public static void plusMinus() {
         String expression = ExpressionHistory.getEntry();
         // TODO add appropriate evaluation and modification here, remember to handle currIndex
-        // NOTE now we can handle a simple minus sign, no need for a hyphen
-        //updateExpressionHistory(newExpression);
+        int tempIndex = currIndex;
+        // Keep decrementing currIndex until character at index is not a digit
+        while(tempIndex >=0 && Character.isDigit(expression.charAt(tempIndex))) {
+            tempIndex--;
+        }
+        // At this point, character at currIndex is not a digit.
+        if(expression.charAt(tempIndex) == 'g') {   // Check whether currIndex is pointing at "Log'10". (' = index)
+            //currIndex = currIndex + 2; // if we're at the g, then we're trying to change the sign of an operator...
+            // I say leave
+            return;
+        } else if (expression.charAt(currIndex) == '(' ||
+                expression.charAt(currIndex) == 'π' ||
+                expression.charAt(currIndex) == 'e') {
+            currIndex = currIndex - 1;
+        }
+        // At this point, currIndex is on the character after which the minus sign should go.
+        StringBuffer sb = new StringBuffer(expression);
+        sb.insert(currIndex, "-(");
+        currIndex = currIndex + 2;
+        while(Character.isDigit(sb.charAt(currIndex))) {
+            currIndex++;
+        }
+        sb.insert(currIndex - 1, ')');
+        expression = sb.toString();
+        updateExpressionHistory(expression);
     }
 
     public static void backspace() {

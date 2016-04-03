@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     // TODO implement a landscape layout and possibly bigger screen layouts
 
     private boolean vibrate = true;
+    private boolean copy = true;
+    private static final int MIN_DURATION_OF_LONG_TOUCH = 1000;//
 
     /**Initialization called when the activity is created*/
     @Override
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // TODO what do we need to change here?
         ExpressionHistory.appendEntry(""); // NOTE try to minimize the view calling the mode
         EditText text = (EditText) findViewById(R.id.textView);
-        text.setOnLongClickListener(olcl);
         text.setOnTouchListener(otl);
 
         /* for some reason the xml value doesn't work with galaxy s3 (at least)
@@ -109,29 +110,30 @@ public class MainActivity extends AppCompatActivity {
             int touchPosition = ((EditText)text).getOffsetForPosition(x, y);
             InputHandler.setCurrIndex(touchPosition);
             populateDisplay();
-            // return false means the event will continue to be serviced, allowing onLongClick
-            return false;
-        }
-    };
-    protected View.OnLongClickListener olcl = new View.OnLongClickListener(){
-        @Override
-        public boolean onLongClick(View text){
-            // get the expression and paste it into the clipboard
-            String expression = ((EditText)text).getText().toString();
-            android.content.ClipboardManager clipboard =
-                    (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            android.content.ClipData clip =
-                    android.content.ClipData.newPlainText("Expression copied from Eternity",
-                            expression);
-            clipboard.setPrimaryClip(clip);
-            // now notify the user
-            CharSequence notification = "Copied expression to clipboard";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(getApplicationContext(), notification, duration);
-            toast.show();
+            if(event.getAction()==MotionEvent.ACTION_DOWN)
+                copy = true;
+            else if(event.getEventTime()-event.getDownTime() > MIN_DURATION_OF_LONG_TOUCH && copy){
+                copyToClipboard(text);
+                copy = false;
+            }
             return true;
         }
     };
+    protected void copyToClipboard(View text){
+        String expression = ((EditText)text).getText().toString();
+        android.content.ClipboardManager clipboard =
+                (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        android.content.ClipData clip =
+                android.content.ClipData.newPlainText("Expression copied from Eternity",
+                        expression);
+        clipboard.setPrimaryClip(clip);
+        // now notify the user
+        CharSequence notification = "Copied expression to clipboard";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(getApplicationContext(), notification, duration);
+        toast.show();
+    }
+
     // just the messenger, provides an interface between the view and the model
     public void sendMessage(View view){
         Button button = (Button)view;

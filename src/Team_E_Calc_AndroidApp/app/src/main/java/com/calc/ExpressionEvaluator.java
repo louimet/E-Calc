@@ -128,28 +128,14 @@ public class ExpressionEvaluator {
                 infixTokenQueue.add("(");
                 s = s.substring(2); // include parenthesis in token
             }
-            /*if (s.matches("10\\^\\(.*\\)")){
-                int lengthDifference = exprLength - s.length();
-                // if the character to be deleted is preceded by digit, pi or Rpar, insert *
-                if (lengthDifference > 0){
-                    char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
-                            precedingChar == 'π' || precedingChar == ')' )
-                        infixTokenQueue.add("×");
-                }
-                infixTokenQueue.add("10^");
-                infixTokenQueue.add("(");
-                s = s.substring(4); // include parenthesis in token
-            }*/
 
-            // Lpar - if preceded by digit, pi or Rpar, insert *
+            // Lpar - if preceded by sn operand or Rpar, insert *
             if (s.charAt(0) == '('){
                 int lengthDifference = exprLength - s.length();
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
-                            precedingChar == 'π' || precedingChar == ')' )
+                    if( isOperandChar(precedingChar) )
                         infixTokenQueue.add("×");
                 }
                 infixTokenQueue.add("(");
@@ -181,12 +167,12 @@ public class ExpressionEvaluator {
                 s = s.substring(i);
                 continue;
             }
-            //pi - if preceded by digit or Rpar insert mult
+            //pi - if preceded by operand or Rpar insert mult
             if (s.charAt(0) == 'π'){
                 int lengthDifference = exprLength - s.length();
                 if (lengthDifference > 0 ){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) || precedingChar == ')' )
+                    if( isOperandChar(precedingChar) )
                         infixTokenQueue.add("×");
                 }
                 infixTokenQueue.add("π");
@@ -198,7 +184,7 @@ public class ExpressionEvaluator {
                 int lengthDifference = exprLength - s.length();
                 if (lengthDifference > 0 ){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) || precedingChar == ')' )
+                    if( isOperandChar(precedingChar) )
                         infixTokenQueue.add("×");
                 }
                 infixTokenQueue.add("e");
@@ -212,8 +198,7 @@ public class ExpressionEvaluator {
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
-                            precedingChar == 'π' || precedingChar == ')' )
+                    if( isOperandChar(precedingChar) )
                         infixTokenQueue.add("×");
                 }
                 infixTokenQueue.add("M");
@@ -226,8 +211,7 @@ public class ExpressionEvaluator {
                 // if the character to be deleted is preceded by digit, pi or Rpar, insert *
                 if (lengthDifference > 0){
                     char precedingChar = infixExpression.charAt(lengthDifference-1);
-                    if( (precedingChar-'0' < 10 && precedingChar-'0' >= 0) ||  // preceded by digit
-                            precedingChar == 'π' || precedingChar == ')' )
+                    if(isOperandChar(precedingChar) )
                         infixTokenQueue.add("×");
                 }
                 infixTokenQueue.add("Ans");
@@ -264,6 +248,15 @@ public class ExpressionEvaluator {
             }
         }
         return infixTokenQueue;
+    }
+
+    // Helper Function to aid in tokenization of the expression
+    private static boolean isOperandChar(char c){
+        boolean isOperandChar = false;
+        if( (c == 'e') || (c == 'π') || (c == ']') || (c == ')') || Character.isDigit(c) ){
+            isOperandChar = true;
+        }
+        return isOperandChar;
     }
 
     // evaluate the tokenized infix expression a token at a time, calling precedence
@@ -398,11 +391,13 @@ public class ExpressionEvaluator {
     // d = <hyphen>?\d*(\.\d+)?<pi>?
     private static boolean validateExpression(String expression){
         String fun = "((Sin\\()|(Log10\\()|(√\\()|(10\\^\\())"; // removed (e\^\()|
-        String operand = "((-?\\d*\\.?\\d+(E\\d+)?)" +
+        /*String operand = "((-?\\d*\\.?\\d+(E\\d+)?)" +
                 "|(-?\\d*(\\.?(\\d+E)?\\d+)?π)" +
                 "|(-?\\d*(\\.?(\\d+E)?\\d+)?e)"+
                 "|(-?\\d*(\\.?(\\d+E)?\\d+)?\\[M\\])"+
-                "|(-?\\d*(\\.?(\\d+E)?\\d+)?\\[Ans\\]))";//(-?\d*\.?\d*e)
+                "|(-?\\d*(\\.?(\\d+E)?\\d+)?\\[Ans\\]))";//(-?\d*\.?\d*e)*/
+        String operand = "(-?(\\d*\\.?\\d+(E\\d+)?)" +
+                "(π|e|\\[M\\]|\\[Ans\\])*)";
         String operator = "((\\+)|(-)|(×)|(÷)|(\\^))";
         String s0 = "(\\(|("+fun+"))";
         String regex = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")"+s0+"*)*)"+operand+"?";//("+operand+"\\)*)";
