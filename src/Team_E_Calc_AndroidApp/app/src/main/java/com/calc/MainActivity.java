@@ -9,6 +9,7 @@
  */
 package com.calc;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -43,13 +44,16 @@ public class MainActivity extends AppCompatActivity {
         ExpressionHistory.appendEntry(""); // NOTE try to minimize the view calling the mode
         EditText text = (EditText) findViewById(R.id.textView);
         text.setOnTouchListener(otl);
-
         /* for some reason the xml value doesn't work with galaxy s3 (at least)
         * since it's the phone we have available for testing
         * so setting this flag ensures that suggestions are off.
         * http://stackoverflow.com/questions/1959576/turn-off-autosuggest-for-edittext
         * better this than input of password type (which is a nasty hack) */
         text.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        // Change the font to ensure character's such as U - 232b
+        Button backspace = (Button)findViewById(R.id.buttonBackspace);
+        Typeface font = Typeface.createFromAsset(getAssets(), "DejaVuSans.ttf");
+        backspace.setTypeface(font);
     }
 
     @Override
@@ -116,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 copyToClipboard(text);
                 copy = false;
             }
+            // else - nothing to do
             return true;
         }
     };

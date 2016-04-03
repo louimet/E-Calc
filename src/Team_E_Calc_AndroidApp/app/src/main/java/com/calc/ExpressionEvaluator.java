@@ -396,8 +396,7 @@ public class ExpressionEvaluator {
                 "|(-?\\d*(\\.?(\\d+E)?\\d+)?e)"+
                 "|(-?\\d*(\\.?(\\d+E)?\\d+)?\\[M\\])"+
                 "|(-?\\d*(\\.?(\\d+E)?\\d+)?\\[Ans\\]))";//(-?\d*\.?\d*e)*/
-        String operand = "(-?(\\d*\\.?\\d+(E\\d+)?)" +
-                "(π|e|\\[M\\]|\\[Ans\\])*)";
+        String operand = "(-?(\\d*\\.?\\d+(E\\d+)?)?(π|e|\\[M\\]|\\[Ans\\])*)";
         String operator = "((\\+)|(-)|(×)|(÷)|(\\^))";
         String s0 = "(\\(|("+fun+"))";
         String regex = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")"+s0+"*)*)"+operand+"?";//("+operand+"\\)*)";

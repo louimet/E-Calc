@@ -123,7 +123,7 @@ public class InputHandler {
     }
 
     public static void plusMinus() {
-        String expression = ExpressionHistory.getEntry();
+        /*String expression = ExpressionHistory.getEntry();
         // TODO add appropriate evaluation and modification here, remember to handle currIndex
         int tempIndex = currIndex;
         // Keep decrementing currIndex until character at index is not a digit
@@ -149,7 +149,7 @@ public class InputHandler {
         }
         sb.insert(currIndex - 1, ')');
         expression = sb.toString();
-        updateExpressionHistory(expression);
+        updateExpressionHistory(expression);*/
     }
 
     public static void backspace() {
