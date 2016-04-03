@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
     // just the messenger, provides an interface between the view and the model
     public void sendMessage(View view){
         Button button = (Button)view;
-        InputHandler.input(button.getText().toString());
-        if(vibrate) {
+        boolean success = InputHandler.input(button.getText().toString());
+        if(vibrate && success) {
             Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);

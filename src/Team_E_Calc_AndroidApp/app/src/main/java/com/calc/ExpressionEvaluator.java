@@ -35,9 +35,11 @@ public class ExpressionEvaluator {
 
     // takes a string and returns the evaluation in a string format
     public static String evaluate(){
-        String expression = ExpressionHistory.getEntry(ExpressionHistory.getCurrEntry());
-        if (expression.equals("")){
-            return expression;
+        int currEntry = ExpressionHistory.getCurrEntry();
+        String expression = ExpressionHistory.getEntry(currEntry);
+        // this should only happen on the last entry
+        if (expression.equals("") && currEntry == ExpressionHistory.getSize()){
+            expression = ExpressionHistory.getEntry(currEntry-1);
         }
         boolean isWellParenthesized = validateParenthesis(expression);
         if (!isWellParenthesized) {
@@ -56,7 +58,8 @@ public class ExpressionEvaluator {
             //ExpressionBuffer.clear();
             return e.getMessage();
         }
-        ExpressionHistory.appendEntry("");//TODO works while we have a single line display
+        // open a new entry in the history
+        ExpressionHistory.appendEntry("");
         InputHandler.resetCurrIndex();
         Memory.setLastAnswer(result);
         ResultBuffer.setResult(result);

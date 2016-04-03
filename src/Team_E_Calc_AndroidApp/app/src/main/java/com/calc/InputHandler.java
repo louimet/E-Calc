@@ -58,8 +58,13 @@ public class InputHandler {
         currIndex = ExpressionHistory.getEntry().length();
     }
 
-    public static void input(String s) {
+    /* handle adding input to our string, return true if the operation was
+     * successful, we only expect it to be unsuccessful with such inputs as 2.2.
+     * or ...()
+     */
+    public static boolean input(String s) {
         int newIndex = currIndex;
+        boolean success = true;
         switch (s) {
             case "Sin(x)":
                 s = "Sin(";
@@ -84,6 +89,16 @@ public class InputHandler {
             case ".":
                 s = validateDot();
                 newIndex += s.length();
+                if (s.length() == 0) {
+                    success = false;
+                }
+                break;
+            case ")":
+                s = validateParenthesis();
+                newIndex += s.length();
+                if (s.length() == 0) {
+                    success = false;
+                }
                 break;
             case "M":
                 s = "[M]";
@@ -104,6 +119,7 @@ public class InputHandler {
         String newExpression = expression.substring(0, currIndex) + s + expression.substring(currIndex);
         currIndex = newIndex;// the index in the handler refers to the cursor location, in history to the entry TODO change to more meaningful vars such as cursorLoc and entryIdx
         updateExpressionHistory(newExpression);
+        return success;
     }
 
     public static void plusMinus() {
@@ -202,7 +218,7 @@ public class InputHandler {
             ExpressionHistory.setEntry(newExpression);
         } else { // avoid altering the course of history, modified entries are new entries
             ExpressionHistory.appendEntry(newExpression);
-            currIndex = (ExpressionHistory.getEntry().length());
+            //currIndex = (ExpressionHistory.getEntry().length());
         }
         ExpressionHistory.refreshDisplay = true;
     }
@@ -211,7 +227,7 @@ public class InputHandler {
         String subExpression = ExpressionHistory.getEntry().substring(0,currIndex);
         String s = "";
         if( subExpression.equals("")
-                || subExpression.matches("(.*(Log10)?\\()$")
+                || subExpression.matches("(.*(Log10)?\\(\\d*)$")
                 || subExpression.matches("((.*\\d[^\\.\\d])*\\d*)$")
                 || subExpression.matches("(.*[\\+|-|×|÷|\\^])$") ){
 
@@ -220,4 +236,23 @@ public class InputHandler {
         return s;
     }
 
+    static private String validateParenthesis() {
+        String subExpression = ExpressionHistory.getEntry().substring(0, currIndex);
+        String s = "";
+        if (!(currIndex == 0) && subExpression.charAt(currIndex-1) != '('){
+            int openParenthesis = 0;
+            for(int i=0; i < subExpression.length(); i++){
+                if (subExpression.charAt(i) == '('){
+                    openParenthesis++;
+                }
+                else if (subExpression.charAt(i) == ')'){
+                    openParenthesis--;
+                }
+            }
+            if (openParenthesis > 0){
+                s = ")";
+            }
+        }
+        return s;
+    }
 }
