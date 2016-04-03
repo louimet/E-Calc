@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.os.Vibrator;
 import android.content.Context;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.friketrin.calc.R;
 
@@ -39,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // TODO what do we need to change here?
         ExpressionHistory.appendEntry(""); // NOTE try to minimize the view calling the mode
         EditText text = (EditText) findViewById(R.id.textView);
+        text.setOnLongClickListener(olcl);
         text.setOnTouchListener(otl);
+
         /* for some reason the xml value doesn't work with galaxy s3 (at least)
+        * since it's the phone we have available for testing
         * so setting this flag ensures that suggestions are off.
         * http://stackoverflow.com/questions/1959576/turn-off-autosuggest-for-edittext
         * better this than input of password type (which is a nasty hack) */
@@ -105,10 +109,29 @@ public class MainActivity extends AppCompatActivity {
             int touchPosition = ((EditText)text).getOffsetForPosition(x, y);
             InputHandler.setCurrIndex(touchPosition);
             populateDisplay();
+            // return false means the event will continue to be serviced, allowing onLongClick
+            return false;
+        }
+    };
+    protected View.OnLongClickListener olcl = new View.OnLongClickListener(){
+        @Override
+        public boolean onLongClick(View text){
+            // get the expression and paste it into the clipboard
+            String expression = ((EditText)text).getText().toString();
+            android.content.ClipboardManager clipboard =
+                    (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip =
+                    android.content.ClipData.newPlainText("Expression copied from Eternity",
+                            expression);
+            clipboard.setPrimaryClip(clip);
+            // now notify the user
+            CharSequence notification = "Copied expression to clipboard";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(getApplicationContext(), notification, duration);
+            toast.show();
             return true;
         }
     };
-
     // just the messenger, provides an interface between the view and the model
     public void sendMessage(View view){
         Button button = (Button)view;
@@ -150,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         populateDisplay();
         ResultBuffer.clear();
         TextView resultView = (TextView) findViewById(R.id.resultView);
-        resultView.setText(""+ResultBuffer.getResult());
+        resultView.setText("" + ResultBuffer.getResult());
     }
 
     public void backspace(View view){
@@ -201,4 +224,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /* copy text to clipboard
+    * from http://stackoverflow.com/questions/19253786/how-to-copy-text-to-clip-board-in-android
+    * entry by meow meo
+    * *//*
+    private void setClipboard(Context context,String text) {
+        if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            clipboard.setText(text);
+        } else {
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", text);
+            clipboard.setPrimaryClip(clip);
+        }
+    }*/
 }
