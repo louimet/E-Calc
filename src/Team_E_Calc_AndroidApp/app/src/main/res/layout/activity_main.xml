@@ -27,6 +27,7 @@
         android:background="#e1e1e1"
         android:textCursorDrawable="@null"
         android:cursorVisible="true"
+        android:longClickable="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
