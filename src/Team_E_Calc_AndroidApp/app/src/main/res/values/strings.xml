@@ -14,7 +14,7 @@
     <string name="button0">0</string>
     <string name="buttonDot">.</string>
     <string name="buttonPlusMinus">+/-</string>
-    <string name="buttonClear">Clear</string>
+    <string name="buttonClear">C</string>
     <string name="buttonPi">π</string>
     <string name="button_e">e</string>
     <!--from here on the operators-->
@@ -25,7 +25,7 @@
     <string name="buttonEval"><big>=</big></string>
     <string name="buttonLpar">(</string>
     <string name="buttonRpar">)</string>
-    <string name="buttonBackspace">Del</string>
+    <string name="buttonBackspace">\u232b</string>
     <string name="buttonSin">Sin(x)</string>
     <string name="buttonLog10">Log<sub><small>10</small></sub>(x)</string>
     <string name="buttonExp">e<sup><small>x</small></sup></string>
@@ -38,10 +38,10 @@
     <string name="deg_string">Degrees</string>
     <string name="about_string">About Eternity</string>
 
-    <string name="button_left_arrow">L</string>
-    <string name="button_right_arrow">R</string>
-    <string name="button_up_arrow">U</string>
-    <string name="button_down_arrow">D</string>
+    <string name="button_left_arrow">\u25C0</string>
+    <string name="button_right_arrow">\u25B6</string>
+    <string name="button_up_arrow">\u25B2</string>
+    <string name="button_down_arrow">\u25BC</string>
 
     <string name="button_mem_store">MS</string>
     <string name="button_mem_recall">M</string>
