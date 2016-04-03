@@ -10,6 +10,7 @@
 package com.calc;
 
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean vibrate = true;
     private boolean copy = true;
+    private boolean isExpressionActive = true;
     private static final int MIN_DURATION_OF_LONG_TOUCH = 1000;//
 
     /**Initialization called when the activity is created*/
@@ -109,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
             }catch(Exception e){
                 e.printStackTrace();
             }
+            if(!isExpressionActive){
+                return true; // if the expression is not active, we shouldn't do anything
+            }
             float x = event.getX();
             float y = event.getY();
             int touchPosition = ((EditText)text).getOffsetForPosition(x, y);
@@ -154,11 +159,11 @@ public class MainActivity extends AppCompatActivity {
     public void evaluateExpression(View view){
         String result = ExpressionEvaluator.evaluate();
         TextView resultView = (TextView) findViewById(R.id.resultView);
-        if (!result.isEmpty()) {
+        if (!result.isEmpty()) { // TODO temporary test
             resultView.setText(result);
+            setExpressionActive(false);
         }
-
-        if(vibrate) {
+        if(vibrate && !result.isEmpty()) {
             Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
@@ -171,12 +176,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clearExpression(View view){
-        if(vibrate) {
+        boolean success = InputHandler.clear();
+        if(vibrate && success) {
             Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
-        InputHandler.clear();
         populateDisplay();
         ResultBuffer.clear();
         TextView resultView = (TextView) findViewById(R.id.resultView);
@@ -184,40 +189,58 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void backspace(View view){
-        Vibrator vibe;
-        vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        vibe.vibrate(20);
-        InputHandler.backspace();
+        boolean success = InputHandler.backspace();
+        if(vibrate && success) {
+            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            vibe.vibrate(20);
+        }
         populateDisplay();
     }
 
     public void left(View view){
-        InputHandler.moveLeft();
+        boolean success = InputHandler.moveLeft();
+        if(vibrate && success) {
+            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            vibe.vibrate(20);
+        }
         populateDisplay();
     }
 
     public void right(View view){
-        InputHandler.moveRight();
+        boolean success = InputHandler.moveRight();
+        if(vibrate && success) {
+            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            vibe.vibrate(20);
+        }
         populateDisplay();
     }
 
     public void up(View view){
-        InputHandler.moveUp();
+        // maybe we want the user to know that the expression on the screen is the prior expression
+        /*if( !((EditText)view).getText().toString().equals(ExpressionHistory.getEntry())
+                && ExpressionHistory.getEntry().isEmpty() ){ // we've evaluated an expression
+            InputHandler.moveUp();
+        }*/
+        boolean success = InputHandler.moveUp();
+        if(vibrate && success) {
+            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            vibe.vibrate(20);
+        }
         populateDisplay();
     }
 
     public void down(View view){
-        InputHandler.moveDown();
-        populateDisplay();
-    }
-
-    public void populateDisplay(){ // check if we need to populate the display with new content
-        if (ExpressionHistory.refreshDisplay) {
-            EditText text = (EditText) findViewById(R.id.textView);
-            text.setText(ExpressionHistory.getEntry());
-            text.setSelection(InputHandler.getCurrIndex());
-            ExpressionHistory.refreshDisplay = false;
+        boolean success = InputHandler.moveDown();
+        if(vibrate && success) {
+            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            vibe.vibrate(20);
         }
+        populateDisplay();
     }
 
     //Set the memory
@@ -230,6 +253,28 @@ public class MainActivity extends AppCompatActivity {
             vibe.vibrate(20);
         }
     }
+
+    private void populateDisplay(){ // check if we need to populate the display with new content
+        if (ExpressionHistory.refreshDisplay) {
+            EditText text = (EditText) findViewById(R.id.textView);
+            text.setText(ExpressionHistory.getEntry());
+            text.setSelection(InputHandler.getCurrIndex());
+            ExpressionHistory.refreshDisplay = false;
+            setExpressionActive(true);
+        }
+    }
+
+    private void setExpressionActive(boolean isActive) {
+        EditText expressionView = (EditText) findViewById(R.id.textView);
+        isExpressionActive = isActive;
+        if(isActive){
+            expressionView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.edit_text_active));
+        }
+        else{
+            expressionView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.edit_text_inactive));
+        }
+    }
+
 
     /* copy text to clipboard
     * from http://stackoverflow.com/questions/19253786/how-to-copy-text-to-clip-board-in-android

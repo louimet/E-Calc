@@ -37,13 +37,17 @@ public class ExpressionEvaluator {
     public static String evaluate(){
         int currEntry = ExpressionHistory.getCurrEntry();
         String expression = ExpressionHistory.getEntry(currEntry);
-        // this should only happen on the last entry
-        if (expression.equals("") && currEntry == ExpressionHistory.getSize()){
-            expression = ExpressionHistory.getEntry(currEntry-1);
+        if(currEntry == 0 && expression.isEmpty()){
+            return(""); // returning an empty string means nothing was done
+        }
+        int lastEntry = ExpressionHistory.getSize()-1;
+        if (expression.equals("")) {
+            // empty string should only happen on the last entry
+            assert (currEntry == lastEntry);
+            expression = ExpressionHistory.getEntry(lastEntry - 1);
         }
         boolean isWellParenthesized = validateParenthesis(expression);
         if (!isWellParenthesized) {
-            //ExpressionBuffer.clear();
             return ("Err prnths");
         }
         if (!validateExpression(expression)){

@@ -34,28 +34,32 @@ public class InputHandler {
         ExpressionHistory.refreshDisplay = true;
     }
 
-    public static void moveLeft() { // TODO connect a button from the interface (add the button too)
+    public static boolean moveLeft() {
         if (currIndex == 0)
-            return;
+            return false; // we can't move further left
         currIndex -= findLeftOffsetAtIndex(currIndex);
         ExpressionHistory.refreshDisplay = true;
+        return true;
     }
 
-    public static void moveRight() { // TODO connect a button from the interface (add the button too)
+    public static boolean moveRight() {
         if (currIndex == ExpressionHistory.getEntry().length())
-            return;
+            return false; // we can't move further left
         currIndex += findRightOffsetAtIndex(currIndex);
         ExpressionHistory.refreshDisplay = true;
+        return true;
     }
 
-    public static void moveUp() {
-        ExpressionHistory.decrCurrIndex();
+    public static boolean moveUp() {
+        boolean success = ExpressionHistory.decrCurrIndex();
         currIndex = ExpressionHistory.getEntry().length();
+        return success;
     }
 
-    public static void moveDown() {
-        ExpressionHistory.incrCurrIndex();
+    public static boolean moveDown() {
+        boolean success = ExpressionHistory.incrCurrIndex();
         currIndex = ExpressionHistory.getEntry().length();
+        return success;
     }
 
     /* handle adding input to our string, return true if the operation was
@@ -152,13 +156,13 @@ public class InputHandler {
         updateExpressionHistory(expression);*/
     }
 
-    public static void backspace() {
+    public static boolean backspace() {
         //if (isZS || expression.isEmpty()) return"";
         String expression = ExpressionHistory.getEntry();//TODO this works now with single-display
         String leftSubexpression = expression.substring(0, currIndex);
         String rightSubexpression = expression.substring(currIndex);
         if (leftSubexpression.isEmpty())
-            return;
+            return false; // we didn't delete anything
         int newIndex = currIndex;
         int length = leftSubexpression.length();
         /* checking for functions being removed must go before checking anything else
@@ -187,12 +191,14 @@ public class InputHandler {
             newIndex--;
         }
         currIndex = newIndex;
-        updateExpressionHistory(leftSubexpression + rightSubexpression);
+        boolean success = updateExpressionHistory(leftSubexpression + rightSubexpression);
+        return success;
     }
 
-    public static void clear() {
-        updateExpressionHistory("");
+    public static boolean clear() {
+        boolean success = updateExpressionHistory("");
         currIndex = 0;
+        return success;
     }
 
     //Set the memory
@@ -236,14 +242,17 @@ public class InputHandler {
             return 1;
     }
 
-    static private void updateExpressionHistory(String newExpression) {
+    static private boolean updateExpressionHistory(String newExpression) {
         if (ExpressionHistory.getCurrEntry() == ExpressionHistory.getSize() - 1) {
+            if(newExpression.isEmpty() && ExpressionHistory.getEntry().isEmpty()){
+                return false; // we did nothing since nothing was needed
+            }
             ExpressionHistory.setEntry(newExpression);
         } else { // avoid altering the course of history, modified entries are new entries
             ExpressionHistory.appendEntry(newExpression);
-            //currIndex = (ExpressionHistory.getEntry().length());
         }
         ExpressionHistory.refreshDisplay = true;
+        return true;
     }
 
     static private String validateDot(){

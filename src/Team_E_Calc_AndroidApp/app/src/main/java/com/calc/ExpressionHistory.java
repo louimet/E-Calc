@@ -14,17 +14,25 @@ public class ExpressionHistory {
 
     private static int currIndex;
 
-    public static void decrCurrIndex(){
+    public static boolean decrCurrIndex(){
         if (currIndex > 0) {
             currIndex--;
             refreshDisplay = true;
+            return true;
+        }
+        else{
+            return false; // we couldn't move further back
         }
     }
 
-    public static void incrCurrIndex(){
+    public static boolean incrCurrIndex(){
         if (currIndex < history.size()-1) {
             currIndex++;
             refreshDisplay = true;
+            return true;
+        }
+        else{
+            return false; // we couldn't move further back
         }
     }
 
