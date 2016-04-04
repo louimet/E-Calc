@@ -188,6 +188,9 @@ public class MainActivity extends AppCompatActivity {
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
+        if(!success){
+            usageAlert();
+        }
         populateDisplay();
         ResultBuffer.clear();
         TextView resultView = (TextView) findViewById(R.id.resultView);
@@ -201,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
+        if(!success){
+            usageAlert();
+        }
         populateDisplay();
     }
 
@@ -210,6 +216,9 @@ public class MainActivity extends AppCompatActivity {
             Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
+        }
+        if(!success){
+            usageAlert();
         }
         populateDisplay();
     }
@@ -221,20 +230,21 @@ public class MainActivity extends AppCompatActivity {
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
+        if(!success){
+            usageAlert();
+        }
         populateDisplay();
     }
 
     public void up(View view){
-        // maybe we want the user to know that the expression on the screen is the prior expression
-        /*if( !((EditText)view).getText().toString().equals(ExpressionHistory.getEntry())
-                && ExpressionHistory.getEntry().isEmpty() ){ // we've evaluated an expression
-            InputHandler.moveUp();
-        }*/
         boolean success = InputHandler.moveUp();
         if(vibrate && success) {
             Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
+        }
+        if(!success){
+            usageAlert();
         }
         populateDisplay();
     }
@@ -245,6 +255,9 @@ public class MainActivity extends AppCompatActivity {
             Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
+        }
+        if(!success){
+            usageAlert();
         }
         populateDisplay();
     }
