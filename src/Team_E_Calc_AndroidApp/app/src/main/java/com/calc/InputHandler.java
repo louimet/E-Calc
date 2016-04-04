@@ -67,6 +67,12 @@ public class InputHandler {
      * or ...()
      */
     public static boolean input(String s) {
+        String subExpression = ExpressionHistory.getEntry().substring(0, currIndex);
+        if (!subExpression.isEmpty() && currIndex > 0 && subExpression.charAt(currIndex-1) == '.'){
+            if( !Character.isDigit(s.charAt(0) ) ){
+                return false; // We cannot input anything other than a digit after a dot
+            }
+        }
         int newIndex = currIndex;
         boolean success = true;
         switch (s) {
@@ -113,7 +119,20 @@ public class InputHandler {
                 newIndex +=5;
                 break;
             default:
-                newIndex++;
+                // make sure that digits and dots don't go after literal operands
+                if( Character.isDigit(s.charAt(0)) ) {
+                    if (subExpression.matches("(.*[eπ\\]])$")) {
+                        s = "";
+                        success = false;
+                    }
+                    else{
+                        newIndex++;
+                    }
+                }
+                // just increment index for inputs such as e and pi
+                else {
+                    newIndex++;
+                }
         }
         String expression = ExpressionHistory.getEntry();
         if (expression.isEmpty() && (s.equals("+")| s.equals("-") | s.equals("×") | s.equals("÷")| s.equals("^"))){
@@ -260,9 +279,9 @@ public class InputHandler {
         String s = "";
         if( subExpression.equals("")
                 || subExpression.matches("(.*(Log10)?\\(\\d*)$")
-                || subExpression.matches("((.*\\d[^\\.\\d])*\\d*)$")
-                || subExpression.matches("(.*[\\+|-|×|÷|\\^])$") ){
-
+                || subExpression.matches("(.*[\\+|-|×|÷|\\^])$")
+                || (!subExpression.matches(".*\\d*\\.\\d+$") // || subExpression.matches("((.*\\d[^\\.\\d])*\\d*)$")
+                        && !subExpression.matches("(.*[eπ\\]\\.])$") ) ){
             s = ".";
         }
         return s;
