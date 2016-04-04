@@ -177,14 +177,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void plusMinus(View view){
-        InputHandler.plusMinus();
+        boolean success = InputHandler.plusMinus();
         populateDisplay();
+        if(vibrate && success) {
+            Vibrator vibe;
+            vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            vibe.vibrate(20);
+        }
+        if(!success){
+            usageAlert();
+        }
     }
 
     public void clearExpression(View view){
         boolean success = InputHandler.clear();
         if(vibrate && success) {
-            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
