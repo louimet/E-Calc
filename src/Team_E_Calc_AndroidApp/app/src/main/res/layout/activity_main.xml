@@ -64,6 +64,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <Button
@@ -80,12 +81,7 @@
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="clearExpression"
             android:textStyle="bold"
-            android:layout_above="@+id/buttonPi"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/button8"
-            android:layout_alignEnd="@+id/button8"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="50dp"
@@ -100,11 +96,7 @@
             android:textStyle="bold"
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="up"
-            android:layout_alignBottom="@+id/buttonClear"
-            android:layout_toRightOf="@+id/buttonClear"
-            android:layout_toLeftOf="@+id/buttonDivide"
-            android:layout_toStartOf="@+id/buttonDivide"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="50dp"
@@ -119,12 +111,7 @@
             android:textStyle="bold"
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="down"
-            android:layout_alignBottom="@+id/buttonClear"
-            android:layout_toRightOf="@+id/buttonClear"
-            android:layout_toLeftOf="@+id/buttonDivide"
-            android:layout_toStartOf="@+id/buttonDivide"
-            android:textSize="20dp"
-            android:layout_weight="13.06" />
+            android:textSize="20sp" />
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="50dp"
@@ -139,11 +126,7 @@
             android:textStyle="bold"
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="left"
-            android:layout_alignBottom="@+id/buttonClear"
-            android:layout_toRightOf="@+id/buttonClear"
-            android:layout_toLeftOf="@+id/buttonDivide"
-            android:layout_toStartOf="@+id/buttonDivide"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="50dp"
@@ -158,11 +141,7 @@
             android:textStyle="bold"
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="right"
-            android:layout_alignBottom="@+id/buttonClear"
-            android:layout_toRightOf="@+id/buttonClear"
-            android:layout_toLeftOf="@+id/buttonDivide"
-            android:layout_toStartOf="@+id/buttonDivide"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="70dp"
@@ -177,17 +156,14 @@
             android:textStyle="bold"
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="backspace"
-            android:layout_alignBottom="@+id/buttonClear"
-            android:layout_toRightOf="@+id/buttonClear"
-            android:layout_toLeftOf="@+id/buttonDivide"
-            android:layout_toStartOf="@+id/buttonDivide"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="86dp"
@@ -203,11 +179,7 @@
             android:onClick="sendMessage"
             android:textStyle="italic"
             android:textAllCaps="false"
-            android:layout_below="@+id/buttonMinus"
-            android:layout_toRightOf="@+id/buttonMinus"
-            android:textSize="15dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textSize="15sp" />
 
         <Button
             style="?android:attr/borderlessButtonStyle"
@@ -224,11 +196,7 @@
             android:onClick="sendMessage"
             android:textStyle="italic"
             android:textAllCaps="false"
-            android:layout_above="@+id/buttonSin"
-            android:layout_toRightOf="@+id/buttonTimes"
-            android:textSize="15dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textSize="15sp" />
 
         <Button
             style="?android:attr/borderlessButtonStyle"
@@ -245,11 +213,7 @@
             android:onClick="sendMessage"
             android:textStyle="italic"
             android:textAllCaps="false"
-            android:layout_above="@+id/buttonExp"
-            android:layout_toRightOf="@+id/buttonDivide"
-            android:layout_alignRight="@+id/buttonExp"
-            android:layout_alignEnd="@+id/buttonExp"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
         <Button
             style="?android:attr/borderlessButtonStyle"
@@ -266,16 +230,13 @@
             android:onClick="sendMessage"
             android:textStyle="italic"
             android:textAllCaps="false"
-            android:layout_above="@+id/buttonDivide"
-            android:layout_toRightOf="@+id/buttonDivide"
-            android:layout_alignRight="@+id/buttonSqrt"
-            android:layout_alignEnd="@+id/buttonSqrt"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:text="@string/buttonPi"
@@ -289,10 +250,7 @@
             android:textColor="#ffffff"
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="sendMessage"
-            android:layout_above="@+id/button7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:text="@string/button_e"
@@ -307,10 +265,7 @@
             android:textColor="#ffffff"
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="sendMessage"
-            android:layout_above="@+id/button7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
         <Button
             style="?android:attr/borderlessButtonStyle"
@@ -326,10 +281,7 @@
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="sendMessage"
             android:textStyle="bold"
-            android:layout_alignBottom="@+id/buttonPi"
-            android:layout_toRightOf="@+id/buttonPi"
-            android:layout_toEndOf="@+id/buttonPi"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="50dp"
@@ -344,10 +296,7 @@
             android:minWidth="@dimen/activity_num_button_width"
             android:onClick="sendMessage"
             android:textStyle="bold"
-            android:layout_alignBottom="@+id/buttonLpar"
-            android:layout_toRightOf="@+id/buttonLpar"
-            android:layout_toEndOf="@+id/buttonLpar"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
         <Button
             android:layout_width="47dp"
@@ -361,10 +310,7 @@
             android:enabled="true"
             android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:layout_alignBottom="@+id/buttonLpar"
-            android:layout_toRightOf="@+id/buttonLpar"
-            android:layout_toEndOf="@+id/buttonLpar"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
         <Button
             android:layout_width="47dp"
