@@ -2,6 +2,13 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="activity_num_button_width">60sp</dimen>
+
     <dimen name="displayScreenSize">64sp</dimen>
+    <!--All our buttons -->
+    <dimen name="deletion_button_width">70dp</dimen>
+    <dimen name="arrow_button_width">50dp</dimen>
+    <dimen name="literal_operand_button_width">50dp</dimen>
+    <dimen name="function_button_width">86dp</dimen>
+    <dimen name="memory_button_width">47dp</dimen>
+    <dimen name="num_button_width">60sp</dimen>
 </resources>
