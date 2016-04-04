@@ -196,7 +196,10 @@ public class MainActivity extends AppCompatActivity {
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
-        if(!success){
+        /* also check if the display will be refreshed as we might have an inactive expression
+        * and the arrow actually will have the effect of clearing - so no alert
+         */
+        if(!success && !ExpressionHistory.refreshDisplay){
             usageAlert();
         }
         populateDisplay();
@@ -212,7 +215,10 @@ public class MainActivity extends AppCompatActivity {
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
-        if(!success){
+        /* also check if the display will be refreshed as we might have an inactive expression
+        * and the arrow actually will have the effect of clearing - so no alert
+         */
+        if(!success && !ExpressionHistory.refreshDisplay){
             usageAlert();
         }
         populateDisplay();
@@ -260,11 +266,14 @@ public class MainActivity extends AppCompatActivity {
     public void down(View view){
         boolean success = InputHandler.moveDown();
         if(vibrate && success) {
-            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
-        if(!success){
+        /* also check if the display will be refreshed as we might have an inactive expression
+        * and the arrow actually will have the effect of clearing - so no alert
+         */
+        if(!success && !ExpressionHistory.refreshDisplay){
             usageAlert();
         }
         populateDisplay();
