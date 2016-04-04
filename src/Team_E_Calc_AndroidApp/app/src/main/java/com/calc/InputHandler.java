@@ -150,7 +150,8 @@ public class InputHandler {
                 }
         }
         String expression = ExpressionHistory.getEntry();
-        if (expression.isEmpty() && (s.equals("+")| s.equals("-") | s.equals("×") | s.equals("÷")| s.equals("^"))){
+        if (expression.isEmpty() && (s.equals("+") || s.equals("×")
+                || s.equals("÷") || s.equals("^"))){ // removed s.equals("-") to allow eg "-1..."
             s = "[Ans]" + s;
             newIndex += 5;
         }
@@ -160,6 +161,11 @@ public class InputHandler {
         return success;
     }
 
+    /* Check backwards for the end of an operand and toggle minus according to the presence of
+    * operators or parenthesis. Pretty involved; must check for 2 cases: 1.- a minus sign left
+    * of the operand and 2.- no minus sign left of the operand. In each case there are several
+    * things to check
+     */
     public static void plusMinus() {
         String expression = ExpressionHistory.getEntry();
         StringBuffer sb = new StringBuffer(expression);
@@ -167,32 +173,77 @@ public class InputHandler {
             return;
         }
         int tempIndex = currIndex;
-        if(tempIndex == expression.length()) {
+        // Keep decrementing tempIndex until character at index is not an operand
+        while(tempIndex > 1 && isOperandChar(expression.charAt(tempIndex-1))) {
             tempIndex--;
         }
-        // Keep decrementing tempIndex until character at index is not a digit or pi or e
-        while(tempIndex > 0 && (Character.isDigit(expression.charAt(tempIndex))
-                    || expression.charAt(tempIndex) == ')'
-                    || expression.charAt(tempIndex) == 'e'
-                    || expression.charAt(tempIndex) == 'π')) {
-            tempIndex--;
-        }
-        // At this point, tempIndex is on the character after which the minus sign should go.
-        if(sb.charAt(tempIndex) == '-') {
-            sb.deleteCharAt(tempIndex);
-        } else {
-            if(tempIndex != 0 && (sb.charAt(tempIndex) != 'L'
-                    && sb.charAt(tempIndex) != 'S'
-                    && sb.charAt(tempIndex) != '√')) {
-                tempIndex++;
+        // At this point, tempIndex is @ leftmost of operand, check if it's a minus to our left
+        if(tempIndex > 0 && sb.charAt(tempIndex-1) == '-'){
+            boolean removeMinus;
+            // check the minus is at the beginning of the expression
+            if( tempIndex == 1 ){
+                removeMinus = true;
+            }// check if we have a minus to our right -- we didn't move left in this case
+            else if(sb.length() > tempIndex && sb.charAt(tempIndex) == '-'){
+                removeMinus = true;
             }
-            sb.insert(tempIndex, "-");
+            // check if we have an operand to the left
+            else if(sb.substring(0,tempIndex-1).matches("(.*[-×÷\\^\\+\\(])$")){
+                removeMinus = true;
+            }
+            else{
+                removeMinus = false;
+            }
+            // if we found a minus, either we remove it or add another
+            if(removeMinus){
+                sb.deleteCharAt(tempIndex-1);
+                currIndex--;
+            }
+            else{ // because we already had a minus
+                sb.insert(tempIndex-1, "-");
+                currIndex++;
+            }
+        } else { // it wasn't a minus that we found backwards...
+            boolean addMinus;
+            // firstly, if we haven't moved, we don't have an operand to the left
+            if(tempIndex == currIndex && tempIndex > 1){
+                addMinus = false;
+            }
+            // maybe we just didn't move 'cause we were leftmost
+            else if(tempIndex == currIndex && tempIndex <= 1){
+                if(isOperandChar(sb.charAt(0))){
+                    tempIndex = 0;
+                    addMinus = true;
+                }
+                // we were already between an operand and a parenthesis
+                else if(sb.charAt(0)=='(' && sb.length() > 1 && isOperandChar(sb.charAt(1)) ){
+                    addMinus = true;
+                }
+                else{
+                    addMinus = false;
+                }
+            }
+            // we did move, but we're now leftmost too
+            else if(tempIndex != currIndex && tempIndex <= 1){
+                // in all cases except parenthesis at pos 0, minus goes at pos 0
+                if ( (Character.isDigit(sb.charAt(0)) || (sb.charAt(0) == '.')
+                        || (sb.charAt(0) == '[')) && !(sb.charAt(0) == '(')) {
+                    tempIndex = 0;
+                }
+                addMinus = true;
+            }
+            else{ // tempIndex != currIndex and tempIndex > 1
+                addMinus = true;
+            }
+            if(addMinus) {
+                sb.insert(tempIndex, "-");
+                currIndex++;
+            }
         }
         expression = sb.toString();
         updateExpressionHistory(expression);
-        currIndex = tempIndex;
+        //currIndex = tempIndex; // we want the cursor to stay where it was
     }
-
     public static boolean backspace() {
         //if (isZS || expression.isEmpty()) return"";
         String expression = ExpressionHistory.getEntry();//TODO this works now with single-display
@@ -323,5 +374,15 @@ public class InputHandler {
             }
         }
         return s;
+    }
+
+    /* helper for plusMinus, we don't look for ( as it's used for going left to find
+    * the start of the operand. Since subtraction is not associative, crossing too many
+    * opening parenthesis would change the result*/
+    private static boolean isOperandChar(char c){
+        boolean isOperandChar = (Character.isDigit(c) || c == '.' || c == ')'
+                || c == 'e' || c == 'π' || c == '[' || c == 'M' || c == ']'
+                || c == 'A' || c == 'n' || c == 's');
+        return isOperandChar;
     }
 }
