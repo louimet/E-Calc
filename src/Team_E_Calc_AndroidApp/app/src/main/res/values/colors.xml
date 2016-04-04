@@ -9,7 +9,7 @@
 
     <color name="text_active">#000000</color>
     <color name="text_inactive">#555555</color>
-    <color name="display_alert">#e1e1d1</color>
+    <color name="display_alert">#ffffff</color>
     <color name="display_normal">#e1e1e1</color>
 
 </resources>

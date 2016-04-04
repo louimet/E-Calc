@@ -166,11 +166,12 @@ public class InputHandler {
     * of the operand and 2.- no minus sign left of the operand. In each case there are several
     * things to check
      */
-    public static void plusMinus() {
+    public static boolean plusMinus() {
         String expression = ExpressionHistory.getEntry();
         StringBuffer sb = new StringBuffer(expression);
+        boolean success;
         if(expression == null || expression.equals("")) {
-            return;
+            return false;
         }
         int tempIndex = currIndex;
         // Keep decrementing tempIndex until character at index is not an operand
@@ -199,10 +200,11 @@ public class InputHandler {
                 sb.deleteCharAt(tempIndex-1);
                 currIndex--;
             }
-            else{ // because we already had a minus
+            else{ // since we already had a minus as an operator insert one for operand
                 sb.insert(tempIndex-1, "-");
                 currIndex++;
             }
+            success = true;
         } else { // it wasn't a minus that we found backwards...
             boolean addMinus;
             // firstly, if we haven't moved, we don't have an operand to the left
@@ -238,10 +240,15 @@ public class InputHandler {
             if(addMinus) {
                 sb.insert(tempIndex, "-");
                 currIndex++;
+                success = true;
+            }
+            else{
+                success = false;
             }
         }
         expression = sb.toString();
         updateExpressionHistory(expression);
+        return success;
         //currIndex = tempIndex; // we want the cursor to stay where it was
     }
     public static boolean backspace() {
