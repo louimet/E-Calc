@@ -129,6 +129,21 @@ public class InputHandler {
                         newIndex++;
                     }
                 }
+                else if( (s.equals("+") || s.equals("-") || s.equals("×")
+                        || s.equals("÷") || s.equals("^")) ){
+                    String patternString = "(.*[-×÷\\^\\+])$";
+                    if(s.equals("-")){ // allow operator and minus for the operand
+                        patternString = "(.*[-×÷\\^\\+]-)$";
+                    }
+                    if (subExpression.matches(patternString)) {
+                        s = "";
+                        success = false;
+                    }
+                    else{
+                        newIndex++;
+                    }
+
+                }
                 // just increment index for inputs such as e and pi
                 else {
                     newIndex++;

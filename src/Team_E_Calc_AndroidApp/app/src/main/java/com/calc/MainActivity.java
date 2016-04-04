@@ -10,6 +10,7 @@
 package com.calc;
 
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,14 +30,15 @@ import android.widget.Toast;
 import com.example.friketrin.calc.R;
 
 public class MainActivity extends AppCompatActivity {
-
-    // TODO Memory, access history et al
-    // TODO implement a landscape layout and possibly bigger screen layouts
+    // Some constants
+    private static final int MIN_DURATION_OF_LONG_TOUCH = 1000;
+    private static final int ALERT_DURATION = 80;
 
     private boolean vibrate = true;
     private boolean copy = true;
     private boolean isExpressionActive = true;
-    private static final int MIN_DURATION_OF_LONG_TOUCH = 1000;//
+    private boolean isDisplayAlert;
+
 
     /**Initialization called when the activity is created*/
     @Override
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         Button backspace = (Button)findViewById(R.id.buttonBackspace);
         Typeface font = Typeface.createFromAsset(getAssets(), "DejaVuSans.ttf");
         backspace.setTypeface(font);
+        isDisplayAlert = false;
     }
 
     @Override
@@ -152,6 +155,9 @@ public class MainActivity extends AppCompatActivity {
             Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
+        }
+        else if(!success){
+            usageAlert();
         }
         populateDisplay();
     }
@@ -268,11 +274,39 @@ public class MainActivity extends AppCompatActivity {
         EditText expressionView = (EditText) findViewById(R.id.textView);
         isExpressionActive = isActive;
         if(isActive){
-            expressionView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.edit_text_active));
+            expressionView.setTextColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.text_active));
         }
         else{
-            expressionView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.edit_text_inactive));
+            expressionView.setTextColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.text_inactive));
         }
+    }
+    // flash the display screens when invalid input is keyed in, principle, feedback is good
+    private void usageAlert(){
+        isDisplayAlert = true;
+        Handler handler = new Handler();
+        final Runnable r = new Runnable() {
+            public void run() {
+                EditText expressionView = (EditText) findViewById(R.id.textView);
+                TextView resultView = (TextView) findViewById(R.id.resultView);
+                if(isDisplayAlert){
+                    expressionView.setBackgroundColor(
+                            ContextCompat.getColor(getApplicationContext(), R.color.display_alert));
+                    resultView.setBackgroundColor(
+                            ContextCompat.getColor(getApplicationContext(), R.color.display_alert));
+                    isDisplayAlert = false; // the alert has been sounded...
+                }
+                else{
+                    expressionView.setBackgroundColor(
+                            ContextCompat.getColor(getApplicationContext(), R.color.display_normal));
+                    resultView.setBackgroundColor(
+                            ContextCompat.getColor(getApplicationContext(), R.color.display_normal));
+                }
+            }
+        };
+        handler.post(r);
+        handler.postDelayed(r, ALERT_DURATION);
     }
 
 

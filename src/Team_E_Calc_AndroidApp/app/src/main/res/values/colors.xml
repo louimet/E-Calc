@@ -7,7 +7,9 @@
     <color name="overflow_background">#4355a6</color>
     <color name="overflow_text">#ffffff</color>
 
-    <color name="edit_text_active">#000000</color>
-    <color name="edit_text_inactive">#555555</color>
+    <color name="text_active">#000000</color>
+    <color name="text_inactive">#555555</color>
+    <color name="display_alert">#e1e1d1</color>
+    <color name="display_normal">#e1e1e1</color>
 
 </resources>
