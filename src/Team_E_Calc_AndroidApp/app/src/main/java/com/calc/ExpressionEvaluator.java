@@ -380,7 +380,9 @@ public class ExpressionEvaluator {
     private static int precedence(String op)
     {
         if (op.equals("Log10") || op.equals("Sin") || op.equals("e^") ||
-                op.equals("√") || op.equals("10^") || op.equals("^") )
+                op.equals("√") || op.equals("10^") )
+            return 4;
+        else if (op.equals("^") )
             return 3;
         else if (op.equals("×") || op.equals("÷"))
             return 2;

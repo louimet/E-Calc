@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         * http://stackoverflow.com/questions/1959576/turn-off-autosuggest-for-edittext
         * better this than input of password type (which is a nasty hack) */
         text.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        TextView resultView = (TextView)findViewById(R.id.resultView);
+        resultView.setOnLongClickListener(olcl);
         // Change the font to ensure character's such as U - 232b
         Button backspace = (Button)findViewById(R.id.buttonBackspace);
         Typeface font = Typeface.createFromAsset(getAssets(), "DejaVuSans.ttf");
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    // Override ontouch to disable soft keyboard and handle cursor position
+    // Disable soft keyboard, handle cursor position and copy expression to clipboard
     protected View.OnTouchListener otl = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View text, MotionEvent event) {
@@ -132,16 +134,33 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+    // Override onLongClick to copy text from the result display
+    protected View.OnLongClickListener olcl = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View text) {
+            copyToClipboard(text);
+            return true;
+        }
+    };
     protected void copyToClipboard(View text){
-        String expression = ((EditText)text).getText().toString();
+        String clipping = "";
+        String typeClip = "";
+        if(text.getId() == R.id.textView){
+            clipping = ((EditText) text).getText().toString();
+            typeClip = "Expression";
+        }
+        else if(text.getId() == R.id.resultView){
+            clipping = ((TextView) text).getText().toString();
+            typeClip = "Result";
+        }
         android.content.ClipboardManager clipboard =
                 (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         android.content.ClipData clip =
-                android.content.ClipData.newPlainText("Expression copied from Eternity",
-                        expression);
+                android.content.ClipData.newPlainText(typeClip+" copied from Eternity",
+                        clipping);
         clipboard.setPrimaryClip(clip);
         // now notify the user
-        CharSequence notification = "Copied expression to clipboard";
+        CharSequence notification = "Copied "+typeClip.toLowerCase()+" to clipboard";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(getApplicationContext(), notification, duration);
         toast.show();
@@ -211,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
     public void backspace(View view){
         boolean success = InputHandler.backspace();
         if(vibrate && success) {
-            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
@@ -339,19 +358,4 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(r, ALERT_DURATION);
     }
 
-
-    /* copy text to clipboard
-    * from http://stackoverflow.com/questions/19253786/how-to-copy-text-to-clip-board-in-android
-    * entry by meow meo
-    * *//*
-    private void setClipboard(Context context,String text) {
-        if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            clipboard.setText(text);
-        } else {
-            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", text);
-            clipboard.setPrimaryClip(clip);
-        }
-    }*/
 }
