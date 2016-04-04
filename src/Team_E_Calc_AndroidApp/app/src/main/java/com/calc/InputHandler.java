@@ -161,33 +161,36 @@ public class InputHandler {
     }
 
     public static void plusMinus() {
-        /*String expression = ExpressionHistory.getEntry();
-        // TODO add appropriate evaluation and modification here, remember to handle currIndex
+        String expression = ExpressionHistory.getEntry();
+        StringBuffer sb = new StringBuffer(expression);
+        if(expression == null || expression.equals("")) {
+            return;
+        }
         int tempIndex = currIndex;
-        // Keep decrementing currIndex until character at index is not a digit
-        while(tempIndex >=0 && Character.isDigit(expression.charAt(tempIndex))) {
+        if(tempIndex == expression.length()) {
             tempIndex--;
         }
-        // At this point, character at currIndex is not a digit.
-        if(expression.charAt(tempIndex) == 'g') {   // Check whether currIndex is pointing at "Log'10". (' = index)
-            //currIndex = currIndex + 2; // if we're at the g, then we're trying to change the sign of an operator...
-            // I say leave
-            return;
-        } else if (expression.charAt(currIndex) == '(' ||
-                expression.charAt(currIndex) == 'π' ||
-                expression.charAt(currIndex) == 'e') {
-            currIndex = currIndex - 1;
+        // Keep decrementing tempIndex until character at index is not a digit or pi or e
+        while(tempIndex > 0 && (Character.isDigit(expression.charAt(tempIndex))
+                    || expression.charAt(tempIndex) == ')'
+                    || expression.charAt(tempIndex) == 'e'
+                    || expression.charAt(tempIndex) == 'π')) {
+            tempIndex--;
         }
-        // At this point, currIndex is on the character after which the minus sign should go.
-        StringBuffer sb = new StringBuffer(expression);
-        sb.insert(currIndex, "-(");
-        currIndex = currIndex + 2;
-        while(Character.isDigit(sb.charAt(currIndex))) {
-            currIndex++;
+        // At this point, tempIndex is on the character after which the minus sign should go.
+        if(sb.charAt(tempIndex) == '-') {
+            sb.deleteCharAt(tempIndex);
+        } else {
+            if(tempIndex != 0 && (sb.charAt(tempIndex) != 'L'
+                    && sb.charAt(tempIndex) != 'S'
+                    && sb.charAt(tempIndex) != '√')) {
+                tempIndex++;
+            }
+            sb.insert(tempIndex, "-");
         }
-        sb.insert(currIndex - 1, ')');
         expression = sb.toString();
-        updateExpressionHistory(expression);*/
+        updateExpressionHistory(expression);
+        currIndex = tempIndex;
     }
 
     public static boolean backspace() {
