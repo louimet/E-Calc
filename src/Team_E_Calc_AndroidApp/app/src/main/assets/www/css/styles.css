@@ -20,3 +20,18 @@ div{
 .leftAligned{
 	text-align: left;
 }
+
+.menuColored{
+	background-color: #4355A6;
+}
+
+.arrowColored{
+	background-color: #50588e
+}
+
+
+.red{
+	background-color: red;// add the clear and backspace color here
+}
+
+// and so on for all button colors
