@@ -9,6 +9,7 @@
  */
 package com.calc;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -98,8 +99,16 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 return true;
             case R.id.menu_about:
-                // about was selected // TODO handle this with a little pop-up
-                // TODO maybe include a link to the help doc?
+                // about was selected // TODO what's making the viewer crash?
+               /* //Uri uri = Uri.parse("file:///android_assets/doc/usermanual.html");
+                Uri uri = Uri.parse("http://www.google.com");
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.addCategory(Intent.CATEGORY_BROWSABLE);
+                browserIntent.setDataAndType(Uri.parse("file:///android_assets/doc/usermanual.html"), "text/html");
+                startActivity(browserIntent);*/
+                Intent myIntent = new Intent(MainActivity.this, UserManual.class);
+                //myIntent.putExtra("key", value); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
