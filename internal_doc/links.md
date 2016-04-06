@@ -22,3 +22,11 @@ http://www.androidauthority.com/want-develop-android-apps-languages-learn-391008
 not so relevant...
 
 http://svsg.co/how-to-choose-your-tech-stack/
+
+* Android development
+
+for the manual: [Include html](http://stackoverflow.com/questions/15564186/display-html-in-popup)
+
+regarding sizing and layout, [See Jens Jensen's answer](http://stackoverflow.com/questions/7452741/what-is-androidweightsum-in-android-and-how-does-it-work)
+
+

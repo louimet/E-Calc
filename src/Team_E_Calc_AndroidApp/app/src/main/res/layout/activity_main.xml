@@ -63,7 +63,7 @@
             android:text="@string/buttonClear"
             android:id="@+id/buttonClear"
             android:layout_width="0dp"
-            android:layout_weight="0.0125"
+            android:layout_weight="0.02"
             android:layout_height="match_parent"
             android:background="@drawable/button_delete"
             android:layout_margin="1dp"
@@ -76,7 +76,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0175"
+            android:layout_weight="0.015"
             android:layout_height="match_parent"
             android:text="@string/button_up_arrow"
             android:id="@+id/button_up_arrow"
@@ -91,7 +91,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0175"
+            android:layout_weight="0.015"
             android:layout_height="match_parent"
             android:text="@string/button_down_arrow"
             android:id="@+id/button_down_arrow"
@@ -106,7 +106,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0175"
+            android:layout_weight="0.015"
             android:layout_height="match_parent"
             android:text="@string/button_left_arrow"
             android:id="@+id/button_left_arrow"
@@ -121,7 +121,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0175"
+            android:layout_weight="0.015"
             android:layout_height="match_parent"
             android:text="@string/button_right_arrow"
             android:id="@+id/button_right_arrow"
@@ -136,7 +136,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0125"
+            android:layout_weight="0.02"
             android:layout_height="match_parent"
             android:text="@string/buttonBackspace"
             android:id="@+id/buttonBackspace"
@@ -235,14 +235,13 @@
             android:text="@string/buttonPi"
             android:id="@+id/buttonPi"
             android:layout_width="0dp"
-            android:layout_weight="0.0138"
+            android:layout_weight="0.0142"
             android:layout_height="match_parent"
             android:background="@drawable/button_pi_e_parenthesis"
             android:layout_margin="1dp"
             android:clickable="true"
             android:enabled="true"
             android:textColor="#ffffff"
-
             android:onClick="sendMessage"
             android:textSize="15sp" />
         <Button
@@ -250,7 +249,7 @@
             android:text="@string/button_e"
             android:id="@+id/button_e"
             android:layout_width="0dp"
-            android:layout_weight="0.0138"
+            android:layout_weight="0.0142"
             android:layout_height="match_parent"
             android:background="@drawable/button_pi_e_parenthesis"
             android:layout_margin="1dp"
@@ -264,7 +263,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0138"
+            android:layout_weight="0.0142"
             android:layout_height="match_parent"
             android:text="@string/buttonLpar"
             android:id="@+id/buttonLpar"
@@ -279,7 +278,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0138"
+            android:layout_weight="0.0142"
             android:layout_height="match_parent"
             android:text="@string/buttonRpar"
             android:id="@+id/buttonRpar"
@@ -295,7 +294,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0147"
+            android:layout_weight="0.0142"
             android:layout_height="match_parent"
             android:text="@string/button_mem_recall"
             android:id="@+id/button_mem_recall"
@@ -311,7 +310,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0147"
+            android:layout_weight="0.0142"
             android:layout_height="match_parent"
             android:text="@string/button_mem_store"
             android:id="@+id/button_mem_store"
@@ -327,7 +326,7 @@
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.0147"
+            android:layout_weight="0.0142"
             android:layout_height="match_parent"
             android:text="@string/button_ans"
             android:id="@+id/button_ans"
