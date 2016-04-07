@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<br>
 
 <h1>
 ETERNITY
@@ -48,18 +48,20 @@ User Manual
 <ul>
 	<li>Pressing 
 		<!--Vertical ellipsis-->
-		<span class="menuColored">&nbsp;&#8942;&nbsp;</span>
+		<span class="menuColored">&#8942;</span>
 		or the Options button of your device will bring up the Options Menu.</li>
 	<div>
 		<!--Image of app menu-->
 		<img src="AppMenu.png" style="max-width:100%;height:auto;">
 	</div>
-
+	
 	<li><b>Haptic Feedback:</b>
 		toggle vibration upon pressing a button.
 		<ul>
 			<li>When activated, the device will vibrate when a valid button is pressed.</li>
-			<li>If a button is pressed and no vibration occurs, it means that the action corresponding to that button is invalid in the current state. The display will also briefly flash to signal an invalid input.</li>
+			<li>If a button is pressed and no vibration occurs, it means that the action
+				corresponding to that button is invalid in the current state. The display will also
+				briefly flash to signal an invalid input.</li>
 		</ul>
 	</li>
 	<li><b>Radians/Degrees:</b>select unit to be used for trigonometric calculations.</li>
@@ -67,32 +69,37 @@ User Manual
 </ul>
 
 <h2 id = "display">Display</h2>
-<!--Sreenshot of display-->
+<!--screenshot of display here-->
 <div>
 	<img src="CalculatorDisplay.png" style="max-width:100%;height:auto;">
 </div>
 <ul>
 	<li>The display zone is divided into two lines:</li>
 	<ul>
-		<li>The top line shows the expression as the user composes it. It also displays past expressions when using the 
+		<li>The top line shows the expression as the user composes it. It also displays past
+			expressions when using the
+		<!--example spans are just to avoid line breaks on examples-->
 		<!--arrow spans-->
-		Previous (<span class="arrowColored">&nbsp;&#9650;&nbsp;</span>) <!--up arrow-->
-		and Next (<span class="arrowColored">&nbsp;&#9660;&nbsp;</span>) <!--down arrow-->
+		Previous <span class="example">(<span class="arrowColored">&#9650;</span>)</span>
+		and Next <span class="example">(<span class="arrowColored">&#9660;</span>)</span>
 		buttons.</li>
+		</span>
 		<li>The bottom line displays the evaluation of the current expression when the
-			<span class="orange">&nbsp;=&nbsp;</span> 
+			<span class="orange">=</span>
 			button is pressed.</li>
 	</ul>
-	<li>The display will flash briefly when you try to enter an invalid input (such as two decimal points in a single number).</li>
+	<li>The display will flash briefly when you try to enter an invalid input (such as two
+		decimal points in a single number).</li>
 </ul>
 
 <h2 id = "reset">Resetting the Display</h2>
 <ul>
 	<li>Press
-		<span class="red">&nbsp;C&nbsp;</span> <!--clear-->
-		to clear all the inputs/results and reset the calculator to the initial state. This operation is allowed any time during the calculation.</li>
+		<span class="red">C</span>
+		to clear all the inputs/results and reset the calculator to the initial state. This
+		operation is allowed any time during the calculation.</li>
 	<li>The
-		<span class="red">&nbsp;C&nbsp;</span> <!--clear-->
+		<span class="red">C</span>
 		button affects neither History nor Memory.</li>
 </ul>
 
@@ -100,12 +107,13 @@ User Manual
 <ul>
 	<li>As you compose an expression, it gets displayed on the top line of the display.
 	<ul>
-		<li>At any time, you can modify the expression.  Refer to the Making Corrections During Input section.</li>
+		<li>At any time, you can modify the expression.  Refer to the Making Corrections
+			During Input section.</li>
 	</ul>
 	</li>
 	
 	<li>When you are ready to evaluate the expression, press the
-		<span class="orange">&nbsp;=&nbsp;</span>
+		<span class="orange">=</span>
 		button.
 	<ul>
 		<li>If the expression is valid, the result appears on the bottom line of the display</li>
@@ -113,11 +121,13 @@ User Manual
 	</ul>
 	</li>
 	
-	<li>After being evaluated, the expression is still displayed on the top line, but is no longer editable.
+	<li>After being evaluated, the expression is still displayed on the top line, but is no longer
+		editable.
 	<ul>
 		<li>To modify it and re-evaluate it, press the
-			<span class="arrowColored">&nbsp;&#9650;&nbsp;</span> <!--up arrow-->
-			button to activate the expression from History. Refer to the History section for more information.</li>
+			<span class="arrowColored">&#9650;</span>
+			button to activate the expression from History. Refer to the History section for more
+			information.</li>
 	</ul>
 	</li>
 	
@@ -125,62 +135,64 @@ User Manual
 
 <h2 id = "arith">Arithmetic Calculations</h2>
 <ul>
-	<li>An arithmetic operator
-		(<span class="darkBlue">&nbsp;&#43;&nbsp;</span>, <!--addition operator-->
-		<span class="darkBlue">&nbsp;&#247;&nbsp;</span>, <!--division operator-->
-		<span class="darkBlue">&nbsp;&#215;&nbsp;</span>, <!--mulitiplication operator-->
-		<span class="darkBlue">&nbsp;&#45;&nbsp;</span>) <!--subtraction operator-->
+	<li>An arithmetic operator <span class="example">
+		(<span class="darkBlue">+</span>,</span>
+		<span class="darkBlue">&divide;</span>,
+		<span class="darkBlue">&times;</span>,
+		<span class="example"><span class="darkBlue">-</span>)</span>
 		must be preceded and followed by an operand.</li>
 </ul>
 
 <h2 id = "functions">Scientific Functions</h2>
 <ul>
-	<li>When calling a scientific function
-		(<span class="lightBlue">&nbsp;log<sub>10</sub>(x)&nbsp;</span>, <!--log10(x)-->
-		<span class="lightBlue">&nbsp;x<sup>y</sup>;&nbsp;</span>, <!--x^y-->
-		<span class="lightBlue">&nbsp;sin(x)&nbsp;</span>, <!--sin(x)-->
-		<span class="lightBlue">&nbsp;√(x)&nbsp;</span>) <!--√(x)-->
-		,the function is displayed and an opening parenthesis is automatically added.  After entering the desired number, you must manually add closing parenthesis using the
-		<span class="grey">&nbsp;)&nbsp;</span>
+	<li>When calling a scientific function <span class="example">
+		(<span class="lightBlue">log<sub>10</sub>(x)</span>,</span>
+		<span class="lightBlue" >x<sup>y</sup></span>,
+		<span class="lightBlue">sin(x)</span>,
+		<span class="example"><span class="lightBlue">&radic;x</span>)</span>
+		,the function is displayed and an opening parenthesis is automatically added.
+		After entering the desired number, you must manually add closing parenthesis using the
+		<span class="grey">)</span>
 		button.
 	</li>
 	<ul>
 	
 	<h3 id = "sine">Sine Function</h3>
 	<li>The calculation of the trigonometric function
-		<span class="lightBlue">&nbsp;sin(x);&nbsp;</span>
-		evaluates radians by default but can be configured to evaluate degrees via the Settings Menu.</li>
-	<div>Example:
-		<span class="lightBlue">&nbsp;sin(x)&nbsp;</span>,
-		<span class="grey">&nbsp;&#960;&nbsp;</span>,
-		<span class="grey">&nbsp;)&nbsp;</span>,
-		<span class="orange">&nbsp;=&nbsp;</span>
-		  &rArr;  sin(π)  =  0 </div>
+		<span class="example">(<span class="lightBlue">sin(x)</span>)</span>
+		evaluates radians by default but can be configured to evaluate degrees via the Settings
+		Menu.</li>
+	<div>Example: <span class="example">
+		<span class="lightBlue">sin(x)</span>,
+		<span class="grey">&pi;</span>,
+		<span class="grey">)</span>,
+		<span class="orange">=</span></span>
+		<span class="example">&rArr;  sin(π)  =  0</span></div>
 	
 	<h3 id = "log">Logarithm on the Base of 10</h3>
-	<div>Example:
-		<span class="lightBlue">&nbsp;log<sub>10</sub>(x);&nbsp;</span>,
-		<span class="white">&nbsp;1&nbsp;</span>,
-		<span class="white">&nbsp;0&nbsp;</span>,
-		<span class="grey">&nbsp;)&nbsp;</span>,
-		<span class="orange">&nbsp;=&nbsp;</span>
-		  &rArr;  log<sub>10</sub>(10)  =  1 </div>
+	<div>Example:<span class="example">
+		<span class="lightBlue">log<sub>10</sub>(x)</span>,
+		<span class="white">1</span>,
+		<span class="white">0</span>,
+		<span class="grey">)</span>,
+		<span class="orange">=</span></span>
+		<span class="example">&rArr;  log<sub>10</sub>(10)  =  1</span></div>
 	
 	<h3 id = "sqrt">Square Root</h3>
-	<div>Example:
-		<span class="lightBlue">&nbsp;√(x)&nbsp;</span>,
-		<span class="white">&nbsp;4&nbsp;</span>,
-		<span class="grey">&nbsp;)&nbsp;</span>,
-		<span class="orange">&nbsp;=&nbsp;</span>
-		  &rArr;  √4  =  2 </div>
+	<div>Example:<span class="example">
+		<span class="lightBlue">&radic;x</span>,
+		<span class="white">4</span>,
+		<span class="grey">)</span>,
+		<span class="orange">=</span></span>
+		<span class="example">&rArr;  &radic;4  =  2</span></div>
 	
 	<h3 id = "power">Power Function</h3>
-	<div>Example:
-		<span class="white">&nbsp;2&nbsp;</span>,
-		<span class="lightBlue">&nbsp;x<sup>y</sup>;&nbsp;</span>,
-		<span class="white">&nbsp;3&nbsp;</span>,
-		<span class="orange">&nbsp;=&nbsp;</span>
-		  &rArr;  2<sup>3</sup>  =  8</div>
+	<div>Example:<span class="example">
+		<span class="white">2</span>,
+		<span class="darkBlue">&times;</span>,
+		<span class="white">3</span>,
+		<span class="orange">=</span></span>
+		<span class="example">&rArr;  2<sup>3</sup>  =  8</span></div>
 	</ul> 
 </ul> 
 
@@ -188,36 +200,40 @@ User Manual
 <ul>
 	<li>An opening parenthesis is added automatically in scientific functions that require it.</li>
 	<li>Otherwise, parentheses can be entered manually using the
-		<span class="grey">&nbsp;(&nbsp;</span>
-		and <span class="grey">&nbsp;)&nbsp;</span> .</li>
-	<li>A numerical operand followed or preceded by another numerical operand between parentheses implies multiplication.</li>
-	<div>Example:</br> 2(2+4) &rArr; 2×(2+4)  =  12 </br>
-		 (2+4)2 &rArr; (2+4)×2  =  12
+		<span class="example"><span class="grey">(</span>
+		and <span class="grey">)</span> .</span></li>
+	<li>A numerical operand followed or preceded by another numerical operand between parentheses
+		implies multiplication.</li>
+	<div>Example:</br><span class="example"> 2(2+4) &rArr; 2×(2+4)  =  12</span> </br>
+		 <span class="example">(2+4)2 &rArr; (2+4)×2  =  12</span>
 	</div>
-	<li>An operand will multiply a constant (&pi; or e) or a scientific function even without parentheses.</li>
+	<li>An operand will multiply a constant (&pi; or e) or a scientific function even without
+		parentheses.</li>
 	<div>Example:</br>
-			2&pi; &rArr; 2×&pi; = 6,283185307179631</br>
-            2Log<sub>10</sub>(10) = 2×Log<sub>10</sub>10 = 2
+			<span class="example">2&pi; &rArr; 2×&pi; = 6,283185307179631</span></br>
+            <span class="example">2Log<sub>10</sub>(10) = 2×Log<sub>10</sub>10 = 2</span>
 	</div>
-	<li>A discrepancy between the number of opening and closing parentheses will result in an error when the
-		<span class="orange">&nbsp;=&nbsp;</span>
+	<li>A discrepancy between the number of opening and closing parentheses will result in an error
+		when the
+		<span class="orange">=</span>
 		button is pressed.</li>
 </ul> 
 
 <h2 id = "corrections">Making Corrections During Input</h2>
 <ul>
 	<li>An expression can be modified at any time by using the cursor buttons
-		<span class="arrowColored">&nbsp;&#9664;&nbsp;</span> <!--left arrow-->
-		<span class="arrowColored">&nbsp;&#9654;&nbsp;</span> <!--right arrow-->.</li>
+		<span class="arrowColored">&#9664;</span>
+		<span class="arrowColored">&#9654;</span> .</li>
 	<ul>
 		<li>Position the cursor where a correction is needed and use the
-			<span class="red">&nbsp;&#9003;&nbsp;</span> <!--backspace-->
+			<span class="red backspace">&#9003;</span>
 			button to remove the needed characters.</li>
 		<li>You can then input a new operand/operator as needed.</li>
 	</ul> 
 	<li>The resulting expression must be valid in order to be evaluated.</li>
 	<ul>
-		<li><em>Eternity</em> enforces valid input to the left of the cursor. Therefore, it is possible to accidentally enter invalid characters.</li>
+		<li><em>Eternity</em> enforces valid input to the left of the cursor. Therefore, it is
+			possible to accidentally enter invalid characters.</li>
 		<div>Example:</br>
 			1..|2 is rejected.</br>
 			1.|.2 is accepted but is invalid.
@@ -227,57 +243,69 @@ User Manual
 
 <h2 id = "green">Memory</h2>
 <ul>
-	<li>The result of the latest evaluation of an expression is always stored automatically. To recall it, press the Answer button
-		<span class="green">&nbsp;Ans&nbsp;</span>.
+	<li>The result of the latest evaluation of an expression is always stored automatically. To
+		recall it, press the Answer button
+		<span class="green">Ans</span>.
 	</li>
 	<li>To store a value for later reuse, press the Memory Store button
-		<span class="green">&nbsp;MS&nbsp;</span>.
+		<span class="green">MS</span>.
 	<ul>
 		<li>The
-			<span class="green">&nbsp;MS&nbsp;</span>
-			function will store the value that is currently displayed in the bottom line of the screen. In order to save a number, you must first evaluate it.</li>
+			<span class="green">MS</span>
+			function will store the value that is currently displayed in the bottom line of the
+			screen. In order to save a number, you must first evaluate it.</li>
 		<div>Example:</br>After pressing
-			<span class="red">&nbsp;C&nbsp;</span>
-			, the bottom line of the screen displays ‘0.0’</br>
-			<span class="white">&nbsp;1&nbsp;</span>
-			<span class="white">&nbsp;2&nbsp;</span>
-			<span class="white">&nbsp;3&nbsp;</span>
-			<span class="orange">&nbsp;=&nbsp;</span>
-			<span class="green">&nbsp;MS&nbsp;</span> &rArr; stores 123 in memory</br>
-
-			<span class="white">&nbsp;1&nbsp;</span>
-			<span class="white">&nbsp;2&nbsp;</span>
-			<span class="white">&nbsp;3&nbsp;</span>
-			<span class="green">&nbsp;MS&nbsp;</span> &rArr; stores 0.0 in memory
-
+			<span class="red">C</span>
+			, the bottom line of the screen displays ‘0.0’</br>&nbsp;</br>
+			<span class="example">
+			<span class="white">1</span>,
+			<span class="white">2</span>,
+			<span class="white">3</span>,
+			<span class="orange">=</span>
+			<span class="green">MS</span></span>
+			<span class="example">&rArr; stores 123 in memory</span></br>&nbsp;</br>
+			<span class="example">
+			<span class="white">1</span>
+			<span class="white">2</span>
+			<span class="white">3</span>
+			<span class="green">MS</span></span>
+			<span class="example">&rArr; stores 0.0 in memory</span></br>&nbsp;</br>
 		</div>
 	</ul>
 	</li>
 	<li>To recall the stored value, press the Memory button
-		<span class="green">&nbsp;M&nbsp;</span> </li>
+		<span class="green">M</span> </li>
 	<li>The content of a memory slot
-		(<span class="green">&nbsp;Ans&nbsp;</span>
-		or <span class="green">&nbsp;M&nbsp;</span>)
+		<span class="example">(<span class="green">Ans</span></span>
+		or <span class="example"><span class="green">M</span>)</span>
 		can be used while editing an expression.
 	<ul>
 		<li>The screen will display either [M] or [ANS] as an operand in the expression.</li>
-		<li>For syntactic purposes, [M] and [ANS] are treated like literal operands (i.e. like &pi; or <i>e</i>), meaning they will be multiplied by a preceding operand even if not enclosed in parentheses.</li>
+		<li>For syntactic purposes, [M] and [ANS] are treated like literal operands (i.e. like
+			&pi; or <i>e</i>), meaning they will be multiplied by a preceding operand even if not
+			enclosed in parentheses.</li>
 	</ul>
 	</li>
 </ul>
 <h2 id="history">History</h2>
 <ul>
-	<li><em>Eternity</em>keeps a history of all expressions that have previously been <strong>evaluated</strong>. These expressions can be browsed using the
-		<span class="arrowColored">&nbsp;&#9650;&nbsp;</span> <!--up arrow-->
-		<span class="arrowColored">&nbsp;&#9660;&nbsp;</span> buttons. <!--down arrow-->
+	<li><em>Eternity</em> keeps a history of all expressions that have previously been
+			<strong>evaluated</strong>. These expressions can be browsed using the
+		<span class="arrowColored">&#9650;</span>
+		<span class="arrowColored">&#9660;</span> buttons.
 	</li>
-	<li>The expression currently being viewed can be modified and re-evaluated. Refer to section Making Corrections During Input for more information.</li>
-	<li>When an expression is re-evaluated, it becomes the most recent expression in the history.</li>
+	<li>The expression currently being viewed can be modified and re-evaluated. Refer to section
+			Making Corrections During Input for more information.</li>
+	<li>When an expression is re-evaluated, it becomes the most recent expression in the
+		history.</li>
 </ul> 
 
 <h2 id="export">Exporting a Result or an Expression</h2>
 <ul>
-	<li>A result or an expression can be copied to the clipboard of your Android device by long-pressing the display window.</li>
-</ul> 
+	<li>A result or an expression can be copied to the clipboard of your Android device by
+		long-pressing the display window.</li>
+</ul>
+</br>
+</br>
 </body>
 </html>

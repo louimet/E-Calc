@@ -1,3 +1,8 @@
+/* need this for backspace character, see bellow */
+@font-face {
+    font-family: 'DejaVuSans';
+    src: url('file:///android_asset/DejaVuSans.ttf');
+}
 
 body{
 	color: white;
@@ -13,8 +18,43 @@ ul{
   padding-left: 1em;
 }
 
+li{
+	vertical-align: middle;
+}
+
 div{
 	text-align: center;
+}
+
+span{
+	/* turn span into a block so we can add height and padding */
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.1em 1em;
+	height: 1.2em;
+	/ * if changing something here, remember to set it to default in .example */
+}
+
+.example{
+	/* avoid line breaks between a character and an adjacent span */
+	white-space: nowrap;
+	/* set everything else to defaults, we'll use it on spans */
+	display: initial;
+	vertical-align: initial;
+	padding: initial;
+	height: initial;
+}
+
+.smallerText{
+	font-size: 90%;
+}
+
+.shiftedDown{
+	vertical-align: -10%;
+}
+
+.shiftedUp{
+	vertical-align: +10%;
 }
 
 .leftAligned{
@@ -25,8 +65,10 @@ div{
 	background-color: #4355A6;
 }
 
+/* numbers look a bit big, make the font smaller */
 .arrowColored{
 	background-color: #50588e;
+	font-size: 95%;
 }
 
 .red{
@@ -37,23 +79,36 @@ div{
 	background-color: #c67f16;
 }
 
+/* operators look a bit small, make the font larger */
 .darkBlue{
     background-color: #001ac1;
+	font-size: 102%;
 }
 
+/* functions look a bit small, make the font larger */
 .lightBlue{
     background-color: #375f89;
+	font-size: 105%;
 }
 
 .grey{
     background-color: #7e7f80;
 }
 
+/* numbers look a bit big, make the font smaller */
 .white{
     color: black;
     background-color: #d4d3d3;
+	font-size: 95%;
 }
 
+/* memory buttons look a bit big, make the font smaller */
 .green{
     background-color: #008b35;
+	font-size: 95%;
+}
+
+/* backspace arrow character is not included in the default fonts */
+.backspace{
+	font-family: "DejaVuSans";
 }
