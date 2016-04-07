@@ -28,8 +28,6 @@ import android.content.Context;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.friketrin.calc.R;
-
 public class MainActivity extends AppCompatActivity {
     // Some constants
     private static final int MIN_DURATION_OF_LONG_TOUCH = 1000;

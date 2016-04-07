@@ -2,6 +2,12 @@ package com.calc;
 
 /**
  * Created by friketrin on 3/25/2016.
+ * Part of the controller (MVC) InputHandler gets input from the view and evaluates what should be
+ * done with the input, afterwards calling on the model to make appropriate changes to the expression
+ * or the memory slots. it keeps an index for the cursor position within the current expression.
+ * Upon receiving input, this class performs a validation of input relative to the left side of the
+ * current expression (validating against the right-hand side would unnecessarily hamper editing
+ * of expressions)
  */
 public class InputHandler {
 

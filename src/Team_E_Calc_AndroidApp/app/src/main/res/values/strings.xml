@@ -36,7 +36,7 @@
     <string name="vibrate_string">Haptic Feedback</string>
     <string name="rad_string">Radians</string>
     <string name="deg_string">Degrees</string>
-    <string name="about_string">About Eternity</string>
+    <string name="about_string">User Manual</string>
 
     <string name="button_left_arrow">\u25C0</string>
     <string name="button_right_arrow">\u25B6</string>
@@ -49,5 +49,4 @@
 
 </resources>
 
-<!--⌫-->
-<!--←-->
+    <!--⌫--><!--←-->

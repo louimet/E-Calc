@@ -4,8 +4,10 @@ import java.util.LinkedList;
 
 /**
  * Created by friketrin on 3/26/2016.
- * This class is part of the model part of the MVC, it contains previous expression  entries
- * from the calculator
+ * This class is part of the model part of the MVC, it contains expression entries
+ * from the calculator, including the current expression and an index for the current entry.
+ * When past entries are edited, they're copied onto the end of the list, creating a new entry
+ * RefreshDisplay is just a flag to inform the view that new info needs to be displayed
  */
 public class ExpressionHistory {
     public static boolean refreshDisplay = false;

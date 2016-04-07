@@ -1,4 +1,8 @@
-package com.example.friketrin.calc;
+/**
+ * Put in by AS byt default, leaving it as in a future iteration
+ * we would've used this....
+ */
+package com.calc;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

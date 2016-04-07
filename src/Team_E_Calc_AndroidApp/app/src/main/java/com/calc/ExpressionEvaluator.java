@@ -2,12 +2,15 @@
  * Written by Federico O'Reilly Regueiro for COPM 5541, calculator project
  * Winter 2016
  *
- * This class evaluates the expression contained in the calculator's buffer.
+ * This class is a controller (MVC) it parses the expression contained in the calculator's
+ * expression buffer (M) and translates it into something that the model can use for evaluation.
  * It evaluates for correct parenthesis and then tokenizes the expression separating operands,
- * operators, and functions for placement onto stacks. It finally evaluates by popping the value
- * stack and the operator stack accordingly.
+ * operators and and functions for placement onto stacks(performing a translation of operands from
+ * Strings to Doubles, ). It finally calls on the library(M) or built-in operations
+ * for evaluation by popping the value stack and the operator stack accordingly.
  *
- * It has a single public method for interfacing: evaluate(string) : string
+ * It has a three public methods for interfacing: evaluate(string) : string and a setter/getter for
+ * the radians boolean value
  */
 package com.calc;
 import java.text.ParseException;
@@ -16,10 +19,6 @@ import java.util.Queue;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.DataFormatException;
-
-// TODO comments -  Class to parse and compute calculator expressions from team E's calculator for
-// dot dot dot
 
 public class ExpressionEvaluator {
 
