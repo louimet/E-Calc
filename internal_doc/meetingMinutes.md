@@ -288,6 +288,7 @@ Checked progress
 - Appendix section for functions (plots, tables) - Yuanwen
 - Testing section documentation - Federico
 - Asymmetric code review.
+- Everyone read the documentation when done.
 
 
 
