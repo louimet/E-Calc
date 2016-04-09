@@ -391,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
     private void populateDisplay(){
         if (ExpressionHistory.refreshDisplay) {
             EditText text = (EditText) findViewById(R.id.textView);
-            text.setText(ExpressionHistory.getCurrEntry());
+            text.setText(ExpressionHistory.getEntry());
             text.setSelection(InputHandler.getCursorPosition());
             ExpressionHistory.refreshDisplay = false;
             setExpressionActive(true);

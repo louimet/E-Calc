@@ -49,7 +49,7 @@ public class ExpressionEvaluator {
      * or an empty string if there is no expression to evaluate */
     public static String evaluate() {
         int currEntry = ExpressionHistory.getCurrEntryIndex();
-        String expression = ExpressionHistory.getCurrEntry(currEntry);
+        String expression = ExpressionHistory.getEntry(currEntry);
         if((currEntry == 0) && expression.isEmpty()){
             return("");
         }
@@ -58,7 +58,7 @@ public class ExpressionEvaluator {
 
             // empty string should only happen on the last entry
             assert (currEntry == lastEntry);
-            expression = ExpressionHistory.getCurrEntry(lastEntry - 1);
+            expression = ExpressionHistory.getEntry(lastEntry - 1);
         }
         boolean isWellParenthesized = validateParentheses(expression);
         if (!isWellParenthesized) {

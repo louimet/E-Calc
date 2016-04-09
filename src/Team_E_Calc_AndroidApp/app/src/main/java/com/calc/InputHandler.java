@@ -18,12 +18,12 @@ public class InputHandler {
     }
 
     public static void resetCurrPosition() {
-        cursorPosition = ExpressionHistory.getCurrEntry().length();
+        cursorPosition = ExpressionHistory.getEntry().length();
     }
 
     public static void setCursorPosition(int newIndex) {
         final int MAX_NUM_FUN_CHARS = 6;
-        int rightSubExpressionLength = ExpressionHistory.getCurrEntry().length() - newIndex;
+        int rightSubExpressionLength = ExpressionHistory.getEntry().length() - newIndex;
         int rightShift = (MAX_NUM_FUN_CHARS - 1) < rightSubExpressionLength
                 ? MAX_NUM_FUN_CHARS - 1
                 : rightSubExpressionLength;
@@ -49,7 +49,7 @@ public class InputHandler {
     }
 
     public static boolean moveRight() {
-        if (cursorPosition == ExpressionHistory.getCurrEntry().length())
+        if (cursorPosition == ExpressionHistory.getEntry().length())
             return false; // we can't move further left
         cursorPosition += findRightOffsetAtPosition(cursorPosition);
         ExpressionHistory.refreshDisplay = true;
@@ -58,13 +58,13 @@ public class InputHandler {
 
     public static boolean moveUp() {
         boolean success = ExpressionHistory.decrCurrIndex();
-        cursorPosition = ExpressionHistory.getCurrEntry().length();
+        cursorPosition = ExpressionHistory.getEntry().length();
         return success;
     }
 
     public static boolean moveDown() {
         boolean success = ExpressionHistory.incrCurrIndex();
-        cursorPosition = ExpressionHistory.getCurrEntry().length();
+        cursorPosition = ExpressionHistory.getEntry().length();
         return success;
     }
 
@@ -73,7 +73,7 @@ public class InputHandler {
      * or ...()
      */
     public static boolean input(String s) {
-        String subExpression = ExpressionHistory.getCurrEntry().substring(0, cursorPosition);
+        String subExpression = ExpressionHistory.getEntry().substring(0, cursorPosition);
         if (!subExpression.isEmpty() && cursorPosition > 0 && subExpression.charAt(cursorPosition -1) == '.'){
             if( !Character.isDigit(s.charAt(0) ) ){
                 return false; // We cannot input anything other than a digit after a dot
@@ -155,7 +155,7 @@ public class InputHandler {
                     newPosition++;
                 }
         }
-        String expression = ExpressionHistory.getCurrEntry();
+        String expression = ExpressionHistory.getEntry();
         if (expression.isEmpty() && (s.equals("+") || s.equals("×")
                 || s.equals("÷") || s.equals("^"))){ // removed s.equals("-") to allow eg "-1..."
             s = "[Ans]" + s;
@@ -173,7 +173,7 @@ public class InputHandler {
     * In each case there are a few things to check.
      */
     public static boolean plusMinus() {
-        String expression = ExpressionHistory.getCurrEntry();
+        String expression = ExpressionHistory.getEntry();
         StringBuffer sb = new StringBuffer(expression);
         boolean addMinus;
         boolean removeMinus;
@@ -248,7 +248,7 @@ public class InputHandler {
         //cursorPosition = tempIndex; // we want the cursor to stay where it was
     }
     public static boolean backspace() {
-        String expression = ExpressionHistory.getCurrEntry();
+        String expression = ExpressionHistory.getEntry();
         String leftSubexpression = expression.substring(0, cursorPosition);
         String rightSubexpression = expression.substring(cursorPosition);
         if (leftSubexpression.isEmpty())
@@ -299,7 +299,7 @@ public class InputHandler {
     // return the necessary offset to move left and keep function substrings atomic
     private static int findLeftOffsetAtPosition(int index) {
         // we only care about what's left of the cursor
-        String expression = ExpressionHistory.getCurrEntry().substring(0, index);
+        String expression = ExpressionHistory.getEntry().substring(0, index);
         if (expression.matches("(.*)Sin\\($"))
             return 4;
         else if (expression.matches("(.*)Log10\\($"))
@@ -317,7 +317,7 @@ public class InputHandler {
     // return the necessary offset to move right and keep function substrings atomic
     private static int findRightOffsetAtPosition(int n) {
         // we only care about what's right of the cursor
-        String expression = ExpressionHistory.getCurrEntry().substring(n);
+        String expression = ExpressionHistory.getEntry().substring(n);
         if (expression.matches("^Sin\\((.*)"))
             return 4;
         else if (expression.matches("^Log10\\((.*)"))
@@ -334,7 +334,7 @@ public class InputHandler {
 
     static private boolean updateExpressionHistory(String newExpression) {
         if (ExpressionHistory.getCurrEntryIndex() == ExpressionHistory.getSize() - 1) {
-            if(newExpression.isEmpty() && ExpressionHistory.getCurrEntry().isEmpty()){
+            if(newExpression.isEmpty() && ExpressionHistory.getEntry().isEmpty()){
                 return false; // we did nothing since nothing was needed
             }
             ExpressionHistory.setCurrEntry(newExpression);
@@ -346,7 +346,7 @@ public class InputHandler {
     }
 
     static private String validateDot(){
-        String subExpression = ExpressionHistory.getCurrEntry().substring(0, cursorPosition);
+        String subExpression = ExpressionHistory.getEntry().substring(0, cursorPosition);
         String s = "";
         if( subExpression.equals("")
                 || subExpression.matches("(.*(Log10)?\\(\\d*)$")
@@ -359,7 +359,7 @@ public class InputHandler {
     }
 
     static private String validateParenthesis() {
-        String subExpression = ExpressionHistory.getCurrEntry().substring(0, cursorPosition);
+        String subExpression = ExpressionHistory.getEntry().substring(0, cursorPosition);
         String s = "";
         if (!(cursorPosition == 0) && subExpression.charAt(cursorPosition -1) != '('){
             int openParenthesis = 0;
