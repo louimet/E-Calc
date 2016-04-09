@@ -281,12 +281,12 @@ Checked progress
 
   ###Meeting - H613 Devang, Yuanwen, Laurent and Federico - Friday, April 8, 2016
 
-- ~~Everyone send your ASQ and screenshots of debugging to Laurent.~~
+- ~~Everyone send your ASQ and screenshots of debugging to Laurent.~~ done
 - Documentation for square root function - Devang
-- ~~Documentation for sine, logs, pow - Federico~~
+- ~~Documentation for sine, logs, pow - Federico~~ done, I believe
 - Send Federico expressions/cases you tested which broke the app. Values that broke the functions.
 - Appendix section for functions (plots, tables) - Yuanwen
-- Testing section documentation - Federico
+- ~~Testing section documentation - Federico~~ maybe done, what do you guys think?
 - Asymmetric code review.
 - Everyone read the documentation when done.
 
