@@ -16,14 +16,14 @@ import java.math.BigInteger;
 
 public class Sine {
 
-    private static final Long[] fac = {1L,6L,120L,5040L,362880L,39916800L,6227020800L,
+    private static final Long[] FACTORIALS = {1L,6L,120L,5040L,362880L,39916800L,6227020800L,
            1307674368000L,355687428096000L, 121645100408832000L};
 
     private static double taylor(double x) {
         double x2 = x*x;
         double approximation = 0;
         int signum = 1; // alternate sign every term
-        for (Long aFac : fac) {
+        for (Long aFac : FACTORIALS) {
             approximation += (signum * x / aFac);
             x *= x2;
             signum *= -1;

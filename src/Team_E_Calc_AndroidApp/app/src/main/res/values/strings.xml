@@ -2,30 +2,30 @@
     <string name="app_name">Eternity</string>
     <string name="initDisplay"></string>
     <string name="resultView">0.0</string>
-    <string name="button1">1</string>
-    <string name="button2">2</string>
-    <string name="button3">3</string>
-    <string name="button4">4</string>
-    <string name="button5">5</string>
-    <string name="button6">6</string>
-    <string name="button7">7</string>
-    <string name="button8">8</string>
-    <string name="button9">9</string>
-    <string name="button0">0</string>
-    <string name="buttonDot">.</string>
-    <string name="buttonPlusMinus">+/-</string>
-    <string name="buttonClear">C</string>
+    <string name="button1"><big>1</big></string>
+    <string name="button2"><big>2</big></string>
+    <string name="button3"><big>3</big></string>
+    <string name="button4"><big>4</big></string>
+    <string name="button5"><big>5</big></string>
+    <string name="button6"><big>6</big></string>
+    <string name="button7"><big>7</big></string>
+    <string name="button8"><big>8</big></string>
+    <string name="button9"><big>9</big></string>
+    <string name="button0"><big>0</big></string>
+    <string name="buttonDot"><big>.</big></string>
+    <string name="buttonPlusMinus"><big>+/-</big></string>
+    <string name="buttonClear"><big>C</big></string>
     <string name="buttonPi">π</string>
     <string name="button_e">e</string>
     <!--from here on the operators-->
-    <string name="buttonPlus">+</string>
-    <string name="buttonMinus">-</string>
-    <string name="buttonTimes">×</string>
-    <string name="buttonDivide">÷</string>
-    <string name="buttonEval"><big>=</big></string>
+    <string name="buttonPlus"><big>+</big></string>
+    <string name="buttonMinus"><big>-</big></string>
+    <string name="buttonTimes"><big>×</big></string>
+    <string name="buttonDivide"><big>÷</big></string>
+    <string name="buttonEval"><big><big>=</big></big></string>
     <string name="buttonLpar">(</string>
     <string name="buttonRpar">)</string>
-    <string name="buttonBackspace">\u232b</string>
+    <string name="buttonBackspace"><big>\u232b</big></string>
     <string name="buttonSin">Sin(x)</string>
     <string name="buttonLog10">Log<sub><small>10</small></sub>(x)</string>
     <string name="buttonExp">e<sup><small>x</small></sup></string>
@@ -38,10 +38,10 @@
     <string name="deg_string">Degrees</string>
     <string name="about_string">User Manual</string>
 
-    <string name="button_left_arrow">\u25C0</string>
-    <string name="button_right_arrow">\u25B6</string>
-    <string name="button_up_arrow">\u25B2</string>
-    <string name="button_down_arrow">\u25BC</string>
+    <string name="button_left_arrow"><big>\u25C0</big></string>
+    <string name="button_right_arrow"><big>\u25B6</big></string>
+    <string name="button_up_arrow"><big>\u25B2</big></string>
+    <string name="button_down_arrow"><big>\u25BC</big></string>
 
     <string name="button_mem_store">MS</string>
     <string name="button_mem_recall">M</string>
