@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // TODO what do we need to change here?
-        ExpressionHistory.appendEntry(""); // NOTE try to minimize the view calling the mode
+        setContentView(R.layout.activity_main);
+        ExpressionHistory.appendEntryToHistory(""); // NOTE try to minimize the view calling the mode
         EditText text = (EditText) findViewById(R.id.textView);
         text.setOnTouchListener(otl);
         /* for some reason the xml value doesn't work with galaxy s3 (at least)
@@ -97,15 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 return true;
             case R.id.menu_about:
-                // about was selected // TODO what's making the viewer crash?
-               /* //Uri uri = Uri.parse("file:///android_assets/doc/usermanual.html");
-                Uri uri = Uri.parse("http://www.google.com");
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-                browserIntent.addCategory(Intent.CATEGORY_BROWSABLE);
-                browserIntent.setDataAndType(Uri.parse("file:///android_assets/doc/usermanual.html"), "text/html");
-                startActivity(browserIntent);*/
                 Intent myIntent = new Intent(MainActivity.this, UserManual.class);
-                //myIntent.putExtra("key", value); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
                 return true;
             default:
@@ -129,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             float x = event.getX();
             float y = event.getY();
             int touchPosition = ((EditText)text).getOffsetForPosition(x, y);
-            InputHandler.setCurrIndex(touchPosition);
+            InputHandler.setCursorPosition(touchPosition);
             populateDisplay();
             if(event.getAction()==MotionEvent.ACTION_DOWN)
                 copy = true;
@@ -191,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
     public void evaluateExpression(View view){
         String result = ExpressionEvaluator.evaluate();
         TextView resultView = (TextView) findViewById(R.id.resultView);
-        if (!result.isEmpty()) { // TODO temporary test
+        if (!result.isEmpty()) {
             resultView.setText(result);
             setExpressionActive(false);
         }
@@ -253,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
     public void left(View view){
         boolean success = InputHandler.moveLeft();
         if(vibrate && success) {
-            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
@@ -266,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
     public void right(View view){
         boolean success = InputHandler.moveRight();
         if(vibrate && success) {
-            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
@@ -279,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
     public void up(View view){
         boolean success = InputHandler.moveUp();
         if(vibrate && success) {
-            Vibrator vibe;// TODO maybe avoid vibrating if we're already clear
+            Vibrator vibe;
             vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibe.vibrate(20);
         }
@@ -319,8 +311,8 @@ public class MainActivity extends AppCompatActivity {
     private void populateDisplay(){ // check if we need to populate the display with new content
         if (ExpressionHistory.refreshDisplay) {
             EditText text = (EditText) findViewById(R.id.textView);
-            text.setText(ExpressionHistory.getEntry());
-            text.setSelection(InputHandler.getCurrIndex());
+            text.setText(ExpressionHistory.getCurrEntry());
+            text.setSelection(InputHandler.getCursorPosition());
             ExpressionHistory.refreshDisplay = false;
             setExpressionActive(true);
         }

@@ -14,11 +14,11 @@ public class ExpressionHistory {
 
     private static LinkedList<String> history = new LinkedList<>();
 
-    private static int currIndex;
+    private static int entryIndex;
 
     public static boolean decrCurrIndex(){
-        if (currIndex > 0) {
-            currIndex--;
+        if (entryIndex > 0) {
+            entryIndex--;
             refreshDisplay = true;
             return true;
         }
@@ -28,8 +28,8 @@ public class ExpressionHistory {
     }
 
     public static boolean incrCurrIndex(){
-        if (currIndex < history.size()-1) {
-            currIndex++;
+        if (entryIndex < history.size()-1) {
+            entryIndex++;
             refreshDisplay = true;
             return true;
         }
@@ -38,34 +38,33 @@ public class ExpressionHistory {
         }
     }
 
-    public static int getCurrEntry(){
-        return currIndex;
+    public static int getCurrEntryIndex(){
+        return entryIndex;
     }
 
-    public static String getEntry(){
-        return getEntry(currIndex);
+    public static String getCurrEntry(){
+        return getCurrEntry(entryIndex);
     }
 
-    public static String getEntry(int i){
+    public static String getCurrEntry(int i){
         return history.get(i);
     }
 
-    public static void setEntry(String newEntry){
-        history.set(currIndex, newEntry);
+    public static void setCurrEntry(String newEntry){
+        history.set(entryIndex, newEntry);
     }
 
     public static int getSize(){
         return history.size();
     }
 
-    public static void appendEntry(String expression){
+    public static void appendEntryToHistory(String expression){
         if(history.size() >= 1 && history.peekLast().equals(""))
         {
             history.removeLast(); // avoid having blank entries in history
         }
         history.add(expression);
-        currIndex = history.size()-1;
+        entryIndex = history.size()-1;
         refreshDisplay = true;
     }
-    // TODO what else? just a template for the time being
 }
