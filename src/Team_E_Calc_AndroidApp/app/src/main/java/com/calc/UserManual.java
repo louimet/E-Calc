@@ -1,12 +1,13 @@
-/**
+/*
  * Written by Team-E for COMP 5541, calculator project
  * Winter 2016
- *
- * This class handles the secondary view of the user manual which is stored as an html file in
- * the assets folder
  */
 package com.calc;
 
+/**
+ * This class handles the secondary view, the user manual, which is stored as
+ * an html file in the assets folder
+ */
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
@@ -14,6 +15,9 @@ import android.webkit.WebView;
 
 public class UserManual extends AppCompatActivity {
 
+    /**
+     * Populate webView with the manual's content on creation
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
