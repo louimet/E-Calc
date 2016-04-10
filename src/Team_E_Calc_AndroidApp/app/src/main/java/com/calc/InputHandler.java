@@ -6,12 +6,13 @@
 package com.calc;
 
 /**
- * Part of the controller (MVC) InputHandler gets input from the view and evaluates what should be
- * done with the input, afterwards calling on the model to make appropriate changes to the expression
- * or the memory slots. it keeps an index for the cursor position within the current expression.
- * Upon receiving input, this class performs a validation of input relative to the left side of the
- * current expression (validating against the right-hand side would unnecessarily hamper editing
- * of expressions)
+ * Part of the controller (MVC) InputHandler gets input from the view and
+ * evaluates what should be done with the input, afterwards calling on the
+ * model to make appropriate changes to the expression or the memory slots.
+ * it keeps an index for the cursor position within the current expression.
+ * Upon receiving input, this class performs a validation of input relative
+ * to the left side of the current expression (validating against the
+ * right-hand side would unnecessarily hamper editing of expressions)
  */
 public class InputHandler {
 
@@ -116,7 +117,7 @@ public class InputHandler {
                 && subExpression.charAt(cursorPosition -1) == '.') {
 
             // We cannot input anything other than a digit after a dot
-            if (!Character.isDigit(s.charAt(0) )) {
+            if (!Character.isDigit(s.charAt(0))) {
                 return false;
             }
         }
@@ -177,11 +178,11 @@ public class InputHandler {
                     }
                 } else if((s.equals("+") || s.equals("-") || s.equals("×")
                         || s.equals("÷") || s.equals("^")) ) {
-                    String patternString = "(.*[-×÷\\^\\+])$";
+                    String patternString = "(.*[-×÷\\^\\+\\(])$";
 
                     // allow operator and minus for the operand
                     if (s.equals("-")) {
-                        patternString = "(.*[-×÷\\^\\+]-)$";
+                        patternString = "(.*[-×÷\\^\\+\\(]-)$";
                     }
                     if (subExpression.matches(patternString)) {
                         s = "";
@@ -197,7 +198,7 @@ public class InputHandler {
         String expression = ExpressionHistory.getEntry();
         if (expression.isEmpty() && (s.equals("+") || s.equals("×")
                 || s.equals("÷") || s.equals("^"))) {
-                                            // no s.equals("-") allow "-1..."
+                                            // omit "-" to allow eg "-1..."
             s = "[Ans]" + s;
             newPosition += 5;
         }
