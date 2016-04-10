@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="teameminimathlib.teameminimathlib">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/teameminimathlib/build/libs/teameminimathlib.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
