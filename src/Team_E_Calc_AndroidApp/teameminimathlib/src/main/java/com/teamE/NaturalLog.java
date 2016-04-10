@@ -20,7 +20,7 @@ public class NaturalLog{
 	 * @param x the number for which we approximate the natural logarithm
 	 * @return and approximation of the natural logarithm of x
 	*/
-	static double calculate(double x) {
+	public static double calculate(double x) {
 		double fractionalPart = 0d;
 		double intermediate;
 		double intermediateSqr;
