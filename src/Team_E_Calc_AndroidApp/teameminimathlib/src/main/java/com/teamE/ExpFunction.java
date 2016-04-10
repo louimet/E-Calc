@@ -15,14 +15,16 @@ public class ExpFunction {
 	private static double precision = 1e-15;//The precision of the output; 10^-15 by default
 
 	/**
-	 * If no input is given then outputs exp(1)
+	 * @return exp(1) if no input is entered
 	 */
 	static public double calculate(){
 		return calculate(1);
 	}
 
 	/**
-	 * This method takes a double type input x and outputs exp(x)
+	 * This method takes a double type input x and outputs exp(x).
+	 * @param x is the number for which exponential function is calculated.
+	 * @return result which is approximation of exp(x).
 	 */
 	static public double calculate(double x){
 		double result = 1;
@@ -43,7 +45,7 @@ public class ExpFunction {
 		}
 
 		if (x < 0)
-			result = 1/result;
+			result = 1 / result;
 
 		return result;
 	}
@@ -58,7 +60,7 @@ public class ExpFunction {
 			return;
 		}
 		double precisionTemp = 1;
-		for (int i = 1; i<= numDigits; i++){
+		for (int i = 1; i <= numDigits; i++){
 			precisionTemp /= 10;
 		}
 		precision = precisionTemp;
