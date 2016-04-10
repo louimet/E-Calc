@@ -5,8 +5,6 @@
 
 package com.teamE;
 
-import java.math.BigInteger;
-
 /**
  * This class calculates the approximate sine of a given number. Ideally in the
  * -pi/2 to pi/2.By default input is assumed to be in radians, passing a second
