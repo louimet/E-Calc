@@ -85,6 +85,18 @@ public class ExpressionEvaluator {
         return (result.toString());
     }
 
+    /** Helper Function to aid in tokenization of the expression
+     *
+     * @param c character to check
+     * @return true if the character is an operand or ) ]
+     */
+    private static boolean isOperandChar(char c) {
+        return (Character.isDigit(c)
+                || (c == 'e') || (c == 'π')
+                || (c == ']') || (c == ')'));
+    }
+
+
     /** Separates expression into atomic components and places them in a queue
      * of strings.
      * @param expression complete expression
@@ -281,17 +293,6 @@ public class ExpressionEvaluator {
             }
         }
         return tokenQueue;
-    }
-
-    /** Helper Function to aid in tokenization of the expression
-     *
-     * @param c character to check
-     * @return true if the character is an operand or ) ]
-     */
-    private static boolean isOperandChar(char c) {
-        return (Character.isDigit(c)
-                || (c == 'e') || (c == 'π')
-                || (c == ']') || (c == ')'));
     }
 
     /** Evaluate the tokenized infix expression a token at a time, calling
