@@ -1,43 +1,49 @@
+/*
+ * Written by Federico O'Reilly for COMP 5541, calculator project
+ * Winter 2016
+ */
+
 package com.teamE;
 
+/**
+ * Class that estimates x to the power of y, it relies on NaturalLogarithm
+ * and ExponentialFunction in order to approximate the base raised to the
+ * exponent ie. x^y = e^(y*ln(x)).
+ */
 public class PowerFunction {
-		
-	// This is the method that approximates the function x^y. It takes two doubles, x and y and
-	// returns x^y
-	static public double calculate(double x, double y){
-	/* Using the rules of natural logarithms we can see that:
-	 * 
-	 * x^y = e^(y*ln(x)).
-	 *
-	 * If the power to which x is raised is negative, the inverse must be taken as such:
-	 * x^-y = (1/(x^y)).
-	 * 
-	 * If the power to which x is raised is equal to 0.0, the answer return 1.0.
-	 * 
-	 * If the power to which x is raised is larger than 0.0, the answer is x^y = e^(y*ln(x)).
-	 * The e^y function is based on the implementation of calculate(double y) by Yuanwen Qin.
-	*/
-		double naturalLogx = NaturalLog.calculate(x);
 
-		long integerPart = ((Double)y).longValue();
-		double fractionalPart = y - integerPart;
+	/**
+	 * approximates base^exponent via a Taylor Series expansion of 50th order
+	 * centered at 1
+	 * @param base can be any real number
+	 * @param exponent can be any real number
+	 * @return ~ base ^ exponent
+	 */
+	static public double calculate(double base, double exponent){
+
+		double naturalLogx = NaturalLog.calculate(base);
+
+		long integerPart = ((Double)exponent).longValue();
+		double fractionalPart = exponent - integerPart;
 		double temp = 1d;
+		double approximation;
 
-		if (y<0)
-		{
-			for(int i = 0; i < -integerPart; i++)
-				temp *= x;
-			return 1.0/(temp*ExpFunction.calculate(-fractionalPart*naturalLogx));
+		if (exponent<0) {
+			for(int i = 0; i < -integerPart; i++) {
+				temp *= base;
+			}
+			approximation
+					= 1d
+					/ (temp*ExpFunction.calculate(-fractionalPart*naturalLogx));
+		} else if (exponent==0) {
+			approximation = 1.0;
+		} else {
+			for(int i = 0; i < integerPart; i++) {
+				temp *= base;
+			}
+			approximation
+					= temp * ExpFunction.calculate(fractionalPart*naturalLogx);
 		}
-		else if (y==0)
-		{
-			return (1.0);
-		}
-		else 
-		{
-			for(int i = 0; i < integerPart; i++)
-				temp *= x;
-			return temp * ExpFunction.calculate(fractionalPart*naturalLogx);
-		}
+		return approximation;
 	}
 }

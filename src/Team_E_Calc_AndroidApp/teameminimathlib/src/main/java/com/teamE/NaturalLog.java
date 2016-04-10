@@ -5,6 +5,10 @@
 
 package com.teamE;
 
+/**
+ * Class that approximates the natural logarithm of a number via a Taylor series
+ * expansion
+ */
 public class NaturalLog{
 
 	static final double e = ExpFunction.calculate();
@@ -45,7 +49,7 @@ public class NaturalLog{
 			fractionalPart += intermediate/(n);
 			intermediate *= intermediateSqr;
 		}
-		
+
 		approximation = (2 * fractionalPart) + exponentWholePart;
 		return((x > 1)
 				? approximation
