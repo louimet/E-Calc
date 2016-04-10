@@ -57,7 +57,6 @@
         android:layout_height="0dp"
         android:layout_weight="0.1"
         android:orientation="horizontal">
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:text="@string/buttonClear"
@@ -142,7 +141,6 @@
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:onClick="backspace" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -166,7 +164,6 @@
             android:onClick="sendMessage"
             android:textStyle="italic"
             android:textAllCaps="false" />
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
@@ -182,7 +179,6 @@
             android:onClick="sendMessage"
             android:textStyle="italic"
             android:textAllCaps="false" />
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
@@ -198,7 +194,6 @@
             android:onClick="sendMessage"
             android:textStyle="italic"
             android:textAllCaps="false" />
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
@@ -248,7 +243,6 @@
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:onClick="sendMessage" />
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
@@ -277,7 +271,6 @@
             android:textColor="#ffffff"
             android:onClick="sendMessage"
             android:textStyle="bold" />
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
@@ -292,7 +285,6 @@
             android:enabled="true"
             android:textAllCaps="false"
             android:textColor="#ffffff" />
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
@@ -307,7 +299,6 @@
             android:enabled="true"
             android:textAllCaps="false"
             android:textColor="#ffffff" />
-
         <Button
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
@@ -322,7 +313,6 @@
             android:enabled="true"
             android:textAllCaps="false"
             android:textColor="#ffffff" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -334,7 +324,6 @@
             android:layout_weight="0.095"
             android:layout_height="match_parent"
             android:weightSum="0.4">
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -353,7 +342,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -368,7 +356,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -383,14 +370,12 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.1">
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -405,7 +390,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -420,7 +404,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -435,14 +418,12 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.1">
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -457,7 +438,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -472,7 +452,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -487,14 +466,12 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.1">
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -509,7 +486,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -524,7 +500,6 @@
                     android:onClick="sendMessage"
                     style="?android:attr/borderlessButtonStyle"
                     android:textStyle="bold" />
-
                 <Button
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="0dp"
@@ -539,11 +514,9 @@
                     android:textColor="#000000"
                     android:onClick="plusMinus"
                     android:textStyle="bold" />
-
             </TableRow>
 
         </TableLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -565,7 +538,6 @@
                 android:minWidth="@dimen/num_button_width"
                 android:onClick="sendMessage"
                 android:textStyle="bold" />
-
             <Button
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
@@ -581,7 +553,6 @@
                 android:minWidth="@dimen/num_button_width"
                 android:onClick="sendMessage"
                 android:textStyle="bold" />
-
             <Button
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
@@ -597,7 +568,6 @@
                 android:minWidth="@dimen/num_button_width"
                 android:onClick="sendMessage"
                 android:textStyle="bold" />
-
             <Button
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
@@ -611,10 +581,8 @@
                 android:enabled="true"
                 android:textColor="#e4e4e4"
                 android:onClick="sendMessage"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
-
     </LinearLayout>
 
     <Button
@@ -633,7 +601,6 @@
         android:onClick="evaluateExpression"
         android:textStyle="bold"
         android:layout_gravity="right" />
-
 </LinearLayout>
 
     <!--android:textSize="20sp"--> 
