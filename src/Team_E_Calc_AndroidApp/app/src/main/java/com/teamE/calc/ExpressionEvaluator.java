@@ -2,7 +2,7 @@
  * Written by Team E for COPM 5541, calculator project
  * Winter 2016
  */
-package com.calc;
+package com.teamE.calc;
 import java.text.ParseException;
 import java.util.Stack;
 import java.util.Queue;

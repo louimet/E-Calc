@@ -3,7 +3,7 @@
  * Winter 2016
  */
 
-package com.calc;
+package com.teamE.calc;
 
 /**
  * Part of the controller (MVC) InputHandler gets input from the view and

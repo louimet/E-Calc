@@ -2,7 +2,7 @@
  * Written by Team-E for COMP 5541, calculator project
  * Winter 2016
  */
-package com.calc;
+package com.teamE.calc;
 
 import android.content.Intent;
 import android.graphics.Typeface;

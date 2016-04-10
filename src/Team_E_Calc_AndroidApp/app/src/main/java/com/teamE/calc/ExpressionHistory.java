@@ -3,7 +3,7 @@
  * Winter 2016
  */
 
-package com.calc;
+package com.teamE.calc;
 
 import java.util.LinkedList;
 
