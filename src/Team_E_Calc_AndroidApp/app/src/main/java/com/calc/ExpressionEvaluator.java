@@ -49,32 +49,35 @@ public class ExpressionEvaluator {
      * or an empty string if there is no expression to evaluate */
     public static String evaluate() {
         int currEntry = ExpressionHistory.getCurrEntryIndex();
+        int lastEntry;
+        boolean isWellParenthesized;
+        Queue<String> tokenQueue;
         String expression = ExpressionHistory.getEntry(currEntry);
         if((currEntry == 0) && expression.isEmpty()){
             return("");
         }
-        int lastEntry = ExpressionHistory.getSize()-1;
+        lastEntry = ExpressionHistory.getSize() - 1;
         if (expression.equals("")) {
 
             // empty string should only happen on the last entry
             assert (currEntry == lastEntry);
             expression = ExpressionHistory.getEntry(lastEntry - 1);
         }
-        boolean isWellParenthesized = validateParentheses(expression);
+        isWellParenthesized = validateParentheses(expression);
         if (!isWellParenthesized) {
-            return ("Err prnths");
+            return ("Err: mismatched parentheses");
         } else if (!validateExpression(expression)) {
-            return ("Err syntax");
+            return ("Err: incorrect syntax");
         } /* else */
-        Queue<String> infixTokenQueue = tokenize(expression);
+        tokenQueue = tokenize(expression);
         Double result;
         try {
-            result = evaluateInfix(infixTokenQueue);
+            result = evaluateInfix(tokenQueue);
         } catch(ParseException e) {
             return e.getMessage();
         }
 
-        // open a new entry in the history
+        // create a new entry in the history
         ExpressionHistory.appendEntryToHistory("");
         InputHandler.resetCurrPosition();
         Memory.setLastAnswer(result);
@@ -84,183 +87,186 @@ public class ExpressionEvaluator {
 
     /** Separates expression into atomic components and places them in a queue
      * of strings.
-     * @param infixExpression complete infix expression
+     * @param expression complete expression
      * @return Queue<String> container filled with tokens */
-    private static Queue<String> tokenize(String infixExpression) {
-        Queue<String> infixTokenQueue = new LinkedList<>();
-        String s = infixExpression; // work on a copy and keep the original
-        final int exprLength = s.length();
+    private static Queue<String> tokenize(String expression) {
+        Queue<String> tokenQueue = new LinkedList<>();
+        String s = expression; // work on a copy and keep the original
+        final int expressionLength = s.length();
         while (!s.isEmpty()){
             if (s.matches("Log10\\(.*")) {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("Log10");
-                infixTokenQueue.add("(");
+                tokenQueue.add("Log10");
+                tokenQueue.add("(");
                 s = s.substring(6); // include parenthesis in deleted token
                 continue;
             }
             if (s.matches("Sin\\(.*")) {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("Sin");
-                infixTokenQueue.add("(");
+                tokenQueue.add("Sin");
+                tokenQueue.add("(");
                 s = s.substring(4); // include parenthesis in deleted token
                 continue;
             }
             if (s.matches("e\\^.*")) {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("e^");
+                tokenQueue.add("e^");
                 s = s.substring(2);
             }
             if (s.matches("√\\(.*")) {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("√");
-                infixTokenQueue.add("(");
+                tokenQueue.add("√");
+                tokenQueue.add("(");
                 s = s.substring(2); // include parenthesis in deleted token
             }
 
             if (s.charAt(0) == '(') {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference-1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("(");
+                tokenQueue.add("(");
                 s = s.substring(1);
                 continue;
             }
 
             if (s.charAt(0) == ')') {
-                infixTokenQueue.add(")");
+                tokenQueue.add(")");
                 s = s.substring(1);
                 continue;
             }
 
-            if ((s.charAt(0)-'0' < 10 && s.charAt(0)-'0' >= 0)
+            if ((s.charAt(0) - '0' < 10 && s.charAt(0) - '0' >= 0)
                     || s.charAt(0) == '.') {
                 int i = 1;
                 while (s.length() > i &&
-                        (((s.charAt(i)-'0' < 10) && (s.charAt(i)-'0' >= 0))
+                        (((s.charAt(i) - '0' < 10) && (s.charAt(i) - '0' >= 0))
                                 || s.charAt(i) == '.')) {
                     i++;
                 }
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0 ) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (precedingChar == ')') {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add(s.substring(0,i));
+                tokenQueue.add(s.substring(0, i));
                 s = s.substring(i);
                 continue;
             }
 
             if (s.charAt(0) == 'π') {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0 ) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("π");
+                tokenQueue.add("π");
                 s = s.substring(1);
                 continue;
             }
 
             if (s.charAt(0) == 'e') {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0 ) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("e");
+                tokenQueue.add("e");
                 s = s.substring(1);
                 continue;
             }
 
             if (s.matches("\\[M\\].*")){
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0) {
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference - 1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("M");
+                tokenQueue.add("M");
                 s = s.substring(3);
                 continue;
             }
 
             if (s.matches("\\[Ans\\].*")){
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0){
-                    char precedingChar = infixExpression.charAt(lengthDifference-1);
+                    char precedingChar = expression.charAt(lengthDifference -1);
                     if (isOperandChar(precedingChar)) {
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("×");
                     }
                 }
-                infixTokenQueue.add("Ans");
+                tokenQueue.add("Ans");
                 s = s.substring(5);
                 continue;
             }
 
-            // operator - if minus preceded by Lpar or operator, mult by -1
+            /*
+             * operator - if minus preceded by left parenthesis or operator,
+             * multiply by -1
+             */
             if (s.charAt(0) == '-') {
-                int lengthDifference = exprLength - s.length();
+                int lengthDifference = expressionLength - s.length();
                 if (lengthDifference > 0 ){
                     char precedingChar
-                            = infixExpression.charAt(lengthDifference-1);
+                            = expression.charAt(lengthDifference-1);
                     if ((precedingChar != '(')
                             && (precedingChar != '+')
                             && (precedingChar != '-')
                             && (precedingChar != '×')
                             && (precedingChar != '÷')
                             && (precedingChar != '^')){
-                        infixTokenQueue.add("-");
+                        tokenQueue.add("-");
                     } else {
-                        infixTokenQueue.add("-1");
-                        infixTokenQueue.add("×");
+                        tokenQueue.add("-1");
+                        tokenQueue.add("×");
                     }
                 } else if (lengthDifference == 0) {
-                    infixTokenQueue.add("-1");
-                    infixTokenQueue.add("×");
+                    tokenQueue.add("-1");
+                    tokenQueue.add("×");
                 }
                 s = s.substring(1);
                 continue;
@@ -269,12 +275,12 @@ public class ExpressionEvaluator {
                     || s.charAt(0) == '×'
                     || s.charAt(0) == '÷'
                     || s.charAt(0) == '^') {
-                infixTokenQueue.add(s.substring(0,1));
+                tokenQueue.add(s.substring(0, 1));
                 s = s.substring(1);
                 continue;
             }
         }
-        return infixTokenQueue;
+        return tokenQueue;
     }
 
     /** Helper Function to aid in tokenization of the expression
@@ -292,16 +298,16 @@ public class ExpressionEvaluator {
      * precedence() and applyOperation() accordingly, depending on
      * precedence and parentheses. The function can raise ParseException
      *
-     * @param infixTokenQueue the queue of tokens in String form
-     * @return the result of the exaluation as a Double
+     * @param tokenQueue the queue of tokens in String form
+     * @return the result of the evaluation as a Double
      */
-    private static Double evaluateInfix(Queue<String> infixTokenQueue)
+    private static Double evaluateInfix(Queue<String> tokenQueue)
             throws ParseException {
         Stack<Double> valueStack = new Stack<>();
-        Stack<String> opStack = new Stack<>();
+        Stack<String> operatorStack = new Stack<>();
 
-        while (!infixTokenQueue.isEmpty()) {
-            String temp = infixTokenQueue.remove();
+        while (!tokenQueue.isEmpty()) {
+            String temp = tokenQueue.remove();
             if(temp.matches("^-?\\d*[\\d\\.]\\d*$")) {
                 valueStack.push(Double.parseDouble(temp));
             } else if(temp.equals("π")) {
@@ -313,30 +319,32 @@ public class ExpressionEvaluator {
             } else if (temp.equals("Ans")){
                 valueStack.push(Memory.getLastAnswer());
             } else if (temp.endsWith("(")) {
-                opStack.push(temp);
+                operatorStack.push(temp);
             } else if (temp.equals(")")) {
-                while(!opStack.peek().equals("(")) {
-                    applyOperation(valueStack, opStack);
+                while(!operatorStack.peek().equals("(")) {
+                    applyOperation(valueStack, operatorStack);
                 }
-                opStack.pop(); // discard lingering left parenthesis
+                operatorStack.pop(); // discard lingering left parenthesis
             } else if (temp.equals("Log10") || temp.equals("Sin")
                     || temp.equals("×") || temp.equals("÷") || temp.equals("+")
                     || temp.equals("-") || temp.equals("^") || temp.equals("e^")
                     || temp.equals("√") || temp.equals("10^")) {
-                int incomingOp = precedence(temp);
-                while (!opStack.isEmpty()
-                        && (precedence(opStack.peek()) >= incomingOp)) {
-                    applyOperation(valueStack, opStack);
+                int incomingPrecedence = precedence(temp);
+                while (!operatorStack.isEmpty()
+                        && (precedence(operatorStack.peek())
+                        >= incomingPrecedence)) {
+                    applyOperation(valueStack, operatorStack);
                 }
-                opStack.push(temp);
+                operatorStack.push(temp);
             }
         }
-        while (!opStack.isEmpty()) {
-            applyOperation(valueStack, opStack);
+        while (!operatorStack.isEmpty()) {
+            applyOperation(valueStack, operatorStack);
         }
-        if (valueStack.size() > 1)
-            throw new ParseException("Err, Msng oprtrs",
-                    opStack.size()+valueStack.size());
+        if (valueStack.size() > 1) {
+            throw new ParseException("Err: no operator",
+                    operatorStack.size() + valueStack.size());
+        }
         return valueStack.pop();
     }
 
@@ -354,22 +362,26 @@ public class ExpressionEvaluator {
         if (opStack.peek().length() > 1 || opStack.peek().equals("√")) {
             String temp = opStack.pop();
             if (temp.equals("Log10")) {
-                valueStack.push(com.teamE.Log10.calculate(valueStack.pop()));
+                valueStack.push(
+                        com.teamE.Log10.calculate(valueStack.pop()));
                 return;
             } else if (temp.equals("Sin")) {
-                valueStack.push(com.teamE.Sine.calculate(valueStack.pop(),radians));
+                valueStack.push(
+                        com.teamE.Sine.calculate(valueStack.pop(),radians));
                 return;
             } else if (temp.equals("e^")) {
-                valueStack.push(com.teamE.ExpFunction.calculate(valueStack.pop()));
+                valueStack.push(
+                        com.teamE.ExpFunction.calculate(valueStack.pop()));
                 return;
             } else if (temp.equals("√")) {
-                valueStack.push(com.teamE.SquareRoot.calculate(valueStack.pop()));
+                valueStack.push(
+                        com.teamE.SquareRoot.calculate(valueStack.pop()));
                 return;
             }
         }
 
         if (valueStack.size()<2) {
-            throw new ParseException("Err, msng oprnds",
+            throw new ParseException("Err: no operand",
                     opStack.size() + valueStack.size());
         }
         double y = valueStack.pop();
@@ -429,10 +441,10 @@ public class ExpressionEvaluator {
      * @return true if the expression is in a valid syntax, false otherwise
      */
     private static boolean validateExpression(String expression) {
-        String fun = "((Sin\\()|(Log10\\()|(√\\()|(10\\^\\())";
+        String function = "((Sin\\()|(Log10\\()|(√\\()|(10\\^\\())";
         String operand = "(-?(\\d*\\.?\\d+(E\\d+)?)?(π|e|\\[M\\]|\\[Ans\\])*)";
         String operator = "((\\+)|(-)|(×)|(÷)|(\\^))";
-        String s0 = "(\\(|("+fun+"))";
+        String s0 = "(\\(|("+function+"))";
         String regex                    // XXX do not break the following line
                 = "("+s0+"*)(("+operand+"\\)*("+operator+"|\\)|"+s0+")" +s0+"*)*)"+operand+"?";
         Pattern p = Pattern.compile(regex);
@@ -447,20 +459,19 @@ public class ExpressionEvaluator {
      * @return true if the expression properly parenthesized, false otherwise
      */
     private static boolean validateParentheses(String expression) {
-        boolean isWellParenthesized = true;
-        Stack<Character> parenthesisStack = new Stack<>();
-        String parenthesisString = expression.replaceAll("[^\\(\\)]*", "");
-        for (int i = 0; i < parenthesisString.length(); i++) {
-            if (parenthesisString.charAt(i) == '(') {
-                parenthesisStack.push('(');
-            } else if (parenthesisStack.isEmpty()) {
-                isWellParenthesized = false;
-                break;
-            } else {
-                parenthesisStack.pop();
+        Stack<Character> parenthesesStack = new Stack<>();
+        String parenthesesString = expression.replaceAll("[^\\(\\)]*", "");
+        for (int i = 0; i < parenthesesString.length(); i++) {
+            if (parenthesesString.charAt(i) == '(') {
+                parenthesesStack.push('(');
+            } else { // we have a closing parenthesis
+                if (parenthesesStack.isEmpty()) {
+                    return false;
+                } else {
+                    parenthesesStack.pop();
+                }
             }
         }
-
-        return parenthesisStack.isEmpty();
+        return parenthesesStack.isEmpty();
     }
 }
