@@ -363,7 +363,7 @@ public class ExpressionEvaluator {
                 valueStack.push(com.teamE.ExpFunction.calculate(valueStack.pop()));
                 return;
             } else if (temp.equals("√")) {
-                valueStack.push(com.teamE.SquareRoot2.calculate(valueStack.pop()));
+                valueStack.push(com.teamE.SquareRoot.calculate(valueStack.pop()));
                 return;
             }
         }
