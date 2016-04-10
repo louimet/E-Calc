@@ -1,18 +1,22 @@
 package com.teamE;
 /**
- * Written by: Yuanwen Qin,  40011473
+ * Written by: Yuanwen Qin,  for COPM 5541, calculator project
+ * Winter 2016
  * General Description: This class achieves an approximation to the exponential function exp(x)
  * The algorithm for the approximation follows the Taylor series:
  * 			 n
  * exp(x) = Sum ((x^k)/k!)
  * 			k=0
- * The precision of the output can be set according to the number of digits after the decimal point
+ * The precision of the output can be set according to the number of digits after the decimal point.
+ * The iteration stops at iteration number k when ((x^k)/k!) is smaller than the precision or k
+ * reaches the maximum iteration number.
  * Sources: https://en.wikipedia.org/wiki/Exponential_function
  * */
 
 public class ExpFunction {
 
 	private static double precision = 1e-15;//The precision of the output; 10^-15 by default
+	private static final int MAX_NUM_ITERATION = 1995; //the maximum number of iterations
 
 	/**
 	 * @return exp(1) if no input is entered
@@ -28,15 +32,15 @@ public class ExpFunction {
 	 */
 	static public double calculate(double x){
 		double result = 1;
-		double xAbs; //absolute value of x;
+		double xAbs; // absolute value of x;
 		double temp = 1; // (x^k)/k!
-		final int MAX_NUM_ITERATION = 1995; //the maximum number of iterations
 		int k = 1;
 
-		if (x >= 0)
+		if (x >= 0) {
 			xAbs = x;
-		else
+		}else { // x < 0
 			xAbs = -x;
+		}
 
 		while (temp > precision && k < MAX_NUM_ITERATION){
 			temp = temp * xAbs / k;
@@ -44,8 +48,9 @@ public class ExpFunction {
 			k++;
 		}
 
-		if (x < 0)
+		if (x < 0) {
 			result = 1 / result;
+		}
 
 		return result;
 	}
@@ -53,7 +58,6 @@ public class ExpFunction {
 	/**
 	 * Set the precision of the output according to the number of digits after the decimal point
 	 * @param: numDigits, number of digits after the decimal point
-	 * pre: numDigits >= 1
 	 */
 	static public void setPrecision(int numDigits){
 		if (numDigits < 1){
