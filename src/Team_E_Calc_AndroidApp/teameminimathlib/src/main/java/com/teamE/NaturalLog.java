@@ -1,48 +1,54 @@
+/*
+ * Written by Boulos Salame for COMP 5541, calculator project
+ * Winter 2016
+ */
+
 package com.teamE;
 
 public class NaturalLog{
 
 	static final double e = ExpFunction.calculate();
 
-	/** The following method is an approximation to the natural logarithm function. It takes one 
-	* argument; a double value whose natural logarithmic value needs to be found. The series is 
-	* centered at one and is most precise in that vicinity
+	/** The following method is an approximation to the natural logarithm
+	 * function. It takes one argument; a double value whose natural
+	 * logarithmic value needs to be found. The series is centered at one
+	 * and is most precise in that vicinity
+	 * @param x the number for which we approximate the natural logarithm
+	 * @return and approximation of the natural logarithm of x
 	*/
-	static double calculate(double x)
-	{
+	static double calculate(double x) {
+		double fractionalPart = 0d;
+		double intermediate;
+		double intermediateSqr;
+		double approximation;
+
 		double temp = (x > 1)
 				? x
 				: 1d/x;
 
 		double exponentWholePart = 0d;
-		while (temp > 1){
+		while (temp > 1) {
 			temp /= e;
 			exponentWholePart++;
 		}
 
-		// The following are initializations for the constant as well as all the intermediate values that
-		// will be used in this method.
-		double constant = (temp-1.0)/(temp+1.0);
-		double constantSqr = constant * constant;
-		temp = 0.0;
-
-		/* A for loop that does the approximation. The following equation is what is being summed up by the for loop:
-		 *
-		 * Ln(x) = 2[(x-1)/(x+1) + (1/3)*((x-1)/(x+1))^3 + (1/5)*((x-1)/(x+1))^5 + (1/7)*((x-1)/(x+1))^7...]
+		/*
+		 * Ln(x) = 2 [(x-1)/(x+1) + (1/3)*((x-1)/(x+1))^3 +
+		 * (1/5)*((x-1)/(x+1))^5 + (1/7)*((x-1)/(x+1))^7...]
 		 * Source: http://www.math.com/tables/expansion/log.htm
-		 * A taylor series of 50th order is enough to give a relative error of 3.953*10^-9 % based on the ln(10) example.
-		 *
+		 * A taylor series of 50th order is enough to give a relative
+		 * error of 3.953*10^-9 for ln(10).
 		 */
-		for (int n = 1; n < 50; n += 2)
-		{
-			temp += constant/(n);
-			constant *= constantSqr;
+		intermediate = (temp-1.0)/(temp+1.0);
+		intermediateSqr = intermediate * intermediate;
+		for (int n = 1; n < 50; n += 2) {
+			fractionalPart += intermediate/(n);
+			intermediate *= intermediateSqr;
 		}
-		//Finally, the result of all the intermediate steps is multiplied by 2.0 to get the final result.
-		double result = (2 * temp) + exponentWholePart;
-		result = (x > 1)
-				? result
-				: - result;
-		return result;
+		
+		approximation = (2 * fractionalPart) + exponentWholePart;
+		return((x > 1)
+				? approximation
+				: -approximation);
 	}		
 }
