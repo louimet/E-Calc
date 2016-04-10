@@ -40,6 +40,8 @@ public class InputHandler {
      * @param newPosition position to which the sursor will be set
      */
     public static void setCursorPosition(int newPosition) {
+
+        // XXX currently longest function Strings are 6 characters ie 'Log10('
         final int MAX_NUM_FUN_CHARS = 6;
         int rightSubExpressionLength =
                 ExpressionHistory.getEntry().length() - newPosition;
@@ -114,7 +116,7 @@ public class InputHandler {
         String subExpression
                 = ExpressionHistory.getEntry().substring(0, cursorPosition);
         if (!subExpression.isEmpty() && (cursorPosition > 0)
-                && subExpression.charAt(cursorPosition -1) == '.') {
+                && subExpression.charAt(cursorPosition - 1) == '.') {
 
             // We cannot input anything other than a digit after a dot
             if (!Character.isDigit(s.charAt(0))) {
@@ -233,7 +235,7 @@ public class InputHandler {
         int tempIndex = cursorPosition;
 
         while((tempIndex > 1)
-                && isOperandChar(expression.charAt(tempIndex-1))) {
+                && isOperandChar(expression.charAt(tempIndex - 1))) {
             tempIndex--;
         }
 
@@ -468,7 +470,7 @@ public class InputHandler {
                 = ExpressionHistory.getEntry().substring(0, cursorPosition);
         String s = "";
         if (!(cursorPosition == 0)
-                && subExpression.charAt(cursorPosition -1) != '(') {
+                && subExpression.charAt(cursorPosition - 1) != '(') {
             int openParenthesis = 0;
             for (int i=0; i < subExpression.length(); i++) {
                 if (subExpression.charAt(i) == '(') {
