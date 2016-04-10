@@ -36,15 +36,15 @@ public class Sine {
     /**
      * Calculate the Taylor series for sine with the order given by FACTORIALS
      * @param x the angle, in radians
-     * @return aproximation of sin(x)
+     * @return approximation of sin(x)
      */
     private static double taylor(double x) {
-        double x2 = x * x;
+        double xSquare = x * x;
         double approximation = 0;
         int signum = 1;                 // alternate sign every term
         for (Long aFac : FACTORIALS) {
             approximation += (signum * x / aFac);
-            x *= x2;
+            x *= xSquare;
             signum *= -1;
         }
         return approximation;
@@ -86,7 +86,7 @@ public class Sine {
             angle += Pi.TWO_PI;
         }
 
-        // our aproximation is best from -pi/2 to +pi/2
+        // our approximation is best from -Pi.HALF_PI to +Pi.HALF_PI
         // use the symmetry of sine and calculate only 2 quadrants around 0
         if (angle < -Pi.HALF_PI) {
             return taylor(-Pi.PI - angle);

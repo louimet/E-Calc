@@ -43,10 +43,10 @@ public class NaturalLog{
 		 * A taylor series of 50th order is enough to give a relative
 		 * error of 3.953*10^-9 for ln(10).
 		 */
-		intermediate = (temp-1.0)/(temp+1.0);
+		intermediate = (temp - 1.0) / (temp + 1.0);
 		intermediateSqr = intermediate * intermediate;
 		for (int n = 1; n < 50; n += 2) {
-			fractionalPart += intermediate/(n);
+			fractionalPart += intermediate / (n);
 			intermediate *= intermediateSqr;
 		}
 

@@ -35,7 +35,7 @@ public class PowerFunction {
 			approximation
 					= 1d
 					/ (temp*ExpFunction.calculate(-fractionalPart*naturalLogx));
-		} else if (exponent==0) {
+		} else if (exponent == 0) {
 			approximation = 1.0;
 		} else {
 			for(int i = 0; i < integerPart; i++) {

@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            // if isExpressionActive, we shouldn't do anything
+            // if the expression isn't active, we shouldn't do anything
             if (!isExpressionActive) {
                 return true;
             }
