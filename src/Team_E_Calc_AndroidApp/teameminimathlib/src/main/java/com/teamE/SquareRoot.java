@@ -12,35 +12,36 @@ package com.teamE;
 
 public class SquareRoot {
 
+    public static double approximation;
+
     /**
-     * x is the user-input.
+     * Calculate the square root.
+     * @param x is the user-input
+     * @return approximation which is the approximation calculated by the Newton's algorithm
      */
     public static double calculate(double x) {
 
-        /**
-         * Display error if the user enters a value less than 0.
-         */
+        /* Display error if the user enters a value less than 0. */
         if (x < 0) {
             double badDouble = Double.NaN;
-            return badDouble;
+            approximation = badDouble;
         }
 
-        /**
+        /*
          * Since the Newton's iteration starts by guessing that the square root
          * of a value is 1, the approximation for the square root of 0 will take
          * an infinite number of iterations before the value is close to 0.
          * Hence, the sqrt(0) is handled separately.
          */
         else if (x == 0) {
-            return 0;
+            approximation = 0;
         }
 
-        /**
-         * Use Newton's iterations to find the square root of value entered by
-         * user. The algorithm used is x_k+1 = 0.5*(x_k + (n/x_k)).
+        /*
+         * Use Newton's iterations to approximate the square root value.
          */
         else {
-            double approximation = 1;
+            approximation = 1;
             double previousApproximation = 1;
             double nextApproximation = 0;
             while (nextApproximation != previousApproximation) {
@@ -48,7 +49,7 @@ public class SquareRoot {
                 nextApproximation = 0.5 * (approximation + (x / approximation));
                 approximation = nextApproximation;
             }
-            return approximation;
         }
+        return approximation;
     }
 }
